@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://emvy-website.vercel.app/sitemap.xml
