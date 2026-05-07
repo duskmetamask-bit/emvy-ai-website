@@ -7,12 +7,7 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      colors: {
-        accent: '#6c63ff',
-        'accent-hover': '#5a52d5',
-      },
-    },
+    extend: {},
   },
   plugins: [],
 }
