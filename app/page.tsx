@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { EmvyWordmark } from '@/components/EmvyLogo'
 
 const CAL_URL = 'https://cal.com/jake-emvy/15-min-ai-chat'
 
@@ -367,7 +368,7 @@ function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <a href="/" className="footer-logo" aria-label="EMVY home">
-              <img src="/assets/emvyai-logo-lockup-transparent.webp" alt="EMVY" className="h-8 w-auto" />
+              <EmvyWordmark size={32} />
             </a>
             <p className="footer-brand-desc">
               AI consultancy for Australian SMBs.<br />Practical systems. Real results.
@@ -431,7 +432,7 @@ function Header() {
         <div className="container">
           <div className="header-inner">
             <a href="/" className="header-logo" aria-label="EMVY home">
-              <img src="/assets/emvyai-logo-lockup-transparent.webp" alt="EMVY" className="h-11 w-auto" />
+              <EmvyWordmark size={36} />
             </a>
 
             <nav className="header-nav" aria-label="Main navigation">
@@ -530,6 +531,7 @@ const headerStyles = `
   height: 100%;
 }
 .header-logo img { height: 44px; width: auto; object-fit: contain; }
+.header-logo { display: flex; align-items: center; }
 .header-nav { display: none; gap: 2rem; align-items: center; }
 @media (min-width: 768px) { .header-nav { display: flex; } }
 .header-nav-link {
