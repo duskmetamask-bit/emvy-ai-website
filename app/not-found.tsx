@@ -11,13 +11,13 @@ export default function NotFound() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="https://emvy-website.vercel.app"
+            href="https://emvyai.com"
             className="px-6 py-3 bg-[#6c63ff] hover:bg-[#5a52d5] text-white font-semibold rounded-lg transition-colors"
           >
             Go Home
           </Link>
           <Link
-            href="https://emvy-booking.vercel.app"
+            href="https://cal.com/jake-emvy/15-min-ai-chat"
             className="px-6 py-3 bg-[#1e1e2e] hover:bg-[#2e2e3e] text-white font-semibold rounded-lg transition-colors"
           >
             Book a Discovery Call

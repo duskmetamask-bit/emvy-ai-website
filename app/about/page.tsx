@@ -1,6 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { EmvyWordmark } from '@/components/EmvyLogo'
+
+const CAL_URL = 'https://cal.com/jake-emvy/15-min-ai-chat'
 
 export default function AboutPage() {
   return (
@@ -8,12 +10,11 @@ export default function AboutPage() {
       {/* Header */}
       <header className="border-b border-[#1e1e2e] py-5 px-6">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div>
-            <a href="https://ai-agent-playbook-landing.vercel.app" className="text-xl font-bold text-white tracking-tight">EMVY</a>
-            <span className="text-xs text-[#71717a] ml-2">AI Audit Agency</span>
-          </div>
+          <a href="/" className="flex items-center gap-3" aria-label="EMVY home">
+            <EmvyWordmark size={36} />
+          </a>
           <nav className="hidden md:flex items-center gap-6 text-sm text-[#71717a]">
-            <a href="https://emvy-booking.vercel.app" className="hover:text-white transition-colors">Book a Call</a>
+            <a href={CAL_URL} className="hover:text-white transition-colors">Book a Call</a>
             <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
             <a href="/contact" className="hover:text-white transition-colors">Contact</a>
           </nav>
@@ -99,7 +100,7 @@ export default function AboutPage() {
           <div className="max-w-2xl mx-auto text-center bg-gradient-to-b from-[#6c63ff]/10 to-transparent border border-[#1e1e2e] rounded-2xl p-12">
             <h2 className="text-2xl font-bold text-white mb-3">Ready to see what's possible?</h2>
             <p className="text-[#71717a] mb-8">Book a free discovery call. 15 minutes. No pitch. We just look at your business and tell you what we see.</p>
-            <a href="https://emvy-booking.vercel.app" className="inline-block px-8 py-4 bg-[#6c63ff] hover:bg-[#5a52d5] text-white font-semibold rounded-lg transition-colors">
+            <a href={CAL_URL} className="inline-block px-8 py-4 bg-[#6c63ff] hover:bg-[#5a52d5] text-white font-semibold rounded-lg transition-colors">
               Book Free Discovery Call →
             </a>
           </div>
@@ -113,7 +114,7 @@ export default function AboutPage() {
           <div className="flex gap-6 text-sm text-[#71717a]">
             <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
             <a href="/contact" className="hover:text-white transition-colors">Contact</a>
-            <a href="https://emvy-booking.vercel.app" className="hover:text-white transition-colors">Book a Call</a>
+            <a href={CAL_URL} className="hover:text-white transition-colors">Book a Call</a>
           </div>
           <div className="text-[#3f3f46] text-xs">Shut Up and Build</div>
         </div>

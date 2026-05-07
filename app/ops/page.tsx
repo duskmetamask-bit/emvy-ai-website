@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { EmvyWordmark } from '@/components/EmvyLogo'
 
 // ============================================
 // TYPES
@@ -359,7 +360,7 @@ function WarmLeadsTab() {
       {/* Casino Note */}
       <div className="mt-6 bg-[#111118] border border-[#f59e0b]/30 rounded-xl p-5">
         <div className="flex items-start gap-3">
-          <span className="text-2xl">🎰</span>
+          <span className="text-2xl">OPS</span>
           <div>
             <h4 className="text-white font-semibold">Casino Investment — $75M Project</h4>
             <p className="text-[#71717a] text-sm mt-1">
@@ -473,7 +474,7 @@ function BusinessTab() {
 
       {/* Best Practice Reminders */}
       <div className="mt-6 bg-[#111118] border border-[#6c63ff]/30 rounded-xl p-5">
-        <h4 className="text-white font-semibold mb-3">🏢 Business Structure Best Practice</h4>
+        <h4 className="text-white font-semibold mb-3">Business Structure Best Practice</h4>
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
             <p className="text-[#f59e0b] font-medium mb-1">Consider Separating:</p>
@@ -1026,23 +1027,23 @@ function ApisTab() {
 
       {/* Suggested APIs */}
       <div className="bg-[#111118] border border-[#6c63ff]/30 rounded-xl p-5 mb-6">
-        <h4 className="text-white font-semibold mb-3">🔌 Suggested API Stack (Minimize Problems, Maximize Time)</h4>
+        <h4 className="text-white font-semibold mb-3">Suggested API Stack (Minimize Problems, Maximize Time)</h4>
         <div className="grid grid-cols-4 gap-3">
           {[
-            { name: 'VAPI', category: 'Voice/Calls', purpose: 'Outbound/inbound calls, Callie', status: '✅ Live' },
-            { name: 'Cal.com', category: 'Scheduling', purpose: 'Booking links in CTAs', status: '✅ Live' },
-            { name: 'Supabase', category: 'Database', purpose: 'Leads, pipeline, all data', status: '✅ Live' },
-            { name: 'Gmail SMTP', category: 'Email', purpose: 'Dusk sends personally', status: '✅ Live' },
-            { name: 'NVIDIA API', category: 'LLM', purpose: 'AI inference for research', status: '✅ Live' },
-            { name: 'Resend', category: 'Email', purpose: 'Automated sequences (pending)', status: '⏳ To add' },
-            { name: 'Google Places', category: 'Lead Gen', purpose: 'Find businesses near me', status: '⏳ In progress' },
-            { name: 'TailScale', category: 'Networking', purpose: 'Connect home device', status: '⏳ To set up' },
+            { name: 'VAPI', category: 'Voice/Calls', purpose: 'Outbound/inbound calls, Callie', status: 'Live' },
+            { name: 'Cal.com', category: 'Scheduling', purpose: 'Booking links in CTAs', status: 'Live' },
+            { name: 'Supabase', category: 'Database', purpose: 'Leads, pipeline, all data', status: 'Live' },
+            { name: 'Gmail SMTP', category: 'Email', purpose: 'Dusk sends personally', status: 'Live' },
+            { name: 'NVIDIA API', category: 'LLM', purpose: 'AI inference for research', status: 'Live' },
+            { name: 'Resend', category: 'Email', purpose: 'Automated sequences (pending)', status: 'To add' },
+            { name: 'Google Places', category: 'Lead Gen', purpose: 'Find businesses near me', status: 'In progress' },
+            { name: 'TailScale', category: 'Networking', purpose: 'Connect home device', status: 'To set up' },
           ].map(api => (
             <div key={api.name} className="bg-[#0a0a0f] border border-[#1e1e2e] rounded-lg p-3">
               <p className="text-white text-xs font-medium">{api.name}</p>
               <p className="text-[#6c63ff] text-xs">{api.category}</p>
               <p className="text-[#71717a] text-xs mt-1">{api.purpose}</p>
-              <p className="text-xs mt-1" style={{ color: api.status.includes('✅') ? '#22c55e' : '#f59e0b' }}>{api.status}</p>
+              <p className="text-xs mt-1" style={{ color: api.status.includes('Live') ? '#22c55e' : '#f59e0b' }}>{api.status}</p>
             </div>
           ))}
         </div>
@@ -1199,11 +1200,13 @@ export default function OpsPage() {
       <header className="border-b border-[#1e1e2e] py-4 px-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <a href="https://emvyai.vercel.app" className="text-xl font-bold text-white tracking-tight">EMVY</a>
+            <a href="https://emvyai.com" className="flex items-center gap-3" aria-label="EMVY home">
+              <EmvyWordmark size={34} />
+            </a>
             <span className="text-xs text-[#6c63ff] bg-[#6c63ff]/10 px-2 py-0.5 rounded">OPS HUB</span>
           </div>
           <nav className="flex items-center gap-4 text-sm">
-            <a href="https://emvyai.vercel.app" className="text-[#71717a] hover:text-white transition-colors">Website</a>
+            <a href="https://emvyai.com" className="text-[#71717a] hover:text-white transition-colors">Website</a>
             <a href="https://cal.com/jake-emvy/15-min-ai-chat" className="text-[#71717a] hover:text-white transition-colors">Book Call</a>
           </nav>
         </div>
@@ -1240,7 +1243,7 @@ export default function OpsPage() {
         <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="bg-[#111118] border border-[#22c55e]/30 rounded-xl p-5">
             <div className="flex items-start gap-4">
-              <span className="text-2xl">🔒</span>
+              <span className="text-2xl">SEC</span>
               <div className="flex-1">
                 <h4 className="text-white font-semibold">TailScale Setup — Connect Everything to Your Home Device</h4>
                 <p className="text-[#71717a] text-sm mt-1">

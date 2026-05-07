@@ -1,6 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { EmvyWordmark } from '@/components/EmvyLogo'
+
+const CAL_URL = 'https://cal.com/jake-emvy/15-min-ai-chat'
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
@@ -29,7 +32,7 @@ export default function ContactPage() {
       setForm({ name: '', email: '', subject: '', message: '' })
     } catch {
       setStatus('error')
-      setError('Something went wrong. Try emailing us directly at hello@emvy.ai')
+      setError('Something went wrong. Try emailing us directly at info@emvyai.com')
     }
   }
 
@@ -38,12 +41,11 @@ export default function ContactPage() {
       {/* Header */}
       <header className="border-b border-[#1e1e2e] py-5 px-6">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div>
-            <a href="https://ai-agent-playbook-landing.vercel.app" className="text-xl font-bold text-white tracking-tight">EMVY</a>
-            <span className="text-xs text-[#71717a] ml-2">AI Audit Agency</span>
-          </div>
+          <a href="/" className="flex items-center gap-3" aria-label="EMVY home">
+            <EmvyWordmark size={36} />
+          </a>
           <nav className="hidden md:flex items-center gap-6 text-sm text-[#71717a]">
-            <a href="https://emvy-booking.vercel.app" className="hover:text-white transition-colors">Book a Call</a>
+            <a href={CAL_URL} className="hover:text-white transition-colors">Book a Call</a>
             <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
             <a href="/about" className="hover:text-white transition-colors">About</a>
           </nav>
@@ -74,7 +76,7 @@ export default function ContactPage() {
               <div>
                 {status === 'success' ? (
                   <div className="bg-[#111118] border border-[#1e1e2e] rounded-2xl p-10 text-center">
-                    <div className="text-4xl mb-4">✅</div>
+                    <div className="mx-auto mb-4 h-10 w-10 rounded-full border border-[#6c63ff]/40 bg-[#6c63ff]/10" />
                     <h2 className="text-xl font-bold text-white mb-2">Message sent.</h2>
                     <p className="text-[#71717a] text-sm">We'll get back to you within 1 business day.</p>
                   </div>
@@ -152,7 +154,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <div className="bg-[#111118] border border-[#1e1e2e] rounded-xl p-6">
                   <h3 className="text-white font-semibold mb-3">Email</h3>
-                  <a href="mailto:hello@emvy.ai" className="text-[#6c63ff] hover:underline text-sm">hello@emvy.ai</a>
+                  <a href="mailto:info@emvyai.com" className="text-[#6c63ff] hover:underline text-sm">info@emvyai.com</a>
                 </div>
 
                 <div className="bg-[#111118] border border-[#1e1e2e] rounded-xl p-6">
@@ -164,7 +166,7 @@ export default function ContactPage() {
                   <h3 className="text-white font-semibold mb-3">Book a Call Directly</h3>
                   <p className="text-[#71717a] text-sm mb-4">Skip the back-and-forth. Book a free 15-minute discovery call and we'll tell you exactly where you stand.</p>
                   <a
-                    href="https://emvy-booking.vercel.app"
+                    href={CAL_URL}
                     className="inline-block px-5 py-2.5 bg-[#6c63ff] hover:bg-[#5a52d5] text-white text-sm font-semibold rounded-lg transition-colors"
                   >
                     Book Free Discovery Call →
@@ -190,7 +192,7 @@ export default function ContactPage() {
           <div className="flex gap-6 text-sm text-[#71717a]">
             <a href="/about" className="hover:text-white transition-colors">About</a>
             <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
-            <a href="https://emvy-booking.vercel.app" className="hover:text-white transition-colors">Book a Call</a>
+            <a href={CAL_URL} className="hover:text-white transition-colors">Book a Call</a>
           </div>
           <div className="text-[#3f3f46] text-xs">Shut Up and Build</div>
         </div>

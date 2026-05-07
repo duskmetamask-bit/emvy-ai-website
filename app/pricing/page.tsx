@@ -1,264 +1,123 @@
 'use client'
 
 import { useState } from 'react'
+import { EmvyWordmark } from '@/components/EmvyLogo'
+
+const CAL_URL = 'https://cal.com/jake-emvy/15-min-ai-chat'
 
 const packages = [
   {
-    name: 'AI Audit',
-    price: '$1,500',
-    tagline: 'The foundation. Know where you stand.',
-    description: 'A structured deep-dive into your business operations. We identify exactly where AI can create leverage — and map a prioritised roadmap to get there.',
-    duration: 'Delivered in 5–7 days',
-    includes: [
-      'Full workflow audit (up to 8 workflows)',
-      'AI opportunity map with effort/reward scoring',
-      'Prioritised action roadmap (30/60/90 day)',
-      '2 × 30-min debrief calls',
-      'Written report + video walkthrough',
-      '30-day email support for questions',
-    ],
-    cta: 'Book Free Discovery Call',
-    href: 'https://emvy-booking.vercel.app',
-    highlight: false,
+    name: 'Free 15-min call',
+    price: 'Free',
+    tagline: 'Fit check before anything paid.',
+    description: 'A short call with Jake to understand the main bottleneck and decide if an audit is useful.',
+    includes: ['Direct conversation', 'No obligation', 'Clear next step', 'Honest no if AI is not a fit'],
   },
   {
-    name: 'AI Setup + Build',
-    price: '$3,000–$5,000',
-    tagline: 'We build it. You see results fast.',
-    description: 'After your audit, we build the highest-priority AI agents and automations identified. Designed, deployed, and handed over ready to use.',
-    duration: 'Delivered in 2–3 weeks',
-    includes: [
-      'Everything in AI Audit',
-      'Build of top 2–3 AI automations',
-      'Full deployment + configuration',
-      'Standard operating procedures',
-      '1-week post-launch support',
-      '30-day guarantee — we fix anything that breaks',
-    ],
-    cta: 'Start With Audit',
-    href: 'https://emvy-booking.vercel.app',
+    name: 'AI Audit',
+    price: '$1,500',
+    tagline: 'The roadmap before the build.',
+    description: 'A practical review of your calls, admin, quotes and follow-up. You keep the roadmap whether EMVY builds it or not.',
+    includes: ['Workflow review', 'Pain point ranking', 'Opportunity map', '30/60/90 day roadmap'],
     highlight: true,
   },
   {
-    name: 'Monthly Retainer',
+    name: 'Build',
+    price: '$3,000-$5,000',
+    tagline: 'Highest-impact workflow built properly.',
+    description: 'After the audit, EMVY builds the system that will make the biggest practical difference first.',
+    includes: ['Custom implementation', 'Tool integration', 'Testing and handover', 'Launch support'],
+  },
+  {
+    name: 'Ongoing Support',
     price: '$1,500/mo',
-    tagline: 'Keep improving. Stay ahead.',
-    description: 'Ongoing management, optimisation, and new builds as your business evolves. We treat your AI infrastructure like our own.',
-    duration: 'Month-to-month',
-    includes: [
-      'Monthly strategy check-in call',
-      'New automation builds as needed',
-      'Existing system optimisation',
-      'Priority support (response within 4 hrs)',
-      'Access to new AI tools + techniques first',
-      'Cancel anytime — no lock-in',
-    ],
-    cta: 'Start With Audit',
-    href: 'https://emvy-booking.vercel.app',
-    highlight: false,
+    tagline: 'Keep improving without starting over.',
+    description: 'Monthly monitoring, fixes, improvements and new workflow work as the business evolves.',
+    includes: ['Monthly improvements', 'Priority support', 'System monitoring', 'Quarterly review'],
   },
 ]
 
 const faqs = [
-  {
-    q: "Do I need an audit before a build?",
-    a: "Yes. The audit ensures we build the right thing — not just a cool demo. It tells us exactly where your time and money is being wasted, so the build has measurable impact from day one.",
-  },
-  {
-    q: "What if I'm not happy with the audit?",
-    a: "If you don't feel like you got actionable value from the debrief, tell us. We'll work with you until you're satisfied or refund the audit fee — no games.",
-  },
-  {
-    q: "How long does a build take?",
-    a: "Most setups take 2–3 weeks. Complex businesses with multiple integrations can take 4–6 weeks. We'll give you a clear timeline after the audit.",
-  },
-  {
-    q: "What does 'delivered' mean exactly?",
-    a: "We don't hand over code and disappear. Delivered means: built, deployed, tested, and documented. You get SOPs so your team can use and maintain it without needing us.",
-  },
-  {
-    q: "Can I cancel the retainer anytime?",
-    a: "Yes. Monthly retainer is month-to-month. Cancel before the next billing cycle and we stop charging. No cancellation fees or lock-in clauses.",
-  },
-  {
-    q: "What size business is this for?",
-    a: "We work best with 1–20 person businesses doing $200K–$5M/year. That said, if you're a founder or operator drowning in manual work, reach out — we'll tell you straight if we're a fit.",
-  },
+  ['Why publish pricing?', 'Because most agencies hide it and SMBs waste time on calls they should never have booked. EMVY lets you self-qualify up front.'],
+  ['Do I need the audit first?', 'Yes for paid build work. The audit makes sure the build is useful, scoped and based on your actual workflow.'],
+  ['Can I keep the audit roadmap?', 'Yes. The roadmap is yours to keep even if you choose to implement it somewhere else.'],
+  ['What if AI is not right for us?', 'You will be told directly. Sometimes the answer is process cleanup, better data or a human hire before AI.'],
+  ['Who is this for?', 'Owner-led SMBs globally, starting Perth and Australia, with missed calls, admin overload, quote follow-up issues or lead leakage.'],
 ]
 
 export default function PricingPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [openFaq, setOpenFaq] = useState<number | null>(0)
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f]">
-      {/* Header */}
-      <header className="border-b border-[#1e1e2e] py-5 px-6">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div>
-            <a href="https://ai-agent-playbook-landing.vercel.app" className="text-xl font-bold text-white tracking-tight">EMVY</a>
-            <span className="text-xs text-[#71717a] ml-2">AI Audit Agency</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-6 text-sm text-[#71717a]">
-            <a href="https://emvy-booking.vercel.app" className="hover:text-white transition-colors">Book a Call</a>
-            <a href="/about" className="hover:text-white transition-colors">About</a>
-            <a href="/contact" className="hover:text-white transition-colors">Contact</a>
+    <main className="min-h-screen bg-[#08090a] text-white">
+      <header className="border-b border-white/10 bg-[#08090a]/80 px-6 py-5 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between">
+          <a href="/" className="flex items-center gap-3" aria-label="EMVY home">
+            <EmvyWordmark size={36} />
+          </a>
+          <nav className="hidden items-center gap-6 text-sm text-zinc-400 md:flex">
+            <a href="/" className="hover:text-white">Home</a>
+            <a href="/about" className="hover:text-white">About</a>
+            <a href="/contact" className="hover:text-white">Contact</a>
           </nav>
+          <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact">Book free call</a>
         </div>
       </header>
 
-      <main>
-        {/* Hero */}
-        <section className="px-6 py-24 text-center">
-          <div className="max-w-3xl mx-auto">
-            <div className="inline-block px-3 py-1 rounded-full bg-[#6c63ff]/10 text-[#6c63ff] text-xs font-semibold mb-4">
-              TRANSPARENT PRICING
+      <section className="px-6 py-24 text-center">
+        <p className="section-kicker">Transparent pricing</p>
+        <h1 className="mx-auto max-w-4xl text-5xl font-black leading-[.95] tracking-[-0.06em] md:text-7xl">Know the number before the call.</h1>
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-400">Free call, $1,500 audit, $3,000-$5,000 build, $1,500/month retainer. No hidden quote maze.</p>
+      </section>
+
+      <section className="px-6 pb-20">
+        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {packages.map((pkg) => (
+            <div key={pkg.name} className={`pricing-panel ${pkg.highlight ? 'featured' : ''}`}>
+              {pkg.highlight && <div className="mb-4 inline-flex rounded-full bg-[#6c63ff]/15 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-violet-200">Start here</div>}
+              <h2 className="text-xl font-bold">{pkg.name}</h2>
+              <div className="mt-3 text-3xl font-black">{pkg.price}</div>
+              <p className="mt-2 text-sm text-zinc-500">{pkg.tagline}</p>
+              <p className="mt-5 min-h-[100px] text-sm leading-7 text-zinc-400">{pkg.description}</p>
+              <ul className="mt-6 space-y-3">
+                {pkg.includes.map((item) => <li key={item} className="flex gap-3 text-sm text-zinc-300"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#6c63ff]" />{item}</li>)}
+              </ul>
+              <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className={`mt-8 w-full ${pkg.highlight ? 'btn-primary' : 'btn-secondary'}`}>Book free call</a>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
-              Simple Pricing.<br />
-              <span className="text-[#6c63ff]">Real Results.</span>
-            </h1>
-            <p className="text-[#71717a] text-lg max-w-xl mx-auto">
-              No retainers to sign, no hidden costs, no scope creep. You know exactly what you're paying for and what you'll get.
-            </p>
-          </div>
-        </section>
+          ))}
+        </div>
+      </section>
 
-        {/* Packages */}
-        <section className="px-6 pb-24">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-6">
-              {packages.map((pkg, i) => (
-                <div
-                  key={i}
-                  className={`rounded-2xl p-8 flex flex-col ${
-                    pkg.highlight
-                      ? 'bg-[#111118] border-2 border-[#6c63ff]'
-                      : 'bg-[#111118] border border-[#1e1e2e]'
-                  }`}
-                >
-                  {pkg.highlight && (
-                    <div className="inline-block px-3 py-1 rounded-full bg-[#6c63ff]/20 text-[#6c63ff] text-xs font-semibold mb-4 self-start">
-                      MOST POPULAR
-                    </div>
-                  )}
-                  <div className="mb-1">
-                    <h3 className="text-lg font-bold text-white">{pkg.name}</h3>
-                    <p className="text-xs text-[#3f3f46] mt-0.5">{pkg.tagline}</p>
-                  </div>
-                  <div className="mb-5">
-                    <span className="text-4xl font-bold text-white">{pkg.price}</span>
-                    {pkg.price.includes('/') && (
-                      <span className="text-[#71717a] text-sm ml-1">month</span>
-                    )}
-                  </div>
-                  <p className="text-[#71717a] text-sm mb-6 leading-relaxed">{pkg.description}</p>
-                  <div className="text-xs text-[#3f3f46] mb-6">{pkg.duration}</div>
+      <section className="px-6 pb-20">
+        <div className="mx-auto max-w-5xl rounded-[2rem] border border-white/10 bg-white/[0.025] p-8 text-center md:p-12">
+          <p className="section-kicker">Honest proof</p>
+          <h2 className="text-3xl font-black tracking-[-0.04em] md:text-5xl">No invented stats.</h2>
+          <p className="mx-auto mt-5 max-w-3xl text-zinc-400 leading-8">EMVY will publish case studies when client results are approved. Until then, the trust signals are transparent pricing, a roadmap you can keep, and a direct builder-led process.</p>
+        </div>
+      </section>
 
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {pkg.includes.map((item, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm text-[#a1a1aa]">
-                        <span className="text-[#6c63ff] mt-0.5">✓</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <a
-                    href={pkg.href}
-                    className={`block text-center py-3.5 rounded-lg font-semibold text-sm transition-colors ${
-                      pkg.highlight
-                        ? 'bg-[#6c63ff] hover:bg-[#5a52d5] text-white'
-                        : 'bg-[#1e1e2e] hover:bg-[#2e2e3e] text-white'
-                    }`}
-                  >
-                    {pkg.cta} →
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Social proof strip */}
-        <section className="px-6 pb-24">
-          <div className="max-w-6xl mx-auto">
-            <div className="bg-[#111118] border border-[#1e1e2e] rounded-2xl p-10 grid md:grid-cols-3 gap-8 text-center">
-              <div>
-                <p className="text-3xl font-bold text-[#6c63ff] mb-1">20+</p>
-                <p className="text-sm text-[#71717a]">AI automations built and deployed for client businesses</p>
+      <section className="px-6 pb-24">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-8 text-center text-3xl font-black tracking-[-0.04em]">Common questions</h2>
+          <div className="space-y-3">
+            {faqs.map(([q, a], i) => (
+              <div key={q} className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025]">
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="flex w-full items-center justify-between px-6 py-5 text-left font-semibold">
+                  {q}<span className="text-2xl text-zinc-500">{openFaq === i ? '−' : '+'}</span>
+                </button>
+                {openFaq === i && <p className="px-6 pb-6 text-sm leading-7 text-zinc-400">{a}</p>}
               </div>
-              <div>
-                <p className="text-3xl font-bold text-[#6c63ff] mb-1">5–15 hrs</p>
-                <p className="text-sm text-[#71717a]">Saved per week on average per client after setup</p>
-              </div>
-              <div>
-                <p className="text-3xl font-bold text-[#6c63ff] mb-1">48 hrs</p>
-                <p className="text-sm text-[#71717a]">Average time to first meaningful deliverable after audit</p>
-              </div>
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* FAQ */}
-        <section className="px-6 pb-24">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-white text-center mb-10">
-              Common Questions
-            </h2>
-            <div className="space-y-3">
-              {faqs.map((faq, i) => (
-                <div key={i} className="border border-[#1e1e2e] rounded-xl overflow-hidden">
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-[#111118] transition-colors"
-                  >
-                    <span className="font-medium text-white text-sm">{faq.q}</span>
-                    <span className={`text-[#71717a] text-lg ml-4 transition-transform ${openFaq === i ? 'rotate-45' : ''}`}>+</span>
-                  </button>
-                  {openFaq === i && (
-                    <div className="px-6 pb-5">
-                      <p className="text-[#71717a] text-sm leading-relaxed">{faq.a}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="px-6 pb-24">
-          <div className="max-w-2xl mx-auto text-center bg-gradient-to-b from-[#6c63ff]/10 to-transparent border border-[#1e1e2e] rounded-2xl p-12">
-            <h2 className="text-2xl font-bold text-white mb-3">
-              Not sure where to start?
-            </h2>
-            <p className="text-[#71717a] mb-8">
-              Book a free 15-minute discovery call. We'll tell you exactly what you need — even if it's nothing from us.
-            </p>
-            <a
-              href="https://emvy-booking.vercel.app"
-              className="inline-block px-8 py-4 bg-[#6c63ff] hover:bg-[#5a52d5] text-white font-semibold rounded-lg transition-colors"
-            >
-              Book Free Discovery Call →
-            </a>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-[#1e1e2e] py-8 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-[#71717a] text-sm">
-            <span className="font-bold text-white">EMVY</span> — AI Audit Agency
-          </div>
-          <div className="flex gap-6 text-sm text-[#71717a]">
-            <a href="/about" className="hover:text-white transition-colors">About</a>
-            <a href="/contact" className="hover:text-white transition-colors">Contact</a>
-            <a href="https://emvy-booking.vercel.app" className="hover:text-white transition-colors">Book a Call</a>
-          </div>
-          <div className="text-[#3f3f46] text-xs">Shut Up and Build</div>
+      <footer className="border-t border-white/10 px-6 py-8">
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 text-sm text-zinc-500 md:flex-row">
+          <div><span className="font-bold text-white">EMVY</span> — AI Audit Agency</div>
+          <div className="flex gap-5"><a href="/" className="hover:text-white">Home</a><a href="/contact" className="hover:text-white">Contact</a><a href={CAL_URL} className="hover:text-white">Book a call</a></div>
         </div>
       </footer>
-    </div>
+    </main>
   )
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { EmvyWordmark } from '@/components/EmvyLogo'
 
 export default function PayPage() {
   const [form, setForm] = useState({ name: '', email: '', company: '' })
@@ -29,9 +30,9 @@ export default function PayPage() {
 
       // TODO: Wire up Stripe publishable key — this will redirect to Stripe Checkout
       // For now, show a placeholder since Stripe isn't configured yet
-      alert('Stripe checkout coming soon. Email hello@emvy.ai to pay directly.')
+      alert('Stripe checkout coming soon. Email info@emvyai.com to pay directly.')
     } catch {
-      setError('Something went wrong. Email hello@emvy.ai to pay directly.')
+      setError('Something went wrong. Email info@emvyai.com to pay directly.')
     } finally {
       setLoading(false)
     }
@@ -42,10 +43,9 @@ export default function PayPage() {
       {/* Header */}
       <header className="border-b border-[#1e1e2e] py-5 px-6">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div>
-            <a href="https://ai-agent-playbook-landing.vercel.app" className="text-xl font-bold text-white tracking-tight">EMVY</a>
-            <span className="text-xs text-[#71717a] ml-2">AI Audit Agency</span>
-          </div>
+          <a href="/" className="flex items-center gap-3" aria-label="EMVY home">
+            <EmvyWordmark size={36} />
+          </a>
           <nav className="hidden md:flex items-center gap-6 text-sm text-[#71717a]">
             <a href="/about" className="hover:text-white transition-colors">About</a>
             <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
@@ -153,9 +153,9 @@ export default function PayPage() {
           </form>
 
           <div className="flex items-center justify-center gap-4 mt-6 text-xs text-[#3f3f46]">
-            <span>🔒 Secure payment via Stripe</span>
+            <span>Secure payment via Stripe</span>
             <span>·</span>
-            <a href="mailto:hello@emvy.ai" className="hover:text-[#71717a] transition-colors">Need an invoice?</a>
+            <a href="mailto:info@emvyai.com" className="hover:text-[#71717a] transition-colors">Need an invoice?</a>
           </div>
         </div>
 
@@ -163,7 +163,7 @@ export default function PayPage() {
         <div className="text-center mt-8">
           <p className="text-[#71717a] text-sm">
             Prefer to pay directly?{' '}
-            <a href="mailto:hello@emvy.ai?subject=AI Audit Payment Inquiry" className="text-[#6c63ff] hover:underline">
+            <a href="mailto:info@emvyai.com?subject=AI Audit Payment Inquiry" className="text-[#6c63ff] hover:underline">
               Email us
             </a>{' '}
             and we'll send a payment link.

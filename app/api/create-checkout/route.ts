@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     writeFileSync(filePath, JSON.stringify(leads, null, 2))
 
     return NextResponse.json({
-      error: 'Stripe not configured yet. Email hello@emvy.ai to pay directly.',
+      error: 'Stripe not configured yet. Email info@emvyai.com to pay directly.',
     }, { status: 501 })
   } catch (error) {
     console.error('Checkout error:', error)

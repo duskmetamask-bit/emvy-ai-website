@@ -1,0 +1,51 @@
+<svg width="1440" height="520" viewBox="0 0 1440 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="emvyBluePurple" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00A3FF"/>
+      <stop offset="48%" stop-color="#3B5BFF"/>
+      <stop offset="100%" stop-color="#B02CFF"/>
+    </linearGradient>
+    <linearGradient id="emvyWhiteMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="52%" stop-color="#DDE4F2"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="emvyA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6B3DFF"/>
+      <stop offset="48%" stop-color="#00A3FF"/>
+      <stop offset="100%" stop-color="#FF38D1"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.1  0 0 0 0 0.45  0 0 0 0 1  0 0 0 0.75 0" result="blueGlow"/>
+      <feMerge>
+        <feMergeNode in="blueGlow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="purpleGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.05  0 0 0 0 1  0 0 0 0.8 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1440" height="520" fill="#030717"/>
+
+  <!-- EMVYAI gateway M mark: approximate reconstruction from screenshot, not original source vector -->
+  <g transform="translate(110 96)" filter="url(#glow)">
+    <path d="M30 318 L30 82 L154 156 L154 318 L106 318 L106 186 L73 166 L73 318 Z" stroke="url(#emvyBluePurple)" stroke-width="8" fill="rgba(0,40,120,0.22)"/>
+    <path d="M154 318 L154 156 L278 82 L278 318 L235 318 L235 166 L202 186 L202 318 Z" stroke="url(#emvyBluePurple)" stroke-width="8" fill="rgba(80,0,120,0.22)"/>
+    <path d="M106 318 L106 186 L154 215 L202 186 L202 318 L174 318 L174 236 L154 248 L134 236 L134 318 Z" stroke="url(#emvyBluePurple)" stroke-width="5" fill="rgba(0,120,255,0.15)"/>
+    <path d="M154 330 L105 330 L154 318 L203 330 Z" fill="#00A3FF" opacity="0.55"/>
+  </g>
+
+  <!-- Wordmark approximation. Convert to outlines in final production if needed. -->
+  <g transform="translate(475 185)">
+    <text x="0" y="110" font-family="Inter, Montserrat, Arial, sans-serif" font-size="116" font-weight="700" letter-spacing="34" fill="url(#emvyWhiteMetal)">EMVY</text>
+    <text x="560" y="110" font-family="Inter, Montserrat, Arial, sans-serif" font-size="116" font-weight="700" letter-spacing="18" fill="url(#emvyA)">AI</text>
+  </g>
+</svg>

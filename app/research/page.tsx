@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { EmvyWordmark } from '@/components/EmvyLogo'
 
 const RESEARCH_FIELDS = [
   { key: 'website', label: 'Company Website', placeholder: 'https://company.com.au', hint: 'Start here — gives you everything you need' },
@@ -36,13 +37,13 @@ export default function ResearchPage() {
       {/* Header */}
       <header className="border-b border-[#1e1e2e] py-5 px-6">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <div>
-            <a href="https://ai-agent-playbook-landing.vercel.app" className="text-xl font-bold text-white tracking-tight">EMVY</a>
-            <span className="text-xs text-[#71717a] ml-2">Pre-Call Research</span>
-          </div>
+          <a href="/" className="flex items-center gap-3" aria-label="EMVY home">
+            <EmvyWordmark size={36} />
+            <span className="text-xs text-[#71717a]">Pre-Call Research</span>
+          </a>
           <nav className="flex items-center gap-4 text-sm text-[#71717a]">
             <a href="/ops" className="hover:text-white transition-colors">Ops Hub</a>
-            <a href="https://emvy-booking.vercel.app" className="hover:text-white transition-colors">Booking</a>
+            <a href="https://cal.com/jake-emvy/15-min-ai-chat" className="hover:text-white transition-colors">Booking</a>
           </nav>
         </div>
       </header>
