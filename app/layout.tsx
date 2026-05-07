@@ -3,7 +3,7 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://emvyai.com"),
-  title: "EMVYAI — AI Consultancy for Australian Businesses",
+  title: "EMVY — AI Consultancy",
   description: "Perth based, Australia wide AI consultancy. AI strategy, process automation, custom AI solutions and data analytics for SMBs ready to work smarter.",
   openGraph: {
     title: "EMVYAI — AI Consultancy",

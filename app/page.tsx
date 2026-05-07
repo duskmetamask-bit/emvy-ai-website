@@ -16,7 +16,7 @@ const services = [
   {
     id: 'agents',
     title: 'AI Agents',
-    desc: 'Autonomous digital workers that handle calls, messages, and admin — 24/7, without节假日.',
+    desc: 'Autonomous digital workers that handle calls, messages, and admin — 24/7, no holidays needed.',
     tag: 'Production-ready',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
@@ -279,7 +279,7 @@ function CaseStudy() {
             </div>
 
             <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ marginTop: 'auto' }}>
-              Get your free audit
+              Get your free 15-min call
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
