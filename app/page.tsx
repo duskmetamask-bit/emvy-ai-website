@@ -147,7 +147,7 @@ function Hero() {
 
           <div className="hero-badge">
             <span className="hero-badge-dot" />
-            <span>Perth-based · SMB specialists · Transparent pricing</span>
+            <span>SMB specialists · Transparent pricing · No lock-in</span>
           </div>
 
           <h1 className="hero-headline">
