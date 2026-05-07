@@ -42,7 +42,7 @@ const faqs = [
   ['Do I need the audit first?', 'Yes for paid build work. The audit makes sure the build is useful, scoped and based on your actual workflow.'],
   ['Can I keep the audit roadmap?', 'Yes. The roadmap is yours to keep even if you choose to implement it somewhere else.'],
   ['What if AI is not right for us?', 'You will be told directly. Sometimes the answer is process cleanup, better data or a human hire before AI.'],
-  ['Who is this for?', 'Owner-led SMBs globally, starting Perth and Australia, with missed calls, admin overload, quote follow-up issues or lead leakage.'],
+['Who is this for?', 'Owner-led SMBs globally with missed calls, admin overload, quote follow-up issues or lead leakage.'],
 ]
 
 export default function PricingPage() {

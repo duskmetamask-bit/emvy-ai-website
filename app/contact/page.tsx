@@ -175,7 +175,7 @@ export default function ContactPage() {
 
                 <div className="bg-[#111118] border border-[#1e1e2e] rounded-xl p-6">
                   <h3 className="text-white font-semibold mb-3">Location</h3>
-                  <p className="text-[#71717a] text-sm">Perth, Australia — serving clients worldwide</p>
+                  <p className="text-[#71717a] text-sm">Serving clients globally</p>
                 </div>
               </div>
             </div>

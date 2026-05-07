@@ -72,7 +72,7 @@ const services = [
 
 const caseStudy = {
   client: 'Mid-sized tradie contractor',
-  industry: 'Perth · Construction',
+  industry: 'Construction',
   challenge: 'Quoting took 3 days, customer follow-ups were inconsistent, and leads were falling through the cracks. The team was spending 20+ hours/week on admin that could be automated.',
   solution: 'We built an AI agent to parse inbound enquiries, auto-generate quotes using live supplier pricing, and trigger follow-up sequences — all integrated with their existing job management software.',
   result: 'Quote time: 3 days → 4 hours. Follow-up rate: 40% → 94%. Admin burden dropped by 60% within 8 weeks.',
@@ -760,20 +760,20 @@ const serviceStyles = `
 .services-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
 }
-@media (min-width: 640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 640px) { .services-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
+@media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; } }
 
 .service-card {
   border-radius: var(--radius-xl);
   border: 1px solid var(--color-border);
   background: var(--color-surface);
-  padding: 1.75rem;
+  padding: 2rem;
   transition: all 0.25s ease;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 .service-card:hover {
   border-color: var(--color-border-accent);
