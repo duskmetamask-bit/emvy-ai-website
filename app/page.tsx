@@ -729,6 +729,7 @@ const heroStyles = `
 `
 
 const metricStyles = `
+/* Metrics — breathing room above and below */
 .metrics-section {
   padding: 5rem 0;
   margin-top: 2rem;
@@ -736,6 +737,18 @@ const metricStyles = `
   border-bottom: 1px solid var(--color-border);
   background: var(--color-bg-subtle);
   overflow: hidden;
+  position: relative;
+}
+/* Soft gradient fade at top */
+.metrics-section::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--color-bg), transparent);
+  pointer-events: none;
 }
 .metrics-grid {
   display: grid;
@@ -784,7 +797,23 @@ const metricStyles = `
 `
 
 const serviceStyles = `
-.services-section { background: var(--color-bg); padding-top: 5rem; }
+.services-section {
+  background: var(--color-bg);
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  position: relative;
+}
+/* Gradient fade at top — separates from metrics */
+.services-section::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--color-bg));
+  pointer-events: none;
+}
 
 .section-header {
   margin-bottom: 4rem;
@@ -860,7 +889,23 @@ const serviceStyles = `
 `
 
 const caseStudyStyles = `
-.case-study-section { background: var(--color-bg-subtle); }
+.case-study-section {
+  background: var(--color-bg-subtle);
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  position: relative;
+}
+/* Fade separator at top */
+.case-study-section::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--color-bg), var(--color-bg-subtle));
+  pointer-events: none;
+}
 
 .case-study-card {
   display: grid;
@@ -944,7 +989,23 @@ const caseStudyStyles = `
 `
 
 const valueStyles = `
-.value-props-section { background: var(--color-bg); }
+.value-props-section {
+  background: var(--color-bg);
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  position: relative;
+}
+/* Fade separator at top */
+.value-props-section::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--color-bg-subtle), var(--color-bg));
+  pointer-events: none;
+}
 
 .process-grid {
   display: grid;
@@ -1023,7 +1084,23 @@ const valueStyles = `
 `
 
 const ctaStyles = `
-.cta-section { background: var(--color-bg-subtle); }
+.cta-section {
+  background: var(--color-bg-subtle);
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  position: relative;
+}
+/* Fade separator at top */
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--color-bg), var(--color-bg-subtle));
+  pointer-events: none;
+}
 .cta-inner {
   position: relative;
   text-align: center;
