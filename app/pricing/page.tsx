@@ -23,7 +23,7 @@ const packages = [
   },
   {
     name: 'Build',
-    price: '$3,000-$5,000',
+    price: '$3k–$5k',
     tagline: 'Highest-impact workflow built properly.',
     description: 'After the audit, EMVY builds the system that will make the biggest practical difference first.',
     includes: ['Custom implementation', 'Tool integration', 'Testing and handover', 'Launch support'],
@@ -38,86 +38,509 @@ const packages = [
 ]
 
 const faqs = [
-  ['Why publish pricing?', 'Because most agencies hide it and SMBs waste time on calls they should never have booked. EMVY lets you self-qualify up front.'],
-  ['Do I need the audit first?', 'Yes for paid build work. The audit makes sure the build is useful, scoped and based on your actual workflow.'],
-  ['Can I keep the audit roadmap?', 'Yes. The roadmap is yours to keep even if you choose to implement it somewhere else.'],
-  ['What if AI is not right for us?', 'You will be told directly. Sometimes the answer is process cleanup, better data or a human hire before AI.'],
-['Who is this for?', 'Owner-led SMBs globally with missed calls, admin overload, quote follow-up issues or lead leakage.'],
+  { q: 'Why publish pricing?', a: 'Because most agencies hide it and SMBs waste time on calls they should never have booked. EMVY lets you self-qualify up front.' },
+  { q: 'Do I need the audit first?', a: 'Yes for paid build work. The audit makes sure the build is useful, scoped and based on your actual workflow.' },
+  { q: 'Can I keep the audit roadmap?', a: 'Yes. The roadmap is yours to keep even if you choose to implement it somewhere else.' },
+  { q: 'What if AI is not right for us?', a: 'You will be told directly. Sometimes the answer is process cleanup, better data or a human hire before AI.' },
+  { q: 'Who is this for?', a: 'Owner-led SMBs globally with missed calls, admin overload, quote follow-up issues or lead leakage.' },
 ]
 
 export default function PricingPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(0)
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <main className="min-h-screen bg-[#08090a] text-white">
-      <header className="border-b border-white/10 bg-[#08090a]/80 px-6 py-5 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <a href="/" className="flex items-center gap-3" aria-label="EMVY home">
-            <EmvyWordmark size={36} />
-          </a>
-          <nav className="hidden items-center gap-6 text-sm text-zinc-400 md:flex">
-            <a href="/" className="hover:text-white">Home</a>
-            <a href="/about" className="hover:text-white">About</a>
-            <a href="/contact" className="hover:text-white">Contact</a>
-          </nav>
-          <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact">Book free call</a>
+    <>
+      <style>{`
+        .pricing-hero {
+          position: relative;
+          padding-top: 7rem;
+          padding-bottom: 4rem;
+          overflow: hidden;
+          text-align: center;
+        }
+        .pricing-hero-mesh {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(124, 111, 255, 0.22) 0%, transparent 60%);
+          z-index: 0;
+          pointer-events: none;
+        }
+        .pricing-hero-grid {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+          background-size: 60px 60px;
+          z-index: 0;
+          pointer-events: none;
+          mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 80%);
+        }
+        .pricing-hero-blob {
+          position: absolute;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 0;
+          filter: blur(60px);
+          opacity: 0.3;
+        }
+        .pricing-blob-1 {
+          width: 500px; height: 400px;
+          top: -150px; left: 50%;
+          transform: translateX(-50%);
+          background: radial-gradient(circle, rgba(124, 111, 255, 0.25) 0%, transparent 70%);
+        }
+
+        .section-kicker {
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+          font-weight: 500;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: var(--color-text-kicker);
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .section-kicker::before {
+          content: '';
+          display: inline-block;
+          width: 20px;
+          height: 1px;
+          background: var(--color-accent);
+        }
+
+        .pricing-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        @media (min-width: 768px) {
+          .pricing-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (min-width: 1200px) {
+          .pricing-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+
+        .pricing-card {
+          border-radius: var(--radius-2xl);
+          border: 1px solid var(--color-border);
+          background: var(--color-surface);
+          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          position: relative;
+          transition: all 0.25s ease;
+        }
+        .pricing-card:hover {
+          border-color: var(--color-border-accent);
+          transform: translateY(-2px);
+        }
+        .pricing-card.featured {
+          border-color: var(--color-accent);
+          background: var(--color-bg-elevated);
+          box-shadow: 0 0 60px rgba(124, 111, 255, 0.12);
+        }
+        .pricing-card.featured::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, var(--color-accent), rgba(124, 111, 255, 0.3));
+          border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+        }
+
+        .pricing-price {
+          font-size: clamp(2rem, 3.5vw, 2.75rem);
+          font-weight: 900;
+          letter-spacing: -0.05em;
+          line-height: 1;
+          color: var(--color-text-primary);
+          margin-top: 0.75rem;
+          background: linear-gradient(135deg, #ffffff 0%, var(--color-accent) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        .pricing-name {
+          font-size: var(--text-xl);
+          font-weight: 700;
+          color: var(--color-text-primary);
+          letter-spacing: -0.02em;
+        }
+        .pricing-tagline {
+          font-size: var(--text-sm);
+          color: var(--color-text-secondary);
+          font-weight: 500;
+        }
+        .pricing-desc {
+          font-size: var(--text-sm);
+          color: var(--color-text-muted);
+          line-height: 1.7;
+          margin-top: 0.5rem;
+          flex: 1;
+        }
+        .pricing-includes {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 0.625rem;
+          margin-top: 1rem;
+          padding-top: 1rem;
+          border-top: 1px solid var(--color-border);
+        }
+        .pricing-includes li {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.625rem;
+          font-size: var(--text-sm);
+          color: var(--color-text-secondary);
+          line-height: 1.5;
+        }
+        .pricing-includes li::before {
+          content: '';
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: var(--color-accent);
+          margin-top: 0.4rem;
+          flex-shrink: 0;
+          box-shadow: 0 0 8px var(--color-accent-glow);
+        }
+
+        .proof-card {
+          border-radius: var(--radius-2xl);
+          border: 1px solid var(--color-border);
+          background: var(--color-surface);
+          padding: 4rem 2rem;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .proof-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 50%;
+          transform: translateX(-50%);
+          width: 400px;
+          height: 200px;
+          background: radial-gradient(ellipse at top, rgba(124, 111, 255, 0.12) 0%, transparent 70%);
+          pointer-events: none;
+        }
+
+        .faq-item {
+          border-radius: var(--radius-xl);
+          border: 1px solid var(--color-border);
+          background: var(--color-surface);
+          overflow: hidden;
+          transition: border-color 0.2s ease;
+        }
+        .faq-item:hover {
+          border-color: var(--color-border-hover);
+        }
+        .faq-question {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1.5rem 1.75rem;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          text-align: left;
+          font-size: var(--text-base);
+          font-weight: 600;
+          color: var(--color-text-primary);
+          fontFamily: 'var(--font-body)';
+          transition: color 0.2s ease;
+        }
+        .faq-question:hover { color: var(--color-text-secondary); }
+        .faq-toggle {
+          font-size: 1.5rem;
+          color: var(--color-accent);
+          font-weight: 300;
+          flex-shrink: 0;
+          margin-left: 1rem;
+          transition: transform 0.2s ease;
+        }
+        .faq-answer {
+          padding: 0 1.75rem 1.5rem;
+          font-size: var(--text-sm);
+          color: var(--color-text-secondary);
+          line-height: 1.8;
+          border-top: 1px solid var(--color-border);
+          padding-top: 1.25rem;
+        }
+      `}</style>
+
+      {/* Header */}
+      <header className="header">
+        <div className="container">
+          <div className="header-inner">
+            <a href="/" className="header-logo" aria-label="EMVY home">
+              <EmvyWordmark size={36} />
+            </a>
+            <nav className="header-nav" aria-label="Main navigation">
+              <a href="/#services" className="header-nav-link">Services</a>
+              <a href="/#how-we-work" className="header-nav-link">How We Work</a>
+              <a href="/pricing" className="header-nav-link" style={{ color: 'var(--color-text-secondary)' }}>Pricing</a>
+              <a href="/about" className="header-nav-link">About</a>
+            </nav>
+            <div className="header-actions">
+              <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact header-cta">
+                Book free call
+              </a>
+              <button
+                className="header-hamburger"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle mobile menu"
+              >
+                {mobileMenuOpen ? (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                  </svg>
+                ) : (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
         </div>
       </header>
 
-      <section className="px-6 py-24 text-center">
-        <p className="section-kicker">Transparent pricing</p>
-        <h1 className="mx-auto max-w-4xl text-5xl font-black leading-[.95] tracking-[-0.06em] md:text-7xl">Know the number before the call.</h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-400">Free call, $1,500 audit, $3,000-$5,000 build, $1,500/month retainer. No hidden quote maze.</p>
-      </section>
-
-      <section className="px-6 pb-20">
-        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {packages.map((pkg) => (
-            <div key={pkg.name} className={`pricing-panel ${pkg.highlight ? 'featured' : ''}`}>
-              {pkg.highlight && <div className="mb-4 inline-flex rounded-full bg-[#6c63ff]/15 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-violet-200">Start here</div>}
-              <h2 className="text-xl font-bold">{pkg.name}</h2>
-              <div className="mt-3 text-3xl font-black">{pkg.price}</div>
-              <p className="mt-2 text-sm text-zinc-500">{pkg.tagline}</p>
-              <p className="mt-5 min-h-[100px] text-sm leading-7 text-zinc-400">{pkg.description}</p>
-              <ul className="mt-6 space-y-3">
-                {pkg.includes.map((item) => <li key={item} className="flex gap-3 text-sm text-zinc-300"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#6c63ff]" />{item}</li>)}
-              </ul>
-              <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className={`mt-8 w-full ${pkg.highlight ? 'btn-primary' : 'btn-secondary'}`}>Book free call</a>
-            </div>
-          ))}
+      {mobileMenuOpen && (
+        <div className="mobile-nav">
+          <nav className="mobile-nav-inner">
+            <a href="/#services" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Services</a>
+            <a href="/#how-we-work" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>How We Work</a>
+            <a href="/pricing" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
+            <a href="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact w-fit" onClick={() => setMobileMenuOpen(false)}>
+              Book free call
+            </a>
+          </nav>
         </div>
-      </section>
+      )}
 
-      <section className="px-6 pb-20">
-        <div className="mx-auto max-w-5xl rounded-[2rem] border border-white/10 bg-white/[0.025] p-8 text-center md:p-12">
-          <p className="section-kicker">Honest proof</p>
-          <h2 className="text-3xl font-black tracking-[-0.04em] md:text-5xl">No invented stats.</h2>
-          <p className="mx-auto mt-5 max-w-3xl text-zinc-400 leading-8">EMVY will publish case studies when client results are approved. Until then, the trust signals are transparent pricing, a roadmap you can keep, and a direct builder-led process.</p>
-        </div>
-      </section>
-
-      <section className="px-6 pb-24">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="mb-8 text-center text-3xl font-black tracking-[-0.04em]">Common questions</h2>
-          <div className="space-y-3">
-            {faqs.map(([q, a], i) => (
-              <div key={q} className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.025]">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="flex w-full items-center justify-between px-6 py-5 text-left font-semibold">
-                  {q}<span className="text-2xl text-zinc-500">{openFaq === i ? '−' : '+'}</span>
-                </button>
-                {openFaq === i && <p className="px-6 pb-6 text-sm leading-7 text-zinc-400">{a}</p>}
+      <main>
+        {/* Hero */}
+        <section className="pricing-hero">
+          <div className="pricing-hero-mesh" />
+          <div className="pricing-hero-grid" />
+          <div className="pricing-hero-blob pricing-blob-1" />
+          <div className="container">
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <div className="section-kicker" style={{ justifyContent: 'center', marginBottom: '1.5rem' }}>
+                Transparent pricing
               </div>
-            ))}
+              <h1 style={{
+                fontSize: 'clamp(3rem, 7vw, 6rem)',
+                fontWeight: 900,
+                letterSpacing: '-0.05em',
+                lineHeight: 0.95,
+                color: 'var(--color-text-primary)',
+                marginBottom: '1.5rem',
+              }}>
+                Know the number<br />
+                <span style={{
+                  background: 'linear-gradient(135deg, #8b85ff 0%, #6c63ff 50%, #a08fff 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>before the call</span>
+              </h1>
+              <p style={{
+                fontSize: 'var(--text-lg)',
+                lineHeight: 1.75,
+                color: 'var(--color-text-secondary)',
+                maxWidth: '500px',
+                margin: '0 auto',
+              }}>
+                Free call, $1,500 audit, $3,000–$5,000 build, $1,500/month retainer. No hidden quote maze.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing cards */}
+        <section style={{ padding: '3rem 0 5rem' }}>
+          <div className="container">
+            <div className="pricing-grid">
+              {packages.map((pkg) => (
+                <div key={pkg.name} className={`pricing-card ${pkg.highlight ? 'featured' : ''}`}>
+                  {pkg.highlight && (
+                    <div style={{
+                      display: 'inline-flex',
+                      borderRadius: '999px',
+                      background: 'rgba(124, 111, 255, 0.15)',
+                      border: '1px solid rgba(124, 111, 255, 0.3)',
+                      padding: '0.25rem 0.75rem',
+                      fontSize: '0.65rem',
+                      fontWeight: 700,
+                      fontFamily: 'var(--font-mono)',
+                      letterSpacing: '0.15em',
+                      textTransform: 'uppercase',
+                      color: '#a08fff',
+                      width: 'fit-content',
+                      marginBottom: '0.5rem',
+                    }}>
+                      Start here
+                    </div>
+                  )}
+                  <div className="pricing-name">{pkg.name}</div>
+                  <div className="pricing-price">{pkg.price}</div>
+                  <div className="pricing-tagline">{pkg.tagline}</div>
+                  <p className="pricing-desc">{pkg.description}</p>
+                  <ul className="pricing-includes">
+                    {pkg.includes.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <a
+                    href={CAL_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={pkg.highlight ? 'btn-primary' : 'btn-secondary'}
+                    style={{ marginTop: '1.5rem', textAlign: 'center' }}
+                  >
+                    Book free call
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Proof card */}
+        <section style={{ padding: '0 0 5rem' }}>
+          <div className="container">
+            <div className="proof-card">
+              <div className="section-kicker" style={{ justifyContent: 'center', marginBottom: '1.5rem' }}>
+                Honest proof
+              </div>
+              <h2 style={{
+                fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+                fontWeight: 900,
+                letterSpacing: '-0.04em',
+                color: 'var(--color-text-primary)',
+                marginBottom: '1.25rem',
+              }}>
+                No invented stats
+              </h2>
+              <p style={{
+                fontSize: 'var(--text-base)',
+                color: 'var(--color-text-secondary)',
+                lineHeight: 1.8,
+                maxWidth: '520px',
+                margin: '0 auto',
+              }}>
+                EMVY will publish case studies when client results are approved. Until then, the trust signals are transparent pricing, a roadmap you can keep, and a direct builder-led process.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQs */}
+        <section style={{ padding: '0 0 6rem' }}>
+          <div className="container">
+            <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+              <div className="section-kicker" style={{ justifyContent: 'center', marginBottom: '1.5rem' }}>
+                Common questions
+              </div>
+              <h2 style={{
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: 900,
+                letterSpacing: '-0.04em',
+                color: 'var(--color-text-primary)',
+                marginBottom: '2.5rem',
+                textAlign: 'center',
+              }}>
+                Things people actually ask
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                {faqs.map((faq, i) => (
+                  <div key={faq.q} className="faq-item">
+                    <button className="faq-question" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                      <span>{faq.q}</span>
+                      <span className="faq-toggle">{openFaq === i ? '−' : '+'}</span>
+                    </button>
+                    {openFaq === i && (
+                      <div className="faq-answer">{faq.a}</div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-top">
+            <div className="footer-brand">
+              <a href="/" className="footer-logo" aria-label="EMVY home">
+                <EmvyWordmark size={32} />
+              </a>
+              <p className="footer-brand-desc">
+                AI consultancy for Australian SMBs.<br />Practical systems. Real results.
+              </p>
+              <div className="footer-social">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="LinkedIn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                    <circle cx="4" cy="4" r="2"/>
+                  </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Twitter / X">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div className="footer-links">
+              <div className="footer-col">
+                <div className="footer-col-head">Services</div>
+                <a href="/#services" className="footer-link">AI Agents</a>
+                <a href="/#services" className="footer-link">Automations</a>
+                <a href="/#services" className="footer-link">Ops Systems</a>
+                <a href="/#services" className="footer-link">Integrations</a>
+              </div>
+              <div className="footer-col">
+                <div className="footer-col-head">Company</div>
+                <a href="/about" className="footer-link">About</a>
+                <a href="/pricing" className="footer-link" style={{ color: 'var(--color-text-secondary)' }}>Pricing</a>
+                <a href="/contact" className="footer-link">Contact</a>
+              </div>
+              <div className="footer-col">
+                <div className="footer-col-head">Ready?</div>
+                <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact" style={{ alignSelf: 'flex-start', marginTop: '0.5rem' }}>
+                  Book free call
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <div className="mono">© 2025 EMVY. All rights reserved.</div>
+            <div className="footer-legal">
+              <a href="/privacy" className="footer-legal-link">Privacy</a>
+              <a href="/terms" className="footer-legal-link">Terms</a>
+            </div>
           </div>
         </div>
-      </section>
-
-      <footer className="border-t border-white/10 px-6 py-8">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 text-sm text-zinc-500 md:flex-row">
-          <div><span className="font-bold text-white">EMVY</span> — AI Audit Agency</div>
-          <div className="flex gap-5"><a href="/" className="hover:text-white">Home</a><a href="/contact" className="hover:text-white">Contact</a><a href={CAL_URL} className="hover:text-white">Book a call</a></div>
-        </div>
       </footer>
-    </main>
+    </>
   )
 }

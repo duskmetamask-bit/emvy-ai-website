@@ -1,71 +1,301 @@
 'use client'
 
+import { useState } from 'react'
 import { EmvyWordmark } from '@/components/EmvyLogo'
 
 const CAL_URL = 'https://cal.com/jake-emvy/15-min-ai-chat'
 
+const values = [
+  { title: 'No fluff', desc: "We'll tell you when AI isn't the right answer. We won't sell you something just because we can." },
+  { title: 'Specific over general', desc: "A wellness studio needs different automations than a law firm. We don't do generic advice." },
+  { title: 'Deploy, don\'t demo', desc: "If it's not in production and working, it doesn't count. We measure success by what actually runs." },
+  { title: 'Honest timelines', desc: "We'll tell you if something takes 2 weeks or 8. No sugar-coating to close a deal." },
+]
+
+const principles = [
+  { step: '01', title: 'Audit First', desc: 'We map your workflows, find the gaps, and build a prioritised roadmap. No building until we know what to build.' },
+  { step: '02', title: 'Build What Matters', desc: 'We build the top 2–3 automations — not a portfolio of demos. Things that actually save time or make money.' },
+  { step: '03', title: 'Deploy Properly', desc: "Hand over fully deployed, tested systems with documentation. You shouldn't need us to run it." },
+  { step: '04', title: 'Stay and Improve', desc: 'Monthly retainer for ongoing optimisation and new builds. Or walk away — no lock-in.' },
+]
+
+const team = [
+  { name: 'Jake', role: 'Founder', focus: 'AI systems, automation architecture, client delivery' },
+]
+
 export default function AboutPage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
-    <div className="min-h-screen bg-[#0a0a0f]">
+    <>
+      <style>{`
+        .about-hero {
+          position: relative;
+          padding-top: 7rem;
+          padding-bottom: 5rem;
+          overflow: hidden;
+        }
+        .about-hero-mesh {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 80% 50% at 50% -5%, rgba(124, 111, 255, 0.2) 0%, transparent 60%);
+          z-index: 0;
+          pointer-events: none;
+        }
+        .about-hero-grid {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+          background-size: 60px 60px;
+          z-index: 0;
+          pointer-events: none;
+          mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 80%);
+        }
+        .about-hero-blob {
+          position: absolute;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 0;
+          filter: blur(60px);
+          opacity: 0.35;
+        }
+        .about-blob-1 {
+          width: 400px; height: 400px;
+          top: -100px; right: -80px;
+          background: radial-gradient(circle, rgba(124, 111, 255, 0.3) 0%, transparent 70%);
+          animation: floatShape 10s ease-in-out infinite;
+        }
+        .about-blob-2 {
+          width: 250px; height: 250px;
+          bottom: -50px; left: -60px;
+          background: radial-gradient(circle, rgba(96, 80, 220, 0.25) 0%, transparent 70%);
+          animation: floatShape 12s ease-in-out infinite reverse;
+        }
+        @keyframes floatShape {
+          0%, 100% { transform: translateY(0px) scale(1); }
+          33% { transform: translateY(-25px) scale(1.05); }
+          66% { transform: translateY(12px) scale(0.97); }
+        }
+
+        .section-kicker {
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+          font-weight: 500;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: var(--color-text-kicker);
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .section-kicker::before {
+          content: '';
+          display: inline-block;
+          width: 20px;
+          height: 1px;
+          background: var(--color-accent);
+        }
+
+        .value-card {
+          border-radius: var(--radius-xl);
+          border: 1px solid var(--color-border);
+          background: var(--color-surface);
+          padding: 2rem;
+          transition: all 0.25s ease;
+        }
+        .value-card:hover {
+          border-color: var(--color-border-accent);
+          background: var(--color-surface-hover);
+        }
+
+        .team-card {
+          border-radius: var(--radius-xl);
+          border: 1px solid var(--color-border);
+          background: var(--color-surface);
+          padding: 2.5rem;
+          position: relative;
+          overflow: hidden;
+        }
+        .team-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, var(--color-accent), rgba(124, 111, 255, 0.2));
+        }
+      `}</style>
+
       {/* Header */}
-      <header className="border-b border-[#1e1e2e] py-5 px-6">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <a href="/" className="flex items-center gap-3" aria-label="EMVY home">
-            <EmvyWordmark size={36} />
-          </a>
-          <nav className="hidden md:flex items-center gap-6 text-sm text-[#71717a]">
-            <a href={CAL_URL} className="hover:text-white transition-colors">Book a Call</a>
-            <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
-            <a href="/contact" className="hover:text-white transition-colors">Contact</a>
-          </nav>
+      <header className="header">
+        <div className="container">
+          <div className="header-inner">
+            <a href="/" className="header-logo" aria-label="EMVY home">
+              <EmvyWordmark size={36} />
+            </a>
+            <nav className="header-nav" aria-label="Main navigation">
+              <a href="/#services" className="header-nav-link">Services</a>
+              <a href="/#how-we-work" className="header-nav-link">How We Work</a>
+              <a href="/pricing" className="header-nav-link">Pricing</a>
+              <a href="/about" className="header-nav-link" style={{ color: 'var(--color-text-secondary)' }}>About</a>
+            </nav>
+            <div className="header-actions">
+              <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact header-cta">
+                Book free call
+              </a>
+              <button
+                className="header-hamburger"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle mobile menu"
+                aria-expanded={mobileMenuOpen}
+              >
+                {mobileMenuOpen ? (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                  </svg>
+                ) : (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
         </div>
       </header>
 
+      {mobileMenuOpen && (
+        <div className="mobile-nav">
+          <nav className="mobile-nav-inner">
+            <a href="/#services" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Services</a>
+            <a href="/#how-we-work" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>How We Work</a>
+            <a href="/pricing" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
+            <a href="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact w-fit" onClick={() => setMobileMenuOpen(false)}>
+              Book free call
+            </a>
+          </nav>
+        </div>
+      )}
+
       <main>
         {/* Hero */}
-        <section className="px-6 py-24">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block px-3 py-1 rounded-full bg-[#6c63ff]/10 text-[#6c63ff] text-xs font-semibold mb-4">
-              WHO WE ARE
+        <section className="about-hero">
+          <div className="about-hero-mesh" />
+          <div className="about-hero-grid" />
+          <div className="about-hero-blob about-blob-1" />
+          <div className="about-hero-blob about-blob-2" />
+          <div className="container">
+            <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px' }}>
+              <div className="section-kicker" style={{ marginBottom: '1.5rem' }}>Who we are</div>
+              <h1 style={{
+                fontSize: 'clamp(2.75rem, 6vw, 5rem)',
+                fontWeight: 900,
+                letterSpacing: '-0.04em',
+                lineHeight: 0.97,
+                color: 'var(--color-text-primary)',
+                marginBottom: '2rem',
+              }}>
+                We fix the gap between<br />
+                <span style={{
+                  background: 'linear-gradient(135deg, #8b85ff 0%, #6c63ff 50%, #a08fff 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>AI potential and AI reality</span>
+              </h1>
+              <p style={{
+                fontSize: 'var(--text-lg)',
+                lineHeight: 1.75,
+                color: 'var(--color-text-secondary)',
+                maxWidth: '600px',
+              }}>
+                Most businesses buy AI tools, get excited, use them for a week — then drift back to old habits.
+                The tools aren't broken. The missing piece is specific workflows designed for your business,
+                deployed properly, and maintained.
+              </p>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              We Fix the Gap Between<br />
-              <span className="text-[#6c63ff]">AI Potential and AI Reality</span>
-            </h1>
-            <p className="text-[#71717a] text-lg leading-relaxed max-w-2xl mx-auto">
-              Most businesses buy AI tools, get excited, use them for a week, then drift back to old habits. The tools aren't broken. The missing piece is specific workflows — designed for your business, deployed properly, and maintained.
-            </p>
           </div>
         </section>
 
         {/* Story */}
-        <section className="px-6 pb-24">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-6">The Story</h2>
-            <div className="space-y-5 text-[#a1a1aa] leading-relaxed">
-              <p>EMVY started because we kept seeing the same pattern. Business owners spending money on AI subscriptions, watching tutorials, getting hyped — then not actually changing how they work.</p>
-              <p>The problem was never the AI. It was that nobody had taken the time to understand how that specific business actually runs — where the time goes, where the friction is, what a successful automation actually looks like for them.</p>
-              <p>So we built EMVY to be that step in between. The audit first. Understand the business deeply. Find the 2–3 things that actually move the needle. Build those. Deploy them properly. Hand over something that works.</p>
-              <p>We're not an agency that throws code over the fence. We're a partner that makes sure AI actually lands in your business — not just in your head.</p>
+        <section className="section" style={{ background: 'var(--color-bg)' }}>
+          <div className="container">
+            <div style={{ maxWidth: '720px' }}>
+              <div className="section-kicker" style={{ marginBottom: '2rem' }}>The story</div>
+              <h2 style={{
+                fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+                fontWeight: 800,
+                letterSpacing: '-0.03em',
+                color: 'var(--color-text-primary)',
+                marginBottom: '2rem',
+              }}>
+                Built from frustration, not hype
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                {[
+                  "EMVY started because we kept seeing the same pattern. Business owners spending money on AI subscriptions, watching tutorials, getting hyped — then not actually changing how they work.",
+                  "The problem was never the AI. It was that nobody had taken the time to understand how that specific business actually runs — where the time goes, where the friction is, what a successful automation actually looks like for them.",
+                  "So we built EMVY to be that step in between. The audit first. Understand the business deeply. Find the 2–3 things that actually move the needle. Build those. Deploy them properly. Hand over something that works.",
+                  "We're not an agency that throws code over the fence. We're a partner that makes sure AI actually lands in your business — not just in your head.",
+                ].map((para, i) => (
+                  <p key={i} style={{ fontSize: 'var(--text-base)', color: 'var(--color-text-secondary)', lineHeight: 1.8 }}>
+                    {para}
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* How we work */}
-        <section className="px-6 pb-24">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold text-white text-center mb-12">How We Work</h2>
-            <div className="grid md:grid-cols-4 gap-6">
-              {[
-                { step: '01', title: 'Audit First', desc: 'We map your workflows, find the gaps, and build a prioritised roadmap. No building until we know what to build.' },
-                { step: '02', title: 'Build What Matters', desc: 'We build the top 2–3 automations — not a portfolio of demos. Things that actually save time or make money.' },
-                { step: '03', title: 'Deploy Properly', desc: "Hand over fully deployed, tested systems with documentation. You shouldn't need us to run it." },
-                { step: '04', title: 'Stay And Improve', desc: 'Monthly retainer for ongoing optimisation and new builds. Or walk away — no lock-in.' },
-              ].map((item, i) => (
-                <div key={i} className="bg-[#111118] border border-[#1e1e2e] rounded-xl p-6">
-                  <div className="text-3xl font-bold text-[#6c63ff]/30 mb-3">{item.step}</div>
-                  <h3 className="text-white font-semibold mb-2">{item.title}</h3>
-                  <p className="text-[#71717a] text-sm leading-relaxed">{item.desc}</p>
+        <section className="section" style={{ background: 'var(--color-bg-subtle)' }}>
+          <div className="container">
+            <div style={{ maxWidth: '600px', marginBottom: '4rem' }}>
+              <div className="section-kicker" style={{ marginBottom: '1rem' }}>How we work</div>
+              <h2 style={{
+                fontSize: 'clamp(2rem, 4vw, 3.25rem)',
+                fontWeight: 900,
+                letterSpacing: '-0.04em',
+                lineHeight: 1.05,
+                color: 'var(--color-text-primary)',
+                marginTop: '0.875rem',
+              }}>
+                Audit first.<br />Build second.<br />Support always.
+              </h2>
+            </div>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1.5rem',
+            }}>
+              {principles.map((p) => (
+                <div key={p.step} style={{
+                  borderRadius: 'var(--radius-xl)',
+                  border: '1px solid var(--color-border)',
+                  background: 'var(--color-surface)',
+                  padding: '2rem',
+                  transition: 'all 0.25s ease',
+                }}>
+                  <div style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 'clamp(2.5rem, 4vw, 3.5rem)',
+                    fontWeight: 900,
+                    color: 'var(--color-border-hover)',
+                    lineHeight: 1,
+                    marginBottom: '1rem',
+                  }}>{p.step}</div>
+                  <div style={{
+                    fontSize: 'var(--text-lg)',
+                    fontWeight: 700,
+                    color: 'var(--color-text-primary)',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '0.75rem',
+                  }}>{p.title}</div>
+                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
+                    {p.desc}
+                  </p>
                 </div>
               ))}
             </div>
@@ -73,22 +303,112 @@ export default function AboutPage() {
         </section>
 
         {/* Values */}
-        <section className="px-6 pb-24">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-8">What We Stand For</h2>
-            <div className="space-y-6">
-              {[
-                { title: 'No fluff', desc: "We'll tell you when AI isn't the right answer. We won't sell you something just because we can." },
-                { title: 'Specific over general', desc: "A wellness studio needs different automations than a law firm. We don't do generic advice." },
-                { title: 'Deploy, don\'t demo', desc: "If it's not in production and working, it doesn't count. We measure success by what actually runs." },
-                { title: 'Honest timelines', desc: "We'll tell you if something takes 2 weeks or 8. No sugar-coating to close a deal." },
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#6c63ff] mt-2.5 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-white font-semibold mb-1">{item.title}</h3>
-                    <p className="text-[#71717a] text-sm leading-relaxed">{item.desc}</p>
+        <section className="section" style={{ background: 'var(--color-bg)' }}>
+          <div className="container">
+            <div style={{ maxWidth: '600px', marginBottom: '4rem' }}>
+              <div className="section-kicker" style={{ marginBottom: '1rem' }}>What we stand for</div>
+              <h2 style={{
+                fontSize: 'clamp(2rem, 4vw, 3.25rem)',
+                fontWeight: 900,
+                letterSpacing: '-0.04em',
+                lineHeight: 1.05,
+                color: 'var(--color-text-primary)',
+                marginTop: '0.875rem',
+              }}>
+                Principles, not platitudes
+              </h2>
+            </div>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '1.5rem',
+            }}>
+              {values.map((v) => (
+                <div key={v.title} className="value-card">
+                  <div style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    background: 'var(--color-accent)',
+                    marginBottom: '1rem',
+                    boxShadow: '0 0 12px var(--color-accent-glow)',
+                  }} />
+                  <div style={{
+                    fontSize: 'var(--text-xl)',
+                    fontWeight: 700,
+                    color: 'var(--color-text-primary)',
+                    letterSpacing: '-0.02em',
+                    marginBottom: '0.75rem',
+                  }}>{v.title}</div>
+                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)', lineHeight: 1.75 }}>
+                    {v.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Founder / Team */}
+        <section className="section" style={{ background: 'var(--color-bg-subtle)' }}>
+          <div className="container">
+            <div style={{ maxWidth: '600px', marginBottom: '3rem' }}>
+              <div className="section-kicker" style={{ marginBottom: '1rem' }}>The person behind EMVY</div>
+              <h2 style={{
+                fontSize: 'clamp(2rem, 4vw, 3.25rem)',
+                fontWeight: 900,
+                letterSpacing: '-0.04em',
+                lineHeight: 1.05,
+                color: 'var(--color-text-primary)',
+                marginTop: '0.875rem',
+              }}>
+                Built by practitioners
+              </h2>
+            </div>
+            <div style={{ maxWidth: '480px' }}>
+              {team.map((member) => (
+                <div key={member.name} className="team-card">
+                  <div style={{
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, var(--color-accent) 0%, rgba(124, 111, 255, 0.4) 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '1.5rem',
+                  }}>
+                    <span style={{
+                      fontSize: '1.25rem',
+                      fontWeight: 800,
+                      color: '#fff',
+                      letterSpacing: '-0.05em',
+                    }}>
+                      {member.name[0]}
+                    </span>
                   </div>
+                  <div style={{
+                    fontSize: 'var(--text-2xl)',
+                    fontWeight: 800,
+                    letterSpacing: '-0.03em',
+                    color: 'var(--color-text-primary)',
+                    marginBottom: '0.25rem',
+                  }}>{member.name}</div>
+                  <div style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 'var(--text-xs)',
+                    color: 'var(--color-accent)',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    marginBottom: '1rem',
+                  }}>{member.role}</div>
+                  <p style={{
+                    fontSize: 'var(--text-sm)',
+                    color: 'var(--color-text-secondary)',
+                    lineHeight: 1.7,
+                  }}>
+                    Focus: {member.focus}
+                  </p>
                 </div>
               ))}
             </div>
@@ -96,29 +416,118 @@ export default function AboutPage() {
         </section>
 
         {/* CTA */}
-        <section className="px-6 pb-24">
-          <div className="max-w-2xl mx-auto text-center bg-gradient-to-b from-[#6c63ff]/10 to-transparent border border-[#1e1e2e] rounded-2xl p-12">
-            <h2 className="text-2xl font-bold text-white mb-3">Ready to see what's possible?</h2>
-            <p className="text-[#71717a] mb-8">Book a free discovery call. 15 minutes. No pitch. We just look at your business and tell you what we see.</p>
-            <a href={CAL_URL} className="inline-block px-8 py-4 bg-[#6c63ff] hover:bg-[#5a52d5] text-white font-semibold rounded-lg transition-colors">
-              Book Free Discovery Call →
-            </a>
+        <section className="section" style={{ background: 'var(--color-bg-subtle)' }}>
+          <div className="container">
+            <div style={{
+              position: 'relative',
+              textAlign: 'center',
+              padding: '5rem 2rem',
+              borderRadius: 'var(--radius-2xl)',
+              border: '1px solid var(--color-border)',
+              background: 'var(--color-surface)',
+              overflow: 'hidden',
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: '-80px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '600px',
+                height: '400px',
+                background: 'radial-gradient(ellipse at center, rgba(124, 111, 255, 0.15) 0%, transparent 70%)',
+                pointerEvents: 'none',
+              }} />
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <div className="section-kicker" style={{ justifyContent: 'center', marginBottom: '1.5rem' }}>Ready?</div>
+                <h2 style={{
+                  fontSize: 'clamp(2.25rem, 5vw, 3.75rem)',
+                  fontWeight: 900,
+                  letterSpacing: '-0.04em',
+                  lineHeight: 1.05,
+                  color: 'var(--color-text-primary)',
+                  marginBottom: '1rem',
+                }}>
+                  Ready to see what's possible?
+                </h2>
+                <p style={{
+                  fontSize: 'var(--text-lg)',
+                  color: 'var(--color-text-secondary)',
+                  lineHeight: 1.7,
+                  maxWidth: '480px',
+                  margin: '0 auto 2.5rem',
+                }}>
+                  Book a free discovery call. 15 minutes. No pitch. We just look at your business and tell you what we see.
+                </p>
+                <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary cta-btn">
+                  Book free 15-min call
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#1e1e2e] py-8 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-[#71717a] text-sm"><span className="font-bold text-white">EMVY</span> — AI Audit Agency</div>
-          <div className="flex gap-6 text-sm text-[#71717a]">
-            <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
-            <a href="/contact" className="hover:text-white transition-colors">Contact</a>
-            <a href={CAL_URL} className="hover:text-white transition-colors">Book a Call</a>
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-top">
+            <div className="footer-brand">
+              <a href="/" className="footer-logo" aria-label="EMVY home">
+                <EmvyWordmark size={32} />
+              </a>
+              <p className="footer-brand-desc">
+                AI consultancy for Australian SMBs.<br />Practical systems. Real results.
+              </p>
+              <div className="footer-social">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="LinkedIn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                    <circle cx="4" cy="4" r="2"/>
+                  </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Twitter / X">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div className="footer-links">
+              <div className="footer-col">
+                <div className="footer-col-head">Services</div>
+                <a href="/#services" className="footer-link">AI Agents</a>
+                <a href="/#services" className="footer-link">Automations</a>
+                <a href="/#services" className="footer-link">Ops Systems</a>
+                <a href="/#services" className="footer-link">Integrations</a>
+              </div>
+              <div className="footer-col">
+                <div className="footer-col-head">Company</div>
+                <a href="/about" className="footer-link" style={{ color: 'var(--color-text-secondary)' }}>About</a>
+                <a href="/pricing" className="footer-link">Pricing</a>
+                <a href="/contact" className="footer-link">Contact</a>
+              </div>
+              <div className="footer-col">
+                <div className="footer-col-head">Ready?</div>
+                <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact" style={{ alignSelf: 'flex-start', marginTop: '0.5rem' }}>
+                  Book free call
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="text-[#3f3f46] text-xs">AI consultancy for Australian SMBs</div>
+
+          <div className="footer-bottom">
+            <div className="mono">© 2025 EMVY. All rights reserved.</div>
+            <div className="footer-legal">
+              <a href="/privacy" className="footer-legal-link">Privacy</a>
+              <a href="/terms" className="footer-legal-link">Terms</a>
+            </div>
+          </div>
         </div>
       </footer>
-    </div>
+    </>
   )
 }

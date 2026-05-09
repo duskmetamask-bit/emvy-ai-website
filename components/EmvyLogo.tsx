@@ -8,14 +8,17 @@ type MarkProps = {
   reversed?: boolean
 }
 
+// Logo image is 1060x286 = 3.706:1 aspect ratio
+const LOGO_ASPECT = 1060 / 286
+
 export function EmvyMark({ size = 44, tone = 'brand', reversed = false }: MarkProps) {
   return (
     <img
       src="/assets/emvy-logo-nobg-trimmed.png"
       alt="EMVY"
-      width={size * 2.6}
+      width={Math.round(size * LOGO_ASPECT)}
       height={size}
-      style={{ objectFit: 'contain' }}
+      style={{ objectFit: 'contain', aspectRatio: `${LOGO_ASPECT} / 1` }}
       aria-hidden="true"
     />
   )
@@ -27,9 +30,9 @@ export function EmvyWordmark({ size = 44, tone = 'brand' }: { size?: number; ton
       <img
         src="/assets/emvy-logo-nobg-trimmed.png"
         alt="EMVY"
-        width={size * 2.6}
+        width={Math.round(size * LOGO_ASPECT)}
         height={size}
-        style={{ objectFit: 'contain' }}
+        style={{ objectFit: 'contain', aspectRatio: `${LOGO_ASPECT} / 1` }}
         aria-hidden="true"
       />
       <div className="text-[1.18rem] font-black leading-none tracking-[-0.065em] text-white">EMVY</div>

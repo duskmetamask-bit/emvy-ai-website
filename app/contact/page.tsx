@@ -9,6 +9,7 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [error, setError] = useState('')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -37,64 +38,271 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f]">
+    <>
+      <style>{`
+        .contact-hero {
+          position: relative;
+          padding-top: 7rem;
+          padding-bottom: 4rem;
+          overflow: hidden;
+          text-align: center;
+        }
+        .contact-hero-mesh {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 70% 50% at 50% -10%, rgba(124, 111, 255, 0.2) 0%, transparent 60%);
+          z-index: 0;
+          pointer-events: none;
+        }
+        .contact-hero-grid {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+          background-size: 60px 60px;
+          z-index: 0;
+          pointer-events: none;
+          mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 80%);
+        }
+        .contact-blob {
+          position: absolute;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 0;
+          filter: blur(60px);
+          opacity: 0.3;
+        }
+        .contact-blob-1 {
+          width: 400px; height: 300px;
+          top: -100px; right: -100px;
+          background: radial-gradient(circle, rgba(124, 111, 255, 0.3) 0%, transparent 70%);
+          animation: floatShape 9s ease-in-out infinite;
+        }
+        .contact-blob-2 {
+          width: 250px; height: 250px;
+          bottom: -50px; left: -60px;
+          background: radial-gradient(circle, rgba(96, 80, 220, 0.25) 0%, transparent 70%);
+          animation: floatShape 11s ease-in-out infinite reverse;
+        }
+        @keyframes floatShape {
+          0%, 100% { transform: translateY(0px) scale(1); }
+          33% { transform: translateY(-20px) scale(1.05); }
+          66% { transform: translateY(10px) scale(0.97); }
+        }
+
+        .section-kicker {
+          font-family: var(--font-mono);
+          font-size: 0.7rem;
+          font-weight: 500;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: var(--color-text-kicker);
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .section-kicker::before {
+          content: '';
+          display: inline-block;
+          width: 20px;
+          height: 1px;
+          background: var(--color-accent);
+        }
+
+        .form-input {
+          width: 100%;
+          background: var(--color-bg);
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-lg);
+          padding: 0.875rem 1rem;
+          font-size: var(--text-sm);
+          color: var(--color-text-primary);
+          transition: border-color 0.2s ease, box-shadow 0.2s ease;
+          outline: none;
+          font-family: var(--font-body);
+        }
+        .form-input::placeholder { color: var(--color-text-muted); }
+        .form-input:focus {
+          border-color: var(--color-accent);
+          box-shadow: 0 0 0 3px rgba(124, 111, 255, 0.15);
+        }
+
+        .form-label {
+          display: block;
+          font-size: var(--text-sm);
+          color: var(--color-text-muted);
+          margin-bottom: 0.5rem;
+          font-weight: 500;
+        }
+
+        .info-card {
+          border-radius: var(--radius-xl);
+          border: 1px solid var(--color-border);
+          background: var(--color-surface);
+          padding: 1.75rem;
+          transition: all 0.25s ease;
+        }
+        .info-card:hover {
+          border-color: var(--color-border-hover);
+        }
+      `}</style>
+
       {/* Header */}
-      <header className="border-b border-[#1e1e2e] py-5 px-6">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <a href="/" className="flex items-center gap-3" aria-label="EMVY home">
-            <EmvyWordmark size={36} />
-          </a>
-          <nav className="hidden md:flex items-center gap-6 text-sm text-[#71717a]">
-            <a href={CAL_URL} className="hover:text-white transition-colors">Book a Call</a>
-            <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
-            <a href="/about" className="hover:text-white transition-colors">About</a>
-          </nav>
+      <header className="header">
+        <div className="container">
+          <div className="header-inner">
+            <a href="/" className="header-logo" aria-label="EMVY home">
+              <EmvyWordmark size={36} />
+            </a>
+            <nav className="header-nav" aria-label="Main navigation">
+              <a href="/#services" className="header-nav-link">Services</a>
+              <a href="/#how-we-work" className="header-nav-link">How We Work</a>
+              <a href="/pricing" className="header-nav-link">Pricing</a>
+              <a href="/about" className="header-nav-link">About</a>
+            </nav>
+            <div className="header-actions">
+              <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact header-cta">
+                Book free call
+              </a>
+              <button
+                className="header-hamburger"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle mobile menu"
+              >
+                {mobileMenuOpen ? (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                  </svg>
+                ) : (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
         </div>
       </header>
 
+      {mobileMenuOpen && (
+        <div className="mobile-nav">
+          <nav className="mobile-nav-inner">
+            <a href="/#services" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Services</a>
+            <a href="/#how-we-work" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>How We Work</a>
+            <a href="/pricing" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
+            <a href="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact w-fit" onClick={() => setMobileMenuOpen(false)}>
+              Book free call
+            </a>
+          </nav>
+        </div>
+      )}
+
       <main>
         {/* Hero */}
-        <section className="px-6 py-24">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block px-3 py-1 rounded-full bg-[#6c63ff]/10 text-[#6c63ff] text-xs font-semibold mb-4">
-              GET IN TOUCH
+        <section className="contact-hero">
+          <div className="contact-hero-mesh" />
+          <div className="contact-hero-grid" />
+          <div className="contact-blob contact-blob-1" />
+          <div className="contact-blob contact-blob-2" />
+          <div className="container">
+            <div style={{ position: 'relative', zIndex: 1, maxWidth: '640px', margin: '0 auto' }}>
+              <div className="section-kicker" style={{ justifyContent: 'center', marginBottom: '1.5rem' }}>
+                Get in touch
+              </div>
+              <h1 style={{
+                fontSize: 'clamp(2.75rem, 6vw, 4.5rem)',
+                fontWeight: 900,
+                letterSpacing: '-0.04em',
+                lineHeight: 0.97,
+                color: 'var(--color-text-primary)',
+                marginBottom: '1.5rem',
+              }}>
+                Let's talk
+                <span style={{
+                  background: 'linear-gradient(135deg, #8b85ff 0%, #6c63ff 50%, #a08fff 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>.</span>
+              </h1>
+              <p style={{
+                fontSize: 'var(--text-lg)',
+                lineHeight: 1.75,
+                color: 'var(--color-text-secondary)',
+              }}>
+                Questions, partnerships, or just want to see if we're a fit? Send us a message — we read every one.
+              </p>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
-              Let's Talk<span className="text-[#6c63ff]">.</span>
-            </h1>
-            <p className="text-[#71717a] text-lg max-w-xl mx-auto">
-              Questions, partnerships, or just want to see if we're a fit? Send us a message — we read every one.
-            </p>
           </div>
         </section>
 
         {/* Content */}
-        <section className="px-6 pb-24">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12">
-              {/* Contact form */}
+        <section style={{ padding: '0 0 5rem' }}>
+          <div className="container">
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '2rem',
+              maxWidth: '960px',
+              margin: '0 auto',
+            }}>
+              {/* Form */}
               <div>
                 {status === 'success' ? (
-                  <div className="bg-[#111118] border border-[#1e1e2e] rounded-2xl p-10 text-center">
-                    <div className="mx-auto mb-4 h-10 w-10 rounded-full border border-[#6c63ff]/40 bg-[#6c63ff]/10" />
-                    <h2 className="text-xl font-bold text-white mb-2">Message sent.</h2>
-                    <p className="text-[#71717a] text-sm">We'll get back to you within 1 business day.</p>
+                  <div style={{
+                    background: 'var(--color-surface)',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: 'var(--radius-2xl)',
+                    padding: '3rem 2rem',
+                    textAlign: 'center',
+                  }}>
+                    <div style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '50%',
+                      background: 'rgba(124, 111, 255, 0.15)',
+                      border: '1px solid rgba(124, 111, 255, 0.4)',
+                      margin: '0 auto 1.25rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                    </div>
+                    <h2 style={{ fontSize: 'var(--text-xl)', fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: '0.5rem' }}>
+                      Message sent.
+                    </h2>
+                    <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)' }}>
+                      We'll get back to you within 1 business day.
+                    </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="bg-[#111118] border border-[#1e1e2e] rounded-2xl p-8 space-y-5">
+                  <form onSubmit={handleSubmit} style={{
+                    background: 'var(--color-surface)',
+                    border: '1px solid var(--color-border)',
+                    borderRadius: 'var(--radius-2xl)',
+                    padding: '2rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.5rem',
+                  }}>
                     <div>
-                      <label className="block text-sm text-[#71717a] mb-2">Your Name *</label>
+                      <label className="form-label">Your Name *</label>
                       <input
                         name="name"
                         value={form.name}
                         onChange={handleChange}
                         required
                         placeholder="Alex Johnson"
-                        className="w-full bg-[#0a0a0f] border border-[#1e1e2e] rounded-lg px-4 py-3 text-white placeholder-[#3f3f46] focus:outline-none focus:border-[#6c63ff] transition-colors text-sm"
+                        className="form-input"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-[#71717a] mb-2">Email Address *</label>
+                      <label className="form-label">Email Address *</label>
                       <input
                         name="email"
                         type="email"
@@ -102,16 +310,17 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         placeholder="alex@company.com"
-                        className="w-full bg-[#0a0a0f] border border-[#1e1e2e] rounded-lg px-4 py-3 text-white placeholder-[#3f3f46] focus:outline-none focus:border-[#6c63ff] transition-colors text-sm"
+                        className="form-input"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-[#71717a] mb-2">What's this about?</label>
+                      <label className="form-label">What's this about?</label>
                       <select
                         name="subject"
                         value={form.subject}
                         onChange={handleChange}
-                        className="w-full bg-[#0a0a0f] border border-[#1e1e2e] rounded-lg px-4 py-3 text-white placeholder-[#3f3f46] focus:outline-none focus:border-[#6c63ff] transition-colors text-sm"
+                        className="form-input"
+                        style={{ appearance: 'none', backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235c5c70' d='M6 8L1 3h10z'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', paddingRight: '2.5rem' }}
                       >
                         <option value="">Select a topic</option>
                         <option value="discovery-call">Book a Discovery Call</option>
@@ -123,7 +332,7 @@ export default function ContactPage() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm text-[#71717a] mb-2">Message *</label>
+                      <label className="form-label">Message *</label>
                       <textarea
                         name="message"
                         value={form.message}
@@ -131,18 +340,20 @@ export default function ContactPage() {
                         required
                         rows={5}
                         placeholder="Tell us what you're working on and what you're trying to achieve..."
-                        className="w-full bg-[#0a0a0f] border border-[#1e1e2e] rounded-lg px-4 py-3 text-white placeholder-[#3f3f46] focus:outline-none focus:border-[#6c63ff] transition-colors text-sm resize-none"
+                        className="form-input"
+                        style={{ resize: 'vertical', minHeight: '120px' }}
                       />
                     </div>
 
                     {status === 'error' && error && (
-                      <div className="text-red-400 text-sm">{error}</div>
+                      <div style={{ fontSize: 'var(--text-sm)', color: '#f87171' }}>{error}</div>
                     )}
 
                     <button
                       type="submit"
                       disabled={status === 'loading'}
-                      className="w-full bg-[#6c63ff] hover:bg-[#5a52d5] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-lg transition-colors text-sm"
+                      className="btn-primary"
+                      style={{ width: '100%', marginTop: '0.5rem' }}
                     >
                       {status === 'loading' ? 'Sending...' : 'Send Message →'}
                     </button>
@@ -150,32 +361,38 @@ export default function ContactPage() {
                 )}
               </div>
 
-              {/* Info */}
-              <div className="space-y-6">
-                <div className="bg-[#111118] border border-[#1e1e2e] rounded-xl p-6">
-                  <h3 className="text-white font-semibold mb-3">Email</h3>
-                  <a href="mailto:info@emvyai.com" className="text-[#6c63ff] hover:underline text-sm">info@emvyai.com</a>
+              {/* Info cards */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                <div className="info-card">
+                  <div style={{ fontSize: 'var(--text-xs)', fontFamily: 'var(--font-mono)', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>Email</div>
+                  <a href="mailto:info@emvyai.com" style={{ fontSize: 'var(--text-sm)', color: 'var(--color-accent)', fontWeight: 500 }}>info@emvyai.com</a>
                 </div>
 
-                <div className="bg-[#111118] border border-[#1e1e2e] rounded-xl p-6">
-                  <h3 className="text-white font-semibold mb-3">Response Time</h3>
-                  <p className="text-[#71717a] text-sm">We respond to all enquiries within 1 business day. For urgent matters, book a discovery call directly.</p>
+                <div className="info-card">
+                  <div style={{ fontSize: 'var(--text-xs)', fontFamily: 'var(--font-mono)', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>Response Time</div>
+                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)', lineHeight: 1.65 }}>
+                    We respond to all enquiries within 1 business day. For urgent matters, book a discovery call directly.
+                  </p>
                 </div>
 
-                <div className="bg-[#111118] border border-[#1e1e2e] rounded-xl p-6">
-                  <h3 className="text-white font-semibold mb-3">Book a Call Directly</h3>
-                  <p className="text-[#71717a] text-sm mb-4">Skip the back-and-forth. Book a free 15-minute discovery call and we'll tell you exactly where you stand.</p>
+                <div className="info-card">
+                  <div style={{ fontSize: 'var(--text-xs)', fontFamily: 'var(--font-mono)', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>Book a Call Directly</div>
+                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)', lineHeight: 1.65, marginBottom: '1.25rem' }}>
+                    Skip the back-and-forth. Book a free 15-minute discovery call and we'll tell you exactly where you stand.
+                  </p>
                   <a
                     href={CAL_URL}
-                    className="inline-block px-5 py-2.5 bg-[#6c63ff] hover:bg-[#5a52d5] text-white text-sm font-semibold rounded-lg transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary compact"
                   >
                     Book Free Discovery Call →
                   </a>
                 </div>
 
-                <div className="bg-[#111118] border border-[#1e1e2e] rounded-xl p-6">
-                  <h3 className="text-white font-semibold mb-3">Location</h3>
-                  <p className="text-[#71717a] text-sm">Serving clients globally</p>
+                <div className="info-card">
+                  <div style={{ fontSize: 'var(--text-xs)', fontFamily: 'var(--font-mono)', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>Location</div>
+                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)' }}>Serving clients globally</p>
                 </div>
               </div>
             </div>
@@ -184,19 +401,63 @@ export default function ContactPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#1e1e2e] py-8 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-[#71717a] text-sm">
-            <span className="font-bold text-white">EMVY</span> — AI Audit Agency
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-top">
+            <div className="footer-brand">
+              <a href="/" className="footer-logo" aria-label="EMVY home">
+                <EmvyWordmark size={32} />
+              </a>
+              <p className="footer-brand-desc">
+                AI consultancy for Australian SMBs.<br />Practical systems. Real results.
+              </p>
+              <div className="footer-social">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="LinkedIn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                    <circle cx="4" cy="4" r="2"/>
+                  </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="Twitter / X">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div className="footer-links">
+              <div className="footer-col">
+                <div className="footer-col-head">Services</div>
+                <a href="/#services" className="footer-link">AI Agents</a>
+                <a href="/#services" className="footer-link">Automations</a>
+                <a href="/#services" className="footer-link">Ops Systems</a>
+                <a href="/#services" className="footer-link">Integrations</a>
+              </div>
+              <div className="footer-col">
+                <div className="footer-col-head">Company</div>
+                <a href="/about" className="footer-link">About</a>
+                <a href="/pricing" className="footer-link">Pricing</a>
+                <a href="/contact" className="footer-link" style={{ color: 'var(--color-text-secondary)' }}>Contact</a>
+              </div>
+              <div className="footer-col">
+                <div className="footer-col-head">Ready?</div>
+                <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact" style={{ alignSelf: 'flex-start', marginTop: '0.5rem' }}>
+                  Book free call
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="flex gap-6 text-sm text-[#71717a]">
-            <a href="/about" className="hover:text-white transition-colors">About</a>
-            <a href="/pricing" className="hover:text-white transition-colors">Pricing</a>
-            <a href={CAL_URL} className="hover:text-white transition-colors">Book a Call</a>
+
+          <div className="footer-bottom">
+            <div className="mono">© 2025 EMVY. All rights reserved.</div>
+            <div className="footer-legal">
+              <a href="/privacy" className="footer-legal-link">Privacy</a>
+              <a href="/terms" className="footer-legal-link">Terms</a>
+            </div>
           </div>
-          <div className="text-[#3f3f46] text-xs">Shut Up and Build</div>
         </div>
       </footer>
-    </div>
+    </>
   )
 }
