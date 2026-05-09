@@ -15,51 +15,57 @@ const metrics = [
 
 const services = [
   {
-    id: 'audit',
-    title: 'AI Audits',
-    desc: 'We go deep into your business — identify where AI can level you up and actually save time and money.',
-    tag: 'Start here',
+    id: 'agents',
+    title: 'AI Agents',
+    desc: 'Autonomous digital workers that handle calls, messages, and admin — 24/7, no holidays needed.',
+    tag: 'Production-ready',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <circle cx="11" cy="11" r="8"/>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        <line x1="11" y1="8" x2="11" y2="14"/>
-        <line x1="8" y1="11" x2="14" y2="11"/>
+        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+        <line x1="12" y1="22.08" x2="12" y2="12"/>
       </svg>
     ),
   },
   {
-    id: 'build',
-    title: 'AI Building',
-    desc: 'We build the systems and workflows identified in the audit — integrated with how your business actually runs.',
-    tag: 'The work',
+    id: 'automations',
+    title: 'Automations',
+    desc: 'End-to-end workflows that eliminate busywork — quotes, follow-ups, data movement, approvals.',
+    tag: 'No-code + code',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/>
+        <path d="M15.54 8.46a5 5 0 010 7.07M8.46 8.46a5 5 0 000 7.07"/>
       </svg>
     ),
   },
   {
-    id: 'maintenance',
-    title: 'Maintenance',
-    desc: 'AI breaks. A lot. We stay on to keep your systems working and fix things when they glitch.',
-    tag: 'Ongoing',
+    id: 'ops',
+    title: 'Ops Systems',
+    desc: 'Connected systems and dashboards that bring clarity and control to how your business runs.',
+    tag: 'Long-term clarity',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/>
-        <path d="M12 7v5l3 3"/>
+        <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+        <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+        <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+        <rect x="14" y="14" width="7" height="7" rx="1.5"/>
       </svg>
     ),
   },
   {
-    id: 'additional',
-    title: 'Additional Builds',
-    desc: 'As AI evolves, we identify the latest tools and implement them into your business before your competitors do.',
-    tag: 'Stay ahead',
+    id: 'integrations',
+    title: 'Integrations',
+    desc: 'Seamless connections across the tools you already use — no rip-and-replace, no vendor lock-in.',
+    tag: 'Works with your stack',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-        <polyline points="17 6 23 6 23 12"/>
+        <polyline points="16 3 21 3 21 8"/>
+        <line x1="4" y1="20" x2="21" y2="3"/>
+        <polyline points="21 16 21 21 16 21"/>
+        <line x1="15" y1="15" x2="21" y2="21"/>
+        <line x1="4" y1="4" x2="9" y2="9"/>
       </svg>
     ),
   },
@@ -216,10 +222,94 @@ function Services() {
             <ServiceCard key={s.id} service={s} />
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
 
-        <p className="services-closing">
-          At the end of the day, it's a headache to keep up with everything — that's where we come in. We do this all for you.
-        </p>
+/* ── HOW WE HELP ─────────────────────────────────────── */
+const pillars = [
+  {
+    id: 'audit',
+    title: 'AI Audits',
+    desc: 'We go deep into your business — identify where AI can level you up and actually save time and money.',
+    tag: 'Start here',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        <line x1="11" y1="8" x2="11" y2="14"/>
+        <line x1="8" y1="11" x2="14" y2="11"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'build',
+    title: 'AI Building',
+    desc: 'We build the systems and workflows identified in the audit — integrated with how your business actually runs.',
+    tag: 'The work',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'maintenance',
+    title: 'Maintenance',
+    desc: 'AI breaks. A lot. We stay on to keep your systems working and fix things when they glitch.',
+    tag: 'Ongoing',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/>
+        <path d="M12 7v5l3 3"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'additional',
+    title: 'Additional Builds',
+    desc: 'As AI evolves, we identify the latest tools and implement them into your business before your competitors do.',
+    tag: 'Stay ahead',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
+      </svg>
+    ),
+  },
+]
+
+function PillarCard({ pillar }: { pillar: typeof pillars[0] }) {
+  return (
+    <div className="service-card">
+      <div className="service-icon">{pillar.icon}</div>
+      <div className="service-tag">{pillar.tag}</div>
+      <h3 className="service-title">{pillar.title}</h3>
+      <p className="service-desc">{pillar.desc}</p>
+    </div>
+  )
+}
+
+function HowWeHelp() {
+  return (
+    <section className="section how-we-help-section" id="how-we-help">
+      <div className="container">
+        <div className="section-header">
+          <span className="kicker">How we help</span>
+          <h2 className="section-title">
+            We do this<br />all for you.
+          </h2>
+          <p className="section-sub">
+            At the end of the day, it's a headache to keep up with everything — that's where we come in.
+          </p>
+        </div>
+
+        <div className="services-grid">
+          {pillars.map((p) => (
+            <PillarCard key={p.id} pillar={p} />
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -426,6 +516,7 @@ function Header() {
 
             <nav className="header-nav" aria-label="Main navigation">
               <a href="#services" className="header-nav-link">Services</a>
+              <a href="#how-we-help" className="header-nav-link">How We Help</a>
               <a href="#how-we-work" className="header-nav-link">How We Work</a>
               <a href="/pricing" className="header-nav-link">Pricing</a>
               <a href="/about" className="header-nav-link">About</a>
@@ -461,6 +552,7 @@ function Header() {
         <div className="mobile-nav">
           <nav className="mobile-nav-inner">
             <a href="#services" className="mobile-nav-link" onClick={() => setOpen(false)}>Services</a>
+            <a href="#how-we-help" className="mobile-nav-link" onClick={() => setOpen(false)}>How We Help</a>
             <a href="#how-we-work" className="mobile-nav-link" onClick={() => setOpen(false)}>How We Work</a>
             <a href="/pricing" className="mobile-nav-link" onClick={() => setOpen(false)}>Pricing</a>
             <a href="/about" className="mobile-nav-link" onClick={() => setOpen(false)}>About</a>
@@ -492,6 +584,7 @@ export default function Home() {
         <main style={{ paddingTop: '0' }}>
           <Hero />
           <Services />
+          <HowWeHelp />
           <CaseStudy />
           <CTASection />
         </main>
@@ -871,6 +964,10 @@ const serviceStyles = `
   flex-direction: column;
   gap: 0.75rem;
 }
+.how-we-help-section {
+  border-top: 1px solid var(--color-border);
+}
+
 .service-card:hover {
   border-color: var(--color-border-accent);
   box-shadow: 0 0 40px rgba(124, 111, 255, 0.08);
