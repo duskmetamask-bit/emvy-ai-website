@@ -599,7 +599,7 @@ const headerStyles = `
 const heroStyles = `
 .hero {
   position: relative;
-  padding-top: 7rem;
+  padding-top: 8rem;
   padding-bottom: 5rem;
   overflow: hidden;
 }

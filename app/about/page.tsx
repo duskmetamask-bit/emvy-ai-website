@@ -135,6 +135,42 @@ export default function AboutPage() {
           background: linear-gradient(90deg, transparent 0%, var(--color-accent) 30%, rgba(124, 111, 255, 0.4) 70%, transparent 100%);
           border-radius: var(--radius-xl) var(--radius-xl) 0 0;
         }
+
+        .cta-inner {
+          position: relative;
+          text-align: center;
+          padding: 5rem 2rem;
+          border-radius: var(--radius-2xl);
+          border: 1px solid var(--color-border);
+          background: var(--color-surface);
+          overflow: hidden;
+        }
+        .cta-glow {
+          position: absolute;
+          top: -80px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 600px;
+          height: 400px;
+          background: radial-gradient(ellipse at center, rgba(124, 111, 255, 0.15) 0%, transparent 70%);
+          pointer-events: none;
+        }
+        .cta-title {
+          font-size: clamp(2.25rem, 5vw, 4rem);
+          font-weight: 900;
+          letter-spacing: -0.04em;
+          line-height: 1.05;
+          color: var(--color-text-primary);
+          margin: 1.25rem 0 1rem;
+        }
+        .cta-sub {
+          font-size: var(--text-lg);
+          color: var(--color-text-secondary);
+          line-height: 1.7;
+          max-width: 480px;
+          margin: 0 auto 2.5rem;
+        }
+        .cta-btn { margin: 0 auto; }
       `}</style>
 
       {/* Header */}
@@ -197,8 +233,8 @@ export default function AboutPage() {
           <div className="about-hero-blob about-blob-1" />
           <div className="about-hero-blob about-blob-2" />
           <div className="container">
-            <div style={{ position: 'relative', zIndex: 1, maxWidth: '800px' }}>
-              <div className="section-kicker" style={{ marginBottom: '1.5rem' }}>Who we are</div>
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <div className="section-kicker" style={{ marginBottom: '1.5rem', justifyContent: 'center', display: 'flex' }}>Who we are</div>
               <h1 style={{
                 fontSize: 'clamp(2.75rem, 6vw, 5rem)',
                 fontWeight: 900,
@@ -206,6 +242,7 @@ export default function AboutPage() {
                 lineHeight: 0.97,
                 color: 'var(--color-text-primary)',
                 marginBottom: '2rem',
+                textAlign: 'center',
               }}>
                 We fix the gap between<br />
                 <span style={{
@@ -220,11 +257,18 @@ export default function AboutPage() {
                 lineHeight: 1.75,
                 color: 'var(--color-text-secondary)',
                 maxWidth: '600px',
+                margin: '0 auto',
+                textAlign: 'center',
               }}>
                 Most businesses buy AI tools, get excited, use them for a week — then drift back to old habits.
                 The tools aren't broken. The missing piece is specific workflows designed for your business,
                 deployed properly, and maintained.
               </p>
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2.5rem' }}>
+                <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact">
+                  Book free call
+                </a>
+              </div>
             </div>
           </div>
         </section>
