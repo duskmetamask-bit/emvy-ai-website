@@ -963,6 +963,8 @@ const serviceStyles = `
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  min-height: 100%;
+  overflow: hidden;
 }
 .how-we-help-section {
   border-top: 1px solid var(--color-border);
