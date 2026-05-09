@@ -766,7 +766,8 @@ const heroStyles = `
 
 const metricStyles = `
 .metrics-section {
-  padding: 4rem 0;
+  padding: 5rem 0;
+  margin-top: 2rem;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   background: var(--color-bg-subtle);
@@ -819,7 +820,7 @@ const metricStyles = `
 `
 
 const serviceStyles = `
-.services-section { background: var(--color-bg); }
+.services-section { background: var(--color-bg); padding-top: 5rem; }
 
 .section-header {
   margin-bottom: 4rem;
@@ -984,14 +985,25 @@ const valueStyles = `
 .process-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-bottom: 4rem;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
-@media (min-width: 1024px) { .process-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1024px) { .process-grid { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; } }
 
 .process-step {
   display: flex;
   flex-direction: column;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: 1.75rem;
+  transition: all 0.25s ease;
+  height: 100%;
+}
+.process-step:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 .process-num {
   font-family: var(--font-mono);
