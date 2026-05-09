@@ -65,8 +65,7 @@ function Header({ mobileOpen, onToggle }: { mobileOpen: boolean; onToggle: () =>
               <EmvyWordmark size={36} />
             </a>
             <nav className="blog-header-nav" aria-label="Main navigation">
-              <a href="/#services" className="blog-header-nav-link">Services</a>
-              <a href="/#how-we-work" className="blog-header-nav-link">How We Work</a>
+              <a href="/" className="blog-header-nav-link">Home</a>
               <a href="/pricing" className="blog-header-nav-link">Pricing</a>
               <a href="/about" className="blog-header-nav-link">About</a>
               <a href="/blog" className="blog-header-nav-link" style={{ color: 'var(--color-text-secondary)' }}>Blog</a>
@@ -100,8 +99,7 @@ function Header({ mobileOpen, onToggle }: { mobileOpen: boolean; onToggle: () =>
       {mobileOpen && (
         <div className="blog-mobile-nav">
           <nav className="blog-mobile-nav-inner">
-            <a href="/#services" className="blog-mobile-nav-link" onClick={onToggle}>Services</a>
-            <a href="/#how-we-work" className="blog-mobile-nav-link" onClick={onToggle}>How We Work</a>
+            <a href="/" className="blog-mobile-nav-link" onClick={onToggle}>Home</a>
             <a href="/pricing" className="blog-mobile-nav-link" onClick={onToggle}>Pricing</a>
             <a href="/about" className="blog-mobile-nav-link" onClick={onToggle}>About</a>
             <a href="/blog" className="blog-mobile-nav-link" onClick={onToggle}>Blog</a>

@@ -113,11 +113,11 @@ function Header({ mobileOpen, onToggle }: { mobileOpen: boolean; onToggle: () =>
               <EmvyWordmark size={36} />
             </a>
             <nav className="post-header-nav" aria-label="Main navigation">
-              <a href="/#services" className="post-header-nav-link">Services</a>
-              <a href="/#how-we-work" className="post-header-nav-link">How We Work</a>
+              <a href="/" className="post-header-nav-link">Home</a>
               <a href="/pricing" className="post-header-nav-link">Pricing</a>
               <a href="/about" className="post-header-nav-link">About</a>
               <a href="/blog" className="post-header-nav-link" style={{ color: 'var(--color-text-secondary)' }}>Blog</a>
+              <a href="/contact" className="post-header-nav-link">Contact</a>
             </nav>
             <div className="post-header-actions">
               <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact post-header-cta">
@@ -147,11 +147,11 @@ function Header({ mobileOpen, onToggle }: { mobileOpen: boolean; onToggle: () =>
       {mobileOpen && (
         <div className="post-mobile-nav">
           <nav className="post-mobile-nav-inner">
-            <a href="/#services" className="post-mobile-nav-link" onClick={onToggle}>Services</a>
-            <a href="/#how-we-work" className="post-mobile-nav-link" onClick={onToggle}>How We Work</a>
+            <a href="/" className="post-mobile-nav-link" onClick={onToggle}>Home</a>
             <a href="/pricing" className="post-mobile-nav-link" onClick={onToggle}>Pricing</a>
             <a href="/about" className="post-mobile-nav-link" onClick={onToggle}>About</a>
             <a href="/blog" className="post-mobile-nav-link" onClick={onToggle}>Blog</a>
+            <a href="/contact" className="post-mobile-nav-link" onClick={onToggle}>Contact</a>
             <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact w-fit" onClick={onToggle}>
               Book free call
             </a>

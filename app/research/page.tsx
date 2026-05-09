@@ -118,8 +118,7 @@ export default function ResearchPage() {
               <EmvyWordmark size={36} />
             </a>
             <nav className="header-nav" aria-label="Main navigation">
-              <a href="/#services" className="header-nav-link">Services</a>
-              <a href="/#how-we-work" className="header-nav-link">How We Work</a>
+              <a href="/" className="header-nav-link">Home</a>
               <a href="/pricing" className="header-nav-link">Pricing</a>
               <a href="/about" className="header-nav-link">About</a>
               <a href="/blog" className="header-nav-link">Blog</a>
@@ -152,8 +151,7 @@ export default function ResearchPage() {
       {mobileMenuOpen && (
         <div className="mobile-nav">
           <nav className="mobile-nav-inner">
-            <a href="/#services" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Services</a>
-            <a href="/#how-we-work" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>How We Work</a>
+            <a href="/" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Home</a>
             <a href="/pricing" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
             <a href="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
             <a href="/blog" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Blog</a>
