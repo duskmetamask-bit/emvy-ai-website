@@ -24,19 +24,15 @@ export function EmvyMark({ size = 44, tone = 'brand', reversed = false }: MarkPr
   )
 }
 
-export function EmvyWordmark({ size = 44, tone = 'brand' }: { size?: number; tone?: Tone }) {
+export function EmvyWordmark({ size = 44 }: { size?: number }) {
   return (
-    <div className="inline-flex items-center gap-3">
-      <img
-        src="/assets/emvy-logo-nobg-trimmed.png"
-        alt="EMVY"
-        width={Math.round(size * LOGO_ASPECT)}
-        height={size}
-        style={{ objectFit: 'contain', aspectRatio: `${LOGO_ASPECT} / 1` }}
-        aria-hidden="true"
-      />
-      <div className="text-[1.18rem] font-black leading-none tracking-[-0.065em] text-white">EMVY</div>
-    </div>
+    <img
+      src="/assets/emvyai-logo-lockup-transparent.png"
+      alt="EMVY"
+      width={Math.round(size * 1.516)}
+      height={size}
+      style={{ objectFit: 'contain' }}
+    />
   )
 }
 
