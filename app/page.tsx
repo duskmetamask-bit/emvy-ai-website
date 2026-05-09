@@ -140,8 +140,16 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
 function Hero() {
   return (
     <section className="hero">
-      {/* Ambient glow */}
-      <div className="hero-glow" aria-hidden="true" />
+      {/* Mesh gradient background layers */}
+      <div className="hero-mesh-1" aria-hidden="true" />
+      <div className="hero-mesh-2" aria-hidden="true" />
+      <div className="hero-mesh-3" aria-hidden="true" />
+      {/* Grid overlay */}
+      <div className="hero-grid" aria-hidden="true" />
+      {/* Floating geometric accents */}
+      <div className="hero-shape hero-shape-1" aria-hidden="true" />
+      <div className="hero-shape hero-shape-2" aria-hidden="true" />
+      <div className="hero-shape hero-shape-3" aria-hidden="true" />
 
       <div className="container">
         <div className="hero-inner">
@@ -597,16 +605,80 @@ const heroStyles = `
 }
 @media (min-width: 768px) { .hero { padding-top: 9rem; padding-bottom: 7rem; } }
 
-.hero-glow {
+/* Mesh gradient layers */
+.hero-mesh-1 {
   position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 600px;
-  background: radial-gradient(ellipse at center, rgba(124, 111, 255, 0.12) 0%, transparent 70%);
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124, 111, 255, 0.18) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-mesh-2 {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 40% at 80% 60%, rgba(96, 80, 220, 0.12) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-mesh-3 {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 40% 30% at 20% 80%, rgba(124, 111, 255, 0.08) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Subtle grid overlay */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 80%);
+}
+
+/* Floating geometric shapes */
+.hero-shape {
+  position: absolute;
+  border-radius: 50%;
   pointer-events: none;
   z-index: 0;
+  filter: blur(40px);
+  opacity: 0.4;
+  animation: floatShape 8s ease-in-out infinite;
+}
+.hero-shape-1 {
+  width: 300px;
+  height: 300px;
+  top: -80px;
+  right: -60px;
+  background: radial-gradient(circle, rgba(124, 111, 255, 0.25) 0%, transparent 70%);
+  animation-delay: 0s;
+}
+.hero-shape-2 {
+  width: 200px;
+  height: 200px;
+  bottom: 0px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(96, 80, 220, 0.2) 0%, transparent 70%);
+  animation-delay: -3s;
+}
+.hero-shape-3 {
+  width: 150px;
+  height: 150px;
+  top: 40%;
+  right: 15%;
+  background: radial-gradient(circle, rgba(124, 111, 255, 0.15) 0%, transparent 70%);
+  animation-delay: -5s;
+}
+@keyframes floatShape {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  33% { transform: translateY(-20px) scale(1.05); }
+  66% { transform: translateY(10px) scale(0.97); }
 }
 
 .hero-inner {
@@ -908,7 +980,10 @@ const valueStyles = `
 }
 @media (min-width: 1024px) { .process-grid { grid-template-columns: repeat(4, 1fr); } }
 
-.process-step {}
+.process-step {
+  display: flex;
+  flex-direction: column;
+}
 .process-num {
   font-family: var(--font-mono);
   font-size: clamp(2.5rem, 4vw, 3.5rem);

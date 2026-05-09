@@ -116,7 +116,7 @@ export default function AboutPage() {
             <a href="/contact" className="hover:text-white transition-colors">Contact</a>
             <a href={CAL_URL} className="hover:text-white transition-colors">Book a Call</a>
           </div>
-          <div className="text-[#3f3f46] text-xs">Shut Up and Build</div>
+          <div className="text-[#3f3f46] text-xs">AI consultancy for Australian SMBs</div>
         </div>
       </footer>
     </div>

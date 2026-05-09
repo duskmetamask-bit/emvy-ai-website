@@ -19,13 +19,13 @@ export function EmvyMark({ size = 44, tone = 'brand', reversed = false }: MarkPr
     <svg width={size} height={size} viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <linearGradient id={gradientId} x1="90" y1="78" x2="306" y2="322" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#60a5fa" />
-          <stop offset="45%" stopColor="#3b82f6" />
-          <stop offset="100%" stopColor="#1d4ed8" />
+          <stop offset="0%" stopColor="#a08fff" />
+          <stop offset="45%" stopColor="#7c6fff" />
+          <stop offset="100%" stopColor="#5a52d5" />
         </linearGradient>
         <linearGradient id={edgeId} x1="110" y1="92" x2="292" y2="306" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#93c5fd" />
-          <stop offset="100%" stopColor="#2563eb" />
+          <stop offset="0%" stopColor="#c4b8ff" />
+          <stop offset="100%" stopColor="#6c5eee" />
         </linearGradient>
       </defs>
 

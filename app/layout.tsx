@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://emvyai.com"),
+  metadataBase: new URL("https://emvy.ai"),
   title: "EMVY — AI Consultancy",
   description: "AI consultancy for Australian SMBs. AI strategy, process automation, custom AI solutions and data analytics for businesses ready to work smarter.",
   openGraph: {
