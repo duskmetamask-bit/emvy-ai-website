@@ -490,7 +490,6 @@ export default function Home() {
           <Metrics />
           <Services />
           <CaseStudy />
-          <ValueProps />
           <CTASection />
         </main>
         <Footer />
