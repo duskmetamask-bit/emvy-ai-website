@@ -433,6 +433,8 @@ function Footer() {
 /* ── HEADER ─────────────────────────────────────────────── */
 function Header() {
   const [open, setOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+
   return (
     <>
       <header className="header">
@@ -444,7 +446,65 @@ function Header() {
 
             <nav className="header-nav" aria-label="Main navigation">
               <a href="/" className="header-nav-link">Home</a>
-              <a href="/services/ai-agents" className="header-nav-link">Services</a>
+
+              <div className="header-nav-dropdown" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
+                <button className="header-nav-link header-nav-dropdown-trigger" aria-expanded={servicesOpen}>
+                  Services
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ marginLeft: '4px', transition: 'transform 0.2s', transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+                    <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                {servicesOpen && (
+                  <div className="header-nav-dropdown-menu">
+                    <a href="/services/ai-agents" className="header-nav-dropdown-item">
+                      <span className="dropdown-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                      </span>
+                      <div>
+                        <div className="dropdown-item-title">AI Agents</div>
+                        <div className="dropdown-item-desc">Phone, voice & autonomous agents</div>
+                      </div>
+                    </a>
+                    <a href="/services/automations" className="header-nav-dropdown-item">
+                      <span className="dropdown-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+                      </span>
+                      <div>
+                        <div className="dropdown-item-title">Automations</div>
+                        <div className="dropdown-item-desc">Workflows, quotes, follow-ups</div>
+                      </div>
+                    </a>
+                    <a href="/services/ops-systems" className="header-nav-dropdown-item">
+                      <span className="dropdown-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                      </span>
+                      <div>
+                        <div className="dropdown-item-title">Ops Systems</div>
+                        <div className="dropdown-item-desc">Dashboards, CRM & reporting</div>
+                      </div>
+                    </a>
+                    <a href="/services/integrations" className="header-nav-dropdown-item">
+                      <span className="dropdown-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg>
+                      </span>
+                      <div>
+                        <div className="dropdown-item-title">Integrations</div>
+                        <div className="dropdown-item-desc">API connections & data sync</div>
+                      </div>
+                    </a>
+                    <a href="/services/building" className="header-nav-dropdown-item">
+                      <span className="dropdown-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                      </span>
+                      <div>
+                        <div className="dropdown-item-title">Building</div>
+                        <div className="dropdown-item-desc">AI product development & MVP</div>
+                      </div>
+                    </a>
+                  </div>
+                )}
+              </div>
+
               <a href="/pricing" className="header-nav-link">Pricing</a>
               <a href="/about" className="header-nav-link">About</a>
               <a href="/blog" className="header-nav-link">Blog</a>
@@ -480,7 +540,12 @@ function Header() {
         <div className="mobile-nav">
           <nav className="mobile-nav-inner">
             <a href="/" className="mobile-nav-link" onClick={() => setOpen(false)}>Home</a>
-            <a href="/services/ai-agents" className="mobile-nav-link" onClick={() => setOpen(false)}>Services</a>
+            <div className="mobile-nav-section-label">Services</div>
+            <a href="/services/ai-agents" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>AI Agents</a>
+            <a href="/services/automations" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Automations</a>
+            <a href="/services/ops-systems" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Ops Systems</a>
+            <a href="/services/integrations" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Integrations</a>
+            <a href="/services/building" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Building</a>
             <a href="/pricing" className="mobile-nav-link" onClick={() => setOpen(false)}>Pricing</a>
             <a href="/about" className="mobile-nav-link" onClick={() => setOpen(false)}>About</a>
             <a href="/blog" className="mobile-nav-link" onClick={() => setOpen(false)}>Blog</a>
@@ -651,6 +716,78 @@ const headerStyles = `
   transition: color 0.2s ease;
 }
 .mobile-nav-link:hover { color: var(--color-text-secondary); }
+
+/* Desktop dropdown */
+.header-nav-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.header-nav-dropdown-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+  padding: 0;
+}
+.header-nav-dropdown-trigger:hover { color: var(--color-text-secondary); }
+.header-nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 0.75rem;
+  min-width: 260px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5), var(--shadow-glow);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.header-nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-lg);
+  transition: background 0.15s ease;
+  text-decoration: none;
+  color: inherit;
+}
+.header-nav-dropdown-item:hover { background: var(--color-surface-hover); }
+.dropdown-item-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+.dropdown-item-icon svg { width: 18px; height: 18px; }
+.dropdown-item-title { font-size: var(--text-sm); font-weight: 600; color: var(--color-text-primary); }
+.dropdown-item-desc { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 2px; }
+
+/* Mobile nav additions */
+.mobile-nav-section-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 0.5rem 0 0.25rem;
+}
+.mobile-nav-indent { padding-left: 0.5rem; }
 `
 
 const heroStyles = `
