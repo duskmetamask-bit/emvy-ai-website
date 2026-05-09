@@ -270,6 +270,10 @@ function CaseStudy() {
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
+            <p style={{ marginTop: '1.5rem', fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)' }}>
+              See more AI resources for SMBs{' '}
+              <a href="/blog" style={{ color: 'var(--color-accent)', fontWeight: 600 }}>→</a>
+            </p>
           </div>
         </div>
       </div>
@@ -381,16 +385,10 @@ function Footer() {
 
           <div className="footer-links">
             <div className="footer-col">
-              <div className="footer-col-head">Services</div>
-              <a href="#services" className="footer-link">AI Agents</a>
-              <a href="#services" className="footer-link">Automations</a>
-              <a href="#services" className="footer-link">Ops Systems</a>
-              <a href="#services" className="footer-link">Integrations</a>
-            </div>
-            <div className="footer-col">
               <div className="footer-col-head">Company</div>
               <a href="/about" className="footer-link">About</a>
               <a href="/pricing" className="footer-link">Pricing</a>
+              <a href="/blog" className="footer-link">Blog</a>
               <a href="/contact" className="footer-link">Contact</a>
             </div>
             <div className="footer-col">
@@ -477,6 +475,57 @@ function Header() {
   )
 }
 
+/* ── WHO WE ARE ─────────────────────────────────────────── */
+function WhoWeAre() {
+  return (
+    <section className="section" style={{ paddingTop: '0', paddingBottom: '0' }}>
+      <div className="container">
+        <div style={{ maxWidth: '680px' }}>
+          <span className="kicker">Who we are</span>
+          <h2 className="section-title" style={{ marginTop: '1rem' }}>
+            AI consultancy for Australian SMBs.
+          </h2>
+          <p className="section-sub" style={{ marginTop: '1.25rem', lineHeight: '1.8' }}>
+            EMVY bridges the gap between legacy systems and processes — and the new wave of AI technology that offers efficiency gains which simply weren't possible before. We help you actually use AI, not just talk about it.
+          </p>
+          <p className="section-sub" style={{ marginTop: '1rem', lineHeight: '1.8' }}>
+            What a time to be alive. But most businesses need a trusted guide to separate real opportunity from hype. That's what we do.
+          </p>
+          <a href="/about" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.5rem', fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--color-accent)' }}>
+            Learn more about us
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── WHAT WE BUILD (teaser) ─────────────────────────────── */
+function WhatWeBuild() {
+  return (
+    <section className="section" style={{ paddingTop: '0' }}>
+      <div className="container">
+        <span className="kicker">What we build</span>
+        <h2 className="section-title" style={{ marginTop: '1rem', fontSize: 'var(--text-3xl)', fontWeight: 700 }}>
+          AI Agents · Automations · Ops Systems · Integrations
+        </h2>
+        <p className="section-sub" style={{ marginTop: '1rem' }}>
+          We build practical AI systems that think, act and scale with your business.
+        </p>
+        <a href="#services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1rem', fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--color-accent)' }}>
+          See full breakdown
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  )
+}
+
 /* ── PAGE ──────────────────────────────────────────────── */
 export default function Home() {
   return (
@@ -494,6 +543,8 @@ export default function Home() {
         <Header />
         <main style={{ paddingTop: '0' }}>
           <Hero />
+          <WhoWeAre />
+          <WhatWeBuild />
           <Services />
           <CaseStudy />
           <CTASection />
