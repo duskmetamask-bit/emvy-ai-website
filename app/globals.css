@@ -290,6 +290,20 @@ img, svg {
   .section { padding-block: var(--space-32); }
 }
 
+/* Section visual divider */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-border) 20%,
+    var(--color-border) 80%,
+    transparent 100%
+  );
+  margin-block: 0;
+}
+
 /* Mono tag */
 .mono {
   font-family: var(--font-mono);

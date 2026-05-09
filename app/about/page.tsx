@@ -463,6 +463,7 @@ export default function AboutPage() {
         </section>
 
         {/* How we work */}
+        <div className="section-divider" />
         <section className="section" style={{ background: 'var(--color-bg-subtle)' }}>
           <div className="container">
             <div style={{ maxWidth: '600px', marginBottom: '4rem' }}>
@@ -516,6 +517,7 @@ export default function AboutPage() {
         </section>
 
         {/* Values */}
+        <div className="section-divider" />
         <section className="section" style={{ background: 'var(--color-bg)' }}>
           <div className="container">
             <div style={{ maxWidth: '600px', marginBottom: '4rem' }}>
@@ -563,6 +565,7 @@ export default function AboutPage() {
         </section>
 
         {/* Founder / Team */}
+        <div className="section-divider" />
         <section className="section" style={{ background: 'var(--color-bg-subtle)' }}>
           <div className="container">
             <div style={{ maxWidth: '600px', marginBottom: '3rem' }}>
@@ -629,6 +632,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA */}
+        <div className="section-divider" />
         <section className="section" style={{ background: 'var(--color-bg-subtle)' }}>
           <div className="container">
             <div style={{
