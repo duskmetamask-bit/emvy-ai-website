@@ -75,12 +75,12 @@ const caseStudy = {
   client: 'Mid-sized tradie contractor',
   industry: 'Construction',
   challenge: 'Quoting took 3 days, customer follow-ups were inconsistent, and leads were falling through the cracks. The team was spending 20+ hours/week on admin that could be automated.',
-  solution: 'We built an AI agent to parse inbound enquiries, auto-generate quotes using live supplier pricing, and trigger follow-up sequences — all integrated with their existing job management software.',
-  result: 'Quote time: 3 days → 4 hours. Follow-up rate: 40% → 94%. Admin burden dropped by 60% within 8 weeks.',
+  solution: 'We built an AI agent to parse inbound enquiries, auto-generate quotes using their existing pricing data, and trigger follow-up sequences — all integrated with their existing job management software.',
+  result: 'Quote time dropped from 3 days to 4 hours. Quote acceptance went from 40% to 94%. Admin work fell from 20 hours a week to under 8.',
   metrics: [
     { v: '3 days → 4 hrs', l: 'Quote turnaround' },
-    { v: '94%', l: 'Follow-up rate' },
-    { v: '60%', l: 'Admin reduction' },
+    { v: '40% → 94%', l: 'Quote acceptance rate' },
+    { v: '20 hrs → 8 hrs', l: 'Admin per week' },
   ],
 }
 
@@ -160,16 +160,17 @@ function Hero() {
           </div>
 
           <h1 className="hero-headline">
-            We find where your<br />
-            business <span className="headline-accent">bleeds time</span><br />
-            and money.
+            We find the hours<br />
+            and revenue<br />
+            your business<br />
+            is <span className="headline-accent">wasting</span>.
           </h1>
 
           <p className="hero-sub">
-            EMVY is an AI consultancy that audits your workflows, identifies the
-            highest-impact opportunities, and builds the systems that actually run —
-            then stays to maintain them.
+            We help businesses harness AI to move faster, waste less, and achieve more.
           </p>
+
+          <p className="hero-actions-label">No obligation. No pressure. Just a conversation.</p>
 
           <div className="hero-actions">
             <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
@@ -178,10 +179,8 @@ function Hero() {
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
-            <a href="/pricing" className="btn-secondary">View pricing</a>
+            <a href="/pricing" className="hero-view-pricing">View pricing</a>
           </div>
-
-          
         </div>
       </div>
     </section>
@@ -265,7 +264,7 @@ function CaseStudy() {
               ))}
             </div>
 
-            <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ marginTop: 'auto' }}>
+            <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ marginTop: '2rem' }}>
               Get your free 15-min call
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
@@ -304,10 +303,16 @@ function ValueProps() {
           ))}
         </div>
 
-        <div className="divider" style={{ margin: '4rem 0' }} />
+        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+          <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact">
+            Book free 15-min call
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
 
-        {/* Value props */}
-        <div className="value-grid">
+        <div className="value-grid" style={{ marginTop: '4rem' }}>
           {valueProps.map((v) => (
             <div key={v.num} className="value-prop">
               <div className="value-num">{v.num}</div>
@@ -529,7 +534,7 @@ const headerStyles = `
 .header-nav-link:hover { color: var(--color-text-secondary); }
 .header-actions { display: flex; align-items: center; gap: 0.75rem; }
 .header-cta { display: none; }
-@media (min-width: 640px) { .header-cta { display: inline-flex; } }
+@media (min-width: 768px) { .header-cta { display: inline-flex; } }
 .header-hamburger {
   display: flex;
   align-items: center;
@@ -563,6 +568,7 @@ const headerStyles = `
   gap: 0.75rem;
   max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 0.5rem;
 }
 .mobile-nav-link {
   font-size: var(--text-base);
@@ -725,6 +731,21 @@ const heroStyles = `
   margin-bottom: 3rem;
 }
 
+.hero-actions-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.hero-view-pricing {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.hero-view-pricing:hover { color: var(--color-text-secondary); }
+
 
 `
 
@@ -732,9 +753,8 @@ const metricStyles = `
 /* Metrics — breathing room above and below */
 .metrics-section {
   padding: 5rem 0;
-  margin-top: 2rem;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   background: var(--color-bg-subtle);
   overflow: hidden;
   position: relative;
