@@ -766,17 +766,26 @@ const heroStyles = `
 
 const metricStyles = `
 .metrics-section {
-  padding: 3rem 0;
+  padding: 4rem 0;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   background: var(--color-bg-subtle);
+  overflow: hidden;
 }
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0;
 }
-@media (min-width: 768px) { .metrics-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* Section base — ensure clean separation */
+.section {
+  padding-block: var(--space-20);
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 768px) { .section { padding-block: var(--space-24); } }
+@media (min-width: 1024px) { .section { padding-block: var(--space-32); } }
 
 .metric-card {
   padding: 2rem 1.5rem;
