@@ -23,9 +23,9 @@ const packages = [
   },
   {
     name: 'Build',
-    price: '$3k–$5k',
+    price: '$3,000',
     tagline: 'Highest-impact workflow built properly.',
-    description: 'After the audit, EMVY builds the system that will make the biggest practical difference first.',
+    description: 'After the audit, EMVY builds the system that will make the biggest practical difference first. Most builds land here.',
     includes: ['Custom implementation', 'Tool integration', 'Testing and handover', 'Launch support'],
   },
   {
@@ -42,7 +42,7 @@ const faqs = [
   { q: 'Do I need the audit first?', a: 'Yes for paid build work. The audit makes sure the build is useful, scoped and based on your actual workflow.' },
   { q: 'Can I keep the audit roadmap?', a: 'Yes. The roadmap is yours to keep even if you choose to implement it somewhere else.' },
   { q: 'What if AI is not right for us?', a: 'You will be told directly. Sometimes the answer is process cleanup, better data or a human hire before AI.' },
-  { q: 'Who is this for?', a: 'Owner-led SMBs globally with missed calls, admin overload, quote follow-up issues or lead leakage.' },
+  { q: 'Who is this for?', a: 'Owner-led Australian SMBs with missed calls, admin overload, quote follow-up issues or lead leakage.' },
 ]
 
 export default function PricingPage() {
@@ -466,6 +466,7 @@ export default function PricingPage() {
               <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact header-cta">
                 Book free call
               </a>
+              <a href="/contact" className="header-nav-link" style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', transition: 'color 0.2s ease', fontWeight: 500 }}>Contact</a>
               <button
                 className="header-hamburger"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -493,6 +494,7 @@ export default function PricingPage() {
             <a href="/#how-we-work" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>How We Work</a>
             <a href="/pricing" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
             <a href="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href="/contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact w-fit" onClick={() => setMobileMenuOpen(false)}>
               Book free call
             </a>

@@ -10,7 +10,8 @@ const RESEARCH_FIELDS = [
   { key: 'industry', label: 'Industry', placeholder: 'e.g. Wellness studio, Law firm, E-commerce', hint: '' },
   { key: 'location', label: 'Location', placeholder: 'e.g. Perth WA, Melbourne', hint: '' },
   { key: 'size', label: 'Team Size', placeholder: 'e.g. 5 employees, 2 owners', hint: '' },
-  { key: 'pain_points', label: 'Known Pain Points', placeholder: 'What they mentioned in their enquiry...', hint: '' },
+  { key: 'pain_points', label: 'Known Pain Points', placeholder: "What they mentioned in their enquiry...", hint: '' },
+  { key: 'summary', label: '1-Sentence Summary', placeholder: 'e.g. A 3-person wellness studio spending 6hrs/week on manual booking admin they want to eliminate...', hint: '' },
 ]
 
 const CALL_PREP = [
@@ -123,7 +124,7 @@ export default function ResearchPage() {
             </nav>
             <div className="header-actions">
               <a href="https://cal.com/jake-emvy/15-min-ai-chat" target="_blank" rel="noopener noreferrer" className="btn-primary compact header-cta">
-                Booking
+                Book free call
               </a>
               <button
                 className="header-hamburger"
@@ -152,7 +153,7 @@ export default function ResearchPage() {
             <a href="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
             <a href="/pricing" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
             <a href="https://cal.com/jake-emvy/15-min-ai-chat" target="_blank" rel="noopener noreferrer" className="btn-primary compact w-fit" onClick={() => setMobileMenuOpen(false)}>
-              Booking
+              Book free call
             </a>
           </nav>
         </div>
@@ -161,7 +162,7 @@ export default function ResearchPage() {
       <main style={{ maxWidth: '720px', margin: '0 auto', padding: '3rem var(--space-6) 6rem' }}>
         {/* Page header */}
         <div style={{ marginBottom: '3rem' }}>
-          <div className="section-kicker" style={{ marginBottom: '1rem' }}>Internal tool</div>
+          <div className="section-kicker" style={{ marginBottom: '1rem' }}>Prospect research</div>
           <h1 style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             fontWeight: 900,
@@ -228,10 +229,10 @@ export default function ResearchPage() {
             1-Sentence Summary of This Lead
           </label>
           <textarea
-            value={fields['pain_points']}
-            onChange={e => update('pain_points', e.target.value)}
+            value={fields['summary']}
+            onChange={e => update('summary', e.target.value)}
             rows={2}
-            placeholder="e.g. A 3-person wellness studio spending 6hrs/week on manual booking admin they'd rather eliminate..."
+            placeholder="e.g. A 3-person wellness studio spending 6hrs/week on manual booking admin they want to eliminate..."
             className="form-input"
             style={{ resize: 'vertical' }}
           />
@@ -316,7 +317,7 @@ export default function ResearchPage() {
               'Decision maker or direct access to one',
               'Problem worth solving (time/money/revenue)',
               'Has budget awareness (not price shopping)',
-              'Fit for our ICP (1-20 staff, service business)',
+              'Good fit: 1–20 staff, service business',
               'Available for follow-up / responsive',
             ].map((item, i) => (
               <label key={i} className="check-item">

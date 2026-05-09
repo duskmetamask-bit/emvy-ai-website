@@ -15,57 +15,51 @@ const metrics = [
 
 const services = [
   {
-    id: 'agents',
-    title: 'AI Agents',
-    desc: 'Autonomous digital workers that handle calls, messages, and admin — 24/7, no holidays needed.',
-    tag: 'Production-ready',
+    id: 'audit',
+    title: 'AI Audits',
+    desc: 'We go deep into your business — identify where AI can level you up and actually save time and money.',
+    tag: 'Start here',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-        <line x1="12" y1="22.08" x2="12" y2="12"/>
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        <line x1="11" y1="8" x2="11" y2="14"/>
+        <line x1="8" y1="11" x2="14" y2="11"/>
       </svg>
     ),
   },
   {
-    id: 'automations',
-    title: 'Automations',
-    desc: 'End-to-end workflows that eliminate busywork — quotes, follow-ups, data movement, approvals.',
-    tag: 'No-code + code',
+    id: 'build',
+    title: 'AI Building',
+    desc: 'We build the systems and workflows identified in the audit — integrated with how your business actually runs.',
+    tag: 'The work',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <circle cx="12" cy="12" r="3"/>
-        <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/>
-        <path d="M15.54 8.46a5 5 0 010 7.07M8.46 8.46a5 5 0 000 7.07"/>
+        <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
       </svg>
     ),
   },
   {
-    id: 'ops',
-    title: 'Ops Systems',
-    desc: 'Connected systems and dashboards that bring clarity and control to how your business runs.',
-    tag: 'Long-term clarity',
+    id: 'maintenance',
+    title: 'Maintenance',
+    desc: 'AI breaks. A lot. We stay on to keep your systems working and fix things when they glitch.',
+    tag: 'Ongoing',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <rect x="3" y="3" width="7" height="7" rx="1.5"/>
-        <rect x="14" y="3" width="7" height="7" rx="1.5"/>
-        <rect x="3" y="14" width="7" height="7" rx="1.5"/>
-        <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+        <path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/>
+        <path d="M12 7v5l3 3"/>
       </svg>
     ),
   },
   {
-    id: 'integrations',
-    title: 'Integrations',
-    desc: 'Seamless connections across the tools you already use — no rip-and-replace, no vendor lock-in.',
-    tag: 'Works with your stack',
+    id: 'additional',
+    title: 'Additional Builds',
+    desc: 'As AI evolves, we identify the latest tools and implement them into your business before your competitors do.',
+    tag: 'Stay ahead',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
-        <polyline points="16 3 21 3 21 8"/>
-        <line x1="4" y1="20" x2="21" y2="3"/>
-        <polyline points="21 16 21 21 16 21"/>
-        <line x1="15" y1="15" x2="21" y2="21"/>
-        <line x1="4" y1="4" x2="9" y2="9"/>
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
       </svg>
     ),
   },
@@ -222,6 +216,10 @@ function Services() {
             <ServiceCard key={s.id} service={s} />
           ))}
         </div>
+
+        <p className="services-closing">
+          At the end of the day, it's a headache to keep up with everything — that's where we come in. We do this all for you.
+        </p>
       </div>
     </section>
   )
@@ -431,6 +429,7 @@ function Header() {
               <a href="#how-we-work" className="header-nav-link">How We Work</a>
               <a href="/pricing" className="header-nav-link">Pricing</a>
               <a href="/about" className="header-nav-link">About</a>
+              <a href="/blog" className="header-nav-link">Blog</a>
             </nav>
 
             <div className="header-actions">
@@ -876,6 +875,17 @@ const serviceStyles = `
   border-color: var(--color-border-accent);
   box-shadow: 0 0 40px rgba(124, 111, 255, 0.08);
   transform: translateY(-2px);
+}
+
+.services-closing {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  margin-top: 2.5rem;
+  font-style: italic;
+  max-width: 42ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .service-icon { color: var(--color-accent); margin-bottom: 0.5rem; }

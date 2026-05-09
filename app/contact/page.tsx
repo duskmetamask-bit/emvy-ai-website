@@ -392,7 +392,7 @@ export default function ContactPage() {
 
                 <div className="info-card">
                   <div style={{ fontSize: 'var(--text-xs)', fontFamily: 'var(--font-mono)', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>Location</div>
-                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)' }}>Serving clients globally</p>
+                  <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-secondary)' }}>Serving Australian SMBs</p>
                 </div>
               </div>
             </div>
