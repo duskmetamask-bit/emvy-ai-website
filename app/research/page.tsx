@@ -118,9 +118,12 @@ export default function ResearchPage() {
               <EmvyWordmark size={36} />
             </a>
             <nav className="header-nav" aria-label="Main navigation">
-              <a href="/ops" className="header-nav-link">Ops Hub</a>
-              <a href="/about" className="header-nav-link">About</a>
+              <a href="/#services" className="header-nav-link">Services</a>
+              <a href="/#how-we-work" className="header-nav-link">How We Work</a>
               <a href="/pricing" className="header-nav-link">Pricing</a>
+              <a href="/about" className="header-nav-link">About</a>
+              <a href="/blog" className="header-nav-link">Blog</a>
+              <a href="/contact" className="header-nav-link">Contact</a>
             </nav>
             <div className="header-actions">
               <a href="https://cal.com/jake-emvy/15-min-ai-chat" target="_blank" rel="noopener noreferrer" className="btn-primary compact header-cta">
@@ -149,9 +152,12 @@ export default function ResearchPage() {
       {mobileMenuOpen && (
         <div className="mobile-nav">
           <nav className="mobile-nav-inner">
-            <a href="/ops" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Ops Hub</a>
-            <a href="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href="/#services" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Services</a>
+            <a href="/#how-we-work" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>How We Work</a>
             <a href="/pricing" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
+            <a href="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href="/blog" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Blog</a>
+            <a href="/contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             <a href="https://cal.com/jake-emvy/15-min-ai-chat" target="_blank" rel="noopener noreferrer" className="btn-primary compact w-fit" onClick={() => setMobileMenuOpen(false)}>
               Book free call
             </a>

@@ -461,12 +461,13 @@ export default function PricingPage() {
               <a href="/#how-we-work" className="header-nav-link">How We Work</a>
               <a href="/pricing" className="header-nav-link" style={{ color: 'var(--color-text-secondary)' }}>Pricing</a>
               <a href="/about" className="header-nav-link">About</a>
+              <a href="/blog" className="header-nav-link">Blog</a>
+              <a href="/contact" className="header-nav-link">Contact</a>
             </nav>
             <div className="header-actions">
               <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact header-cta">
                 Book free call
               </a>
-              <a href="/contact" className="header-nav-link" style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', transition: 'color 0.2s ease', fontWeight: 500 }}>Contact</a>
               <button
                 className="header-hamburger"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -494,6 +495,7 @@ export default function PricingPage() {
             <a href="/#how-we-work" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>How We Work</a>
             <a href="/pricing" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
             <a href="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href="/blog" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Blog</a>
             <a href="/contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact w-fit" onClick={() => setMobileMenuOpen(false)}>
               Book free call

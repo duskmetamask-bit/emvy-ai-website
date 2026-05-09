@@ -344,6 +344,8 @@ export default function AboutPage() {
               <a href="/#how-we-work" className="header-nav-link">How We Work</a>
               <a href="/pricing" className="header-nav-link">Pricing</a>
               <a href="/about" className="header-nav-link" style={{ color: 'var(--color-text-secondary)' }}>About</a>
+              <a href="/blog" className="header-nav-link">Blog</a>
+              <a href="/contact" className="header-nav-link">Contact</a>
             </nav>
             <div className="header-actions">
               <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact header-cta">
@@ -377,6 +379,8 @@ export default function AboutPage() {
             <a href="/#how-we-work" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>How We Work</a>
             <a href="/pricing" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
             <a href="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href="/blog" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Blog</a>
+            <a href="/contact" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
             <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact w-fit" onClick={() => setMobileMenuOpen(false)}>
               Book free call
             </a>

@@ -70,6 +70,7 @@ function Header({ mobileOpen, onToggle }: { mobileOpen: boolean; onToggle: () =>
               <a href="/pricing" className="blog-header-nav-link">Pricing</a>
               <a href="/about" className="blog-header-nav-link">About</a>
               <a href="/blog" className="blog-header-nav-link" style={{ color: 'var(--color-text-secondary)' }}>Blog</a>
+              <a href="/contact" className="blog-header-nav-link">Contact</a>
             </nav>
             <div className="blog-header-actions">
               <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact blog-header-cta">
@@ -104,6 +105,7 @@ function Header({ mobileOpen, onToggle }: { mobileOpen: boolean; onToggle: () =>
             <a href="/pricing" className="blog-mobile-nav-link" onClick={onToggle}>Pricing</a>
             <a href="/about" className="blog-mobile-nav-link" onClick={onToggle}>About</a>
             <a href="/blog" className="blog-mobile-nav-link" onClick={onToggle}>Blog</a>
+            <a href="/contact" className="blog-mobile-nav-link" onClick={onToggle}>Contact</a>
             <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact w-fit" onClick={onToggle}>
               Book free call
             </a>
