@@ -589,34 +589,7 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* Proof card */}
-        <section style={{ padding: '0 0 5rem' }}>
-          <div className="container">
-            <div className="proof-card">
-              <div className="section-kicker" style={{ justifyContent: 'center', marginBottom: '1.5rem' }}>
-                Honest proof
-              </div>
-              <h2 style={{
-                fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-                fontWeight: 900,
-                letterSpacing: '-0.04em',
-                color: 'var(--color-text-primary)',
-                marginBottom: '1.25rem',
-              }}>
-                No invented stats
-              </h2>
-              <p style={{
-                fontSize: 'var(--text-base)',
-                color: 'var(--color-text-secondary)',
-                lineHeight: 1.8,
-                maxWidth: '520px',
-                margin: '0 auto',
-              }}>
-                EMVY will publish case studies when client results are approved. Until then, the trust signals are transparent pricing, a roadmap you can keep, and a direct builder-led process.
-              </p>
-            </div>
-          </div>
-        </section>
+        
 
         {/* FAQs */}
         <section style={{ padding: '0 0 6rem' }}>
