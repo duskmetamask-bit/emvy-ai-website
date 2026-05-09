@@ -31,11 +31,12 @@ export default function AboutPage() {
       <style>{`
         .about-hero {
           position: relative;
-          padding-top: 8rem;
+          padding-top: 10rem;
           padding-bottom: 5rem;
           overflow: hidden;
           isolation: isolate;
         }
+        @media (min-width: 768px) { .about-hero { padding-top: 11rem; } }
         .about-hero::after {
           content: '';
           position: absolute;

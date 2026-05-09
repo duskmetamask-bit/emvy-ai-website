@@ -599,11 +599,11 @@ const headerStyles = `
 const heroStyles = `
 .hero {
   position: relative;
-  padding-top: 8rem;
+  padding-top: 10rem;
   padding-bottom: 5rem;
   overflow: hidden;
 }
-@media (min-width: 768px) { .hero { padding-top: 9rem; padding-bottom: 7rem; } }
+@media (min-width: 768px) { .hero { padding-top: 11rem; padding-bottom: 7rem; } }
 
 /* Mesh gradient layers */
 .hero-mesh-1 {

@@ -54,12 +54,13 @@ export default function PricingPage() {
       <style>{`
 .pricing-hero {
   position: relative;
-  padding-top: 8rem;
+  padding-top: 10rem;
   padding-bottom: 4rem;
   overflow: hidden;
   text-align: center;
   isolation: isolate;
 }
+@media (min-width: 768px) { .pricing-hero { padding-top: 11rem; } }
 .pricing-hero::after {
   content: '';
   position: absolute;
