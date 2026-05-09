@@ -181,29 +181,7 @@ function Hero() {
             <a href="/pricing" className="btn-secondary">View pricing</a>
           </div>
 
-          {/* Trust strip */}
-          <div className="hero-trust">
-            <div className="trust-item">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.435.59 3.44L7 8.77 3.91 10.51l.59-3.44L2 4.635l3.455-.505z" fill="#7c6fff"/>
-              </svg>
-              <span>No upfront commitment</span>
-            </div>
-            <div className="trust-item">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <circle cx="7" cy="7" r="6" stroke="#7c6fff" strokeWidth="1.5"/>
-                <path d="M4.5 7l2 2 3-3" stroke="#7c6fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span>Audit before any build</span>
-            </div>
-            <div className="trust-item">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <rect x="2" y="6" width="10" height="7" rx="1.5" stroke="#7c6fff" strokeWidth="1.5"/>
-                <path d="M5 6V4a2 2 0 014 0v2" stroke="#7c6fff" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-              <span>You own the roadmap</span>
-            </div>
-          </div>
+          
         </div>
       </div>
     </section>
@@ -747,21 +725,7 @@ const heroStyles = `
   margin-bottom: 3rem;
 }
 
-.hero-trust {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
-}
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  font-weight: 500;
-}
+
 `
 
 const metricStyles = `
