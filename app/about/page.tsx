@@ -31,9 +31,18 @@ export default function AboutPage() {
       <style>{`
         .about-hero {
           position: relative;
-          padding-top: 7rem;
+          padding-top: 8rem;
           padding-bottom: 5rem;
           overflow: hidden;
+          isolation: isolate;
+        }
+        .about-hero::after {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 120px;
+          background: var(--color-bg);
+          z-index: -1;
         }
         .about-hero-mesh {
           position: absolute;
@@ -121,9 +130,10 @@ export default function AboutPage() {
         .team-card::before {
           content: '';
           position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, var(--color-accent), rgba(124, 111, 255, 0.2));
+          top: -1px; left: -1px; right: -1px;
+          height: 3px;
+          background: linear-gradient(90deg, transparent 0%, var(--color-accent) 30%, rgba(124, 111, 255, 0.4) 70%, transparent 100%);
+          border-radius: var(--radius-xl) var(--radius-xl) 0 0;
         }
       `}</style>
 
