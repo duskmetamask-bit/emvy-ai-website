@@ -487,7 +487,6 @@ export default function Home() {
         <Header />
         <main style={{ paddingTop: '0' }}>
           <Hero />
-          <Metrics />
           <Services />
           <CaseStudy />
           <CTASection />
