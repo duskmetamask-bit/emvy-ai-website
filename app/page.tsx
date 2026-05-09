@@ -483,16 +483,18 @@ export default function Home() {
       <style>{footerStyles}</style>
       <style>{headerStyles}</style>
 
-      <Header />
-      <main>
-        <Hero />
-        <Metrics />
-        <Services />
-        <CaseStudy />
-        <ValueProps />
-        <CTASection />
-      </main>
-      <Footer />
+      <div style={{ paddingTop: '2rem' }}>
+        <Header />
+        <main style={{ paddingTop: '0' }}>
+          <Hero />
+          <Metrics />
+          <Services />
+          <CaseStudy />
+          <ValueProps />
+          <CTASection />
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }
