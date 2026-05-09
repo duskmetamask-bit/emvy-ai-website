@@ -458,6 +458,7 @@ export default function PricingPage() {
             </a>
             <nav className="header-nav" aria-label="Main navigation">
               <a href="/" className="header-nav-link">Home</a>
+              <a href="/services/ai-agents" className="header-nav-link">Services</a>
               <a href="/pricing" className="header-nav-link" style={{ color: 'var(--color-text-secondary)' }}>Pricing</a>
               <a href="/about" className="header-nav-link">About</a>
               <a href="/blog" className="header-nav-link">Blog</a>
@@ -491,6 +492,7 @@ export default function PricingPage() {
         <div className="mobile-nav">
           <nav className="mobile-nav-inner">
             <a href="/" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Home</a>
+            <a href="/services/ai-agents" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Services</a>
             <a href="/pricing" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
             <a href="/about" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
             <a href="/blog" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Blog</a>

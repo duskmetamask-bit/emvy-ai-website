@@ -66,6 +66,7 @@ function Header({ mobileOpen, onToggle }: { mobileOpen: boolean; onToggle: () =>
             </a>
             <nav className="blog-header-nav" aria-label="Main navigation">
               <a href="/" className="blog-header-nav-link">Home</a>
+              <a href="/services/ai-agents" className="blog-header-nav-link">Services</a>
               <a href="/pricing" className="blog-header-nav-link">Pricing</a>
               <a href="/about" className="blog-header-nav-link">About</a>
               <a href="/blog" className="blog-header-nav-link" style={{ color: 'var(--color-text-secondary)' }}>Blog</a>
@@ -100,6 +101,7 @@ function Header({ mobileOpen, onToggle }: { mobileOpen: boolean; onToggle: () =>
         <div className="blog-mobile-nav">
           <nav className="blog-mobile-nav-inner">
             <a href="/" className="blog-mobile-nav-link" onClick={onToggle}>Home</a>
+            <a href="/services/ai-agents" className="blog-mobile-nav-link" onClick={onToggle}>Services</a>
             <a href="/pricing" className="blog-mobile-nav-link" onClick={onToggle}>Pricing</a>
             <a href="/about" className="blog-mobile-nav-link" onClick={onToggle}>About</a>
             <a href="/blog" className="blog-mobile-nav-link" onClick={onToggle}>Blog</a>

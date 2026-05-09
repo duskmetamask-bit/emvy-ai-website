@@ -19,6 +19,7 @@ const services = [
     title: 'AI Agents',
     desc: 'Autonomous digital workers that handle calls, messages, and admin — 24/7, no holidays needed.',
     tag: 'Production-ready',
+    href: '/services/ai-agents',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
         <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
@@ -32,6 +33,7 @@ const services = [
     title: 'Automations',
     desc: 'End-to-end workflows that eliminate busywork — quotes, follow-ups, data movement, approvals.',
     tag: 'No-code + code',
+    href: '/services/automations',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
         <circle cx="12" cy="12" r="3"/>
@@ -45,6 +47,7 @@ const services = [
     title: 'Ops Systems',
     desc: 'Connected systems and dashboards that bring clarity and control to how your business runs.',
     tag: 'Long-term clarity',
+    href: '/services/ops-systems',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
         <rect x="3" y="3" width="7" height="7" rx="1.5"/>
@@ -59,6 +62,7 @@ const services = [
     title: 'Integrations',
     desc: 'Seamless connections across the tools you already use — no rip-and-replace, no vendor lock-in.',
     tag: 'Works with your stack',
+    href: '/services/integrations',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
         <polyline points="16 3 21 3 21 8"/>
@@ -66,6 +70,20 @@ const services = [
         <polyline points="21 16 21 21 16 21"/>
         <line x1="15" y1="15" x2="21" y2="21"/>
         <line x1="4" y1="4" x2="9" y2="9"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'building',
+    title: 'Building',
+    desc: 'Got an AI product idea? We help you take it from concept to reality — prototype to launch.',
+    tag: 'Innovation',
+    href: '/services/building',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+        <polyline points="2 17 12 22 22 17"/>
+        <polyline points="2 12 12 17 22 12"/>
       </svg>
     ),
   },
@@ -127,12 +145,12 @@ function MetricCard({ value, label }: { value: string; label: string }) {
 
 function ServiceCard({ service }: { service: typeof services[0] }) {
   return (
-    <div className="service-card">
+    <a href={service.href} className="service-card" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
       <div className="service-icon">{service.icon}</div>
       <div className="service-tag">{service.tag}</div>
       <h3 className="service-title">{service.title}</h3>
       <p className="service-desc">{service.desc}</p>
-    </div>
+    </a>
   )
 }
 
@@ -426,6 +444,7 @@ function Header() {
 
             <nav className="header-nav" aria-label="Main navigation">
               <a href="/" className="header-nav-link">Home</a>
+              <a href="/services/ai-agents" className="header-nav-link">Services</a>
               <a href="/pricing" className="header-nav-link">Pricing</a>
               <a href="/about" className="header-nav-link">About</a>
               <a href="/blog" className="header-nav-link">Blog</a>
@@ -461,6 +480,7 @@ function Header() {
         <div className="mobile-nav">
           <nav className="mobile-nav-inner">
             <a href="/" className="mobile-nav-link" onClick={() => setOpen(false)}>Home</a>
+            <a href="/services/ai-agents" className="mobile-nav-link" onClick={() => setOpen(false)}>Services</a>
             <a href="/pricing" className="mobile-nav-link" onClick={() => setOpen(false)}>Pricing</a>
             <a href="/about" className="mobile-nav-link" onClick={() => setOpen(false)}>About</a>
             <a href="/blog" className="mobile-nav-link" onClick={() => setOpen(false)}>Blog</a>
