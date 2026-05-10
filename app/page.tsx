@@ -489,6 +489,7 @@ function Footer() {
 function Header() {
   const [open, setOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
+  const [whatWeBuildOpen, setWhatWeBuildOpen] = useState(false)
 
   return (
     <>
@@ -501,6 +502,55 @@ function Header() {
 
             <nav className="header-nav" aria-label="Main navigation">
               <a href="/" className="header-nav-link">Home</a>
+
+              <div className="header-nav-dropdown" onMouseEnter={() => setWhatWeBuildOpen(true)} onMouseLeave={() => setWhatWeBuildOpen(false)}>
+                <button className="header-nav-link header-nav-dropdown-trigger" aria-expanded={whatWeBuildOpen}>
+                  What We Build
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ marginLeft: '4px', transition: 'transform 0.2s', transform: whatWeBuildOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+                    <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                {whatWeBuildOpen && (
+                  <div className="header-nav-dropdown-menu">
+                    <a href="/services/ai-agents" className="header-nav-dropdown-item">
+                      <span className="dropdown-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M20.83 14.83a10 10 0 0 0-8.83-8.83"/></svg>
+                      </span>
+                      <div>
+                        <div className="dropdown-item-title">AI Agents</div>
+                        <div className="dropdown-item-desc">Autonomous digital workers</div>
+                      </div>
+                    </a>
+                    <a href="/services/automations" className="header-nav-dropdown-item">
+                      <span className="dropdown-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+                      </span>
+                      <div>
+                        <div className="dropdown-item-title">Automations</div>
+                        <div className="dropdown-item-desc">Streamline repetitive tasks</div>
+                      </div>
+                    </a>
+                    <a href="/services/ops-systems" className="header-nav-dropdown-item">
+                      <span className="dropdown-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                      </span>
+                      <div>
+                        <div className="dropdown-item-title">Ops Systems</div>
+                        <div className="dropdown-item-desc">Backend infrastructure</div>
+                      </div>
+                    </a>
+                    <a href="/services/integrations" className="header-nav-dropdown-item">
+                      <span className="dropdown-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                      </span>
+                      <div>
+                        <div className="dropdown-item-title">Integrations</div>
+                        <div className="dropdown-item-desc">Connect your tools</div>
+                      </div>
+                    </a>
+                  </div>
+                )}
+              </div>
 
               <div className="header-nav-dropdown" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
                 <button className="header-nav-link header-nav-dropdown-trigger" aria-expanded={servicesOpen}>
@@ -586,6 +636,11 @@ function Header() {
         <div className="mobile-nav">
           <nav className="mobile-nav-inner">
             <a href="/" className="mobile-nav-link" onClick={() => setOpen(false)}>Home</a>
+            <div className="mobile-nav-section-label">What We Build</div>
+            <a href="/services/ai-agents" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>AI Agents</a>
+            <a href="/services/automations" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Automations</a>
+            <a href="/services/ops-systems" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Ops Systems</a>
+            <a href="/services/integrations" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Integrations</a>
             <div className="mobile-nav-section-label">Services</div>
             <a href="/services/ai-audits" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>AI Audits</a>
             <a href="/services/ai-building" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>AI Building</a>
@@ -624,6 +679,15 @@ function WhatWeBuild() {
           {oldServices.map((s) => (
             <OldServiceCard key={s.id} service={s} />
           ))}
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <a href="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--color-accent)' }}>
+            See more
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
@@ -713,6 +777,7 @@ export default function Home() {
       <style>{heroStyles}</style>
       <style>{metricStyles}</style>
       <style>{serviceStyles}</style>
+      <style>{caseStudyStyles}</style>
       <style>{valueStyles}</style>
       <style>{ctaStyles}</style>
       <style>{footerStyles}</style>

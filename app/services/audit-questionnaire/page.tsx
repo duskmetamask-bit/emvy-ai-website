@@ -543,7 +543,7 @@ export default function AuditQuestionnairePage() {
             {step === 1 && <Section1 data={data} set={set} />}
             {step === 2 && <Section2 data={data} set={set} />}
             {step === 3 && <Section3 data={data} set={set} />}
-            {step === 4 && <Section4 data={data} toggleArray={toggleArray} />}
+            {step === 4 && <Section4 data={data} toggleArray={toggleArray} setData={setData} />}
             {step === 5 && <Section5 data={data} toggleArray={toggleArray} set={set} />}
             {step === 6 && <Section6 data={data} set={set} />}
             {step === 7 && <Section7 data={data} set={set} />}
@@ -583,7 +583,7 @@ export default function AuditQuestionnairePage() {
 
 // ── Section components ──────────────────────────────────
 
-function Section1({ data, set }: { data: FormData; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void }) {
+function Section1({ data, set }: { data: FormData; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void }) {
   return (
     <>
       <div className="qf-section-tag">01 — Business Overview</div>
@@ -645,7 +645,7 @@ function Section1({ data, set }: { data: FormData; set: (f: keyof FormData) => (
   )
 }
 
-function Section2({ data, set }: { data: FormData; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void }) {
+function Section2({ data, set }: { data: FormData; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void }) {
   return (
     <>
       <div className="qf-section-tag">02 — Tech Stack</div>
@@ -683,7 +683,7 @@ function Section2({ data, set }: { data: FormData; set: (f: keyof FormData) => (
   )
 }
 
-function Section3({ data, set }: { data: FormData; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void }) {
+function Section3({ data, set }: { data: FormData; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void }) {
   return (
     <>
       <div className="qf-section-tag">03 — AI Adoption</div>
@@ -737,7 +737,7 @@ function Section3({ data, set }: { data: FormData; set: (f: keyof FormData) => (
   )
 }
 
-function Section4({ data, toggleArray }: { data: FormData; toggleArray: (f: 'painPoints', v: string) => void }) {
+function Section4({ data, toggleArray, setData }: { data: FormData; toggleArray: (f: 'painPoints', v: string) => void; setData: React.Dispatch<React.SetStateAction<FormData>> }) {
   return (
     <>
       <div className="qf-section-tag">04 — Pain Points</div>
@@ -780,7 +780,7 @@ function Section4({ data, toggleArray }: { data: FormData; toggleArray: (f: 'pai
   )
 }
 
-function Section5({ data, toggleArray, set }: { data: FormData; toggleArray: (f: 'auditGoals', v: string) => void; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void }) {
+function Section5({ data, toggleArray, set }: { data: FormData; toggleArray: (f: 'auditGoals', v: string) => void; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void }) {
   return (
     <>
       <div className="qf-section-tag">05 — Audit Goals</div>
@@ -871,7 +871,7 @@ function Section6({ data, set }: { data: FormData; set: (f: keyof FormData) => (
   )
 }
 
-function Section7({ data, set }: { data: FormData; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void }) {
+function Section7({ data, set }: { data: FormData; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void }) {
   return (
     <>
       <div className="qf-section-tag">07 — Decision Makers</div>
@@ -919,7 +919,7 @@ function Section7({ data, set }: { data: FormData; set: (f: keyof FormData) => (
   )
 }
 
-function Section8({ data, set }: { data: FormData; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void }) {
+function Section8({ data, set }: { data: FormData; set: (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void }) {
   return (
     <>
       <div className="qf-section-tag">08 — Final thoughts</div>
