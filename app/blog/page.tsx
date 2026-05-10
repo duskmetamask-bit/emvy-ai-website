@@ -17,16 +17,7 @@ const posts = [
     tag: 'Planning',
   },
   {
-    slug: '为什么你的CRM没有起作用',
-    title: '为什么你的 CRM 没有起作用：数据同步问题诊断',
-    excerpt: 'CRM 数据不同步是澳大利亚中小企业的常见痛点。当客户信息在 HubSpot、邮件和电子表格之间断裂时，AI agent 就无法正确运作。',
-    category: 'Operations',
-    date: '2025-03-28',
-    readTime: '5 min read',
-    tag: 'Diagnosis',
-  },
-  {
-    slug: 'autonomous-agents-vs-basic-chatbots',
+    slug: 'ai-agents-vs-basic-chatbots',
     title: 'Autonomous AI Agents vs. Basic Chatbots: What Is the Difference?',
     excerpt: 'The buzzwords get used interchangeably, but the capability gap is enormous. If you have been burned by a chatbot that could not actually do anything, this breakdown will help you understand what real autonomy looks like.',
     category: 'AI Agents',

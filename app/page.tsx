@@ -13,7 +13,7 @@ const metrics = [
   { value: '6+', label: 'Years in AI ops' },
 ]
 
-const services = [
+const oldServices = [
   {
     id: 'agents',
     title: 'AI Agents',
@@ -73,17 +73,58 @@ const services = [
       </svg>
     ),
   },
+]
+
+const services = [
+  {
+    id: 'audit',
+    title: 'AI Audits',
+    desc: 'Go deep into your business, identify where AI can level up and save time/money.',
+    tag: 'Discover',
+    href: '/services/ai-audits',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    ),
+  },
   {
     id: 'building',
-    title: 'Building',
-    desc: 'Got an AI product idea? We help you take it from concept to reality — prototype to launch.',
-    tag: 'Innovation',
-    href: '/services/building',
+    title: 'AI Building',
+    desc: 'Build the systems and workflows from audit results.',
+    tag: 'Create',
+    href: '/services/ai-building',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
         <polygon points="12 2 2 7 12 12 22 7 12 2"/>
         <polyline points="2 17 12 22 22 17"/>
         <polyline points="2 12 12 17 22 12"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'maintenance',
+    title: 'Maintenance',
+    desc: "Stay on to keep systems working. AI breaks frequently — we're here when it does.",
+    tag: 'Support',
+    href: '/services/maintenance',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'additional',
+    title: 'Additional Builds',
+    desc: 'As AI evolves, identify the latest tools and implement them into your business.',
+    tag: 'Evolve',
+    href: '/services/additional-builds',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+        <polyline points="17 6 23 6 23 12"/>
       </svg>
     ),
   },
@@ -110,18 +151,18 @@ const valueProps = [
   },
   {
     num: '02',
-    title: 'Audit before build',
-    desc: 'We map your real workflows — not the idealised version. Then we find the 2-3 interventions that move the needle most.',
+    title: 'No AI jargon',
+    desc: 'We speak plain English. You get a clear plan — not a slide deck full of buzzwords.',
   },
   {
     num: '03',
-    title: 'You own the roadmap',
-    desc: 'Whether we build it or not, the audit output and roadmap are yours. No lock-in, no surprises.',
+    title: 'You own everything',
+    desc: 'All access, documentation, and credentials handed over when we finish. No lock-in, no surprises.',
   },
   {
     num: '04',
     title: 'Ongoing support',
-    desc: 'We monitor, fix, and improve the system month by month. Walk away any time — but most clients stay because it keeps working.',
+    desc: 'We monitor, fix, and improve it month by month. Walk away any time — but most clients stay because it keeps working.',
   },
 ]
 
@@ -140,6 +181,17 @@ function MetricCard({ value, label }: { value: string; label: string }) {
       <div className="metric-value">{value}</div>
       <div className="metric-label">{label}</div>
     </div>
+  )
+}
+
+function OldServiceCard({ service }: { service: typeof oldServices[0] }) {
+  return (
+    <a href={service.href} className="service-card" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+      <div className="service-icon">{service.icon}</div>
+      <div className="service-tag">{service.tag}</div>
+      <h3 className="service-title">{service.title}</h3>
+      <p className="service-desc">{service.desc}</p>
+    </a>
   )
 }
 
@@ -178,14 +230,13 @@ function Hero() {
           </div>
 
           <h1 className="hero-headline">
-            We find the hours<br />
-            and revenue<br />
-            your business<br />
-            is <span className="headline-accent">wasting</span>.
+            We build AI systems<br />
+            that run your business<br />
+            while you sleep.
           </h1>
 
           <p className="hero-sub">
-            We help businesses harness AI to move faster, waste less, and achieve more.
+            Phone agents, automations, and ops tools for Australian SMBs — built to work, not just demo well.
           </p>
 
           <p className="hero-actions-label">No obligation. No pressure. Just a conversation.</p>
@@ -220,18 +271,18 @@ function Metrics() {
   )
 }
 
-/* ── SERVICES ──────────────────────────────────────────── */
+/* ── SERVICES (4 Pillars) ──────────────────────────────── */
 function Services() {
   return (
     <section className="section services-section" id="services">
       <div className="container">
         <div className="section-header">
-          <span className="kicker">What we build</span>
+          <span className="kicker">Services</span>
           <h2 className="section-title">
-            Practical AI systems<br />for how your business works.
+            Audit · Build · Maintain · Evolve
           </h2>
           <p className="section-sub">
-            We don't just automate tasks. We build systems that think, act and scale with you.
+            Our structured approach to finding and fixing what holds your business back.
           </p>
         </div>
 
@@ -240,6 +291,10 @@ function Services() {
             <ServiceCard key={s.id} service={s} />
           ))}
         </div>
+
+        <p style={{ textAlign: 'center', marginTop: '2.5rem', color: 'var(--color-text-muted)', fontSize: 'var(--text-base)', lineHeight: '1.7' }}>
+          At the end of the day, it's a headache to keep up with everything — that's where we come in, we do this all for you.
+        </p>
       </div>
     </section>
   )
@@ -456,49 +511,40 @@ function Header() {
                 </button>
                 {servicesOpen && (
                   <div className="header-nav-dropdown-menu">
-                    <a href="/services/ai-agents" className="header-nav-dropdown-item">
+                    <a href="/services/ai-audits" className="header-nav-dropdown-item">
                       <span className="dropdown-item-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                       </span>
                       <div>
-                        <div className="dropdown-item-title">AI Agents</div>
-                        <div className="dropdown-item-desc">Phone, voice & autonomous agents</div>
+                        <div className="dropdown-item-title">AI Audits</div>
+                        <div className="dropdown-item-desc">Deep dive into your business</div>
                       </div>
                     </a>
-                    <a href="/services/automations" className="header-nav-dropdown-item">
-                      <span className="dropdown-item-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
-                      </span>
-                      <div>
-                        <div className="dropdown-item-title">Automations</div>
-                        <div className="dropdown-item-desc">Workflows, quotes, follow-ups</div>
-                      </div>
-                    </a>
-                    <a href="/services/ops-systems" className="header-nav-dropdown-item">
-                      <span className="dropdown-item-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-                      </span>
-                      <div>
-                        <div className="dropdown-item-title">Ops Systems</div>
-                        <div className="dropdown-item-desc">Dashboards, CRM & reporting</div>
-                      </div>
-                    </a>
-                    <a href="/services/integrations" className="header-nav-dropdown-item">
-                      <span className="dropdown-item-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/></svg>
-                      </span>
-                      <div>
-                        <div className="dropdown-item-title">Integrations</div>
-                        <div className="dropdown-item-desc">API connections & data sync</div>
-                      </div>
-                    </a>
-                    <a href="/services/building" className="header-nav-dropdown-item">
+                    <a href="/services/ai-building" className="header-nav-dropdown-item">
                       <span className="dropdown-item-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
                       </span>
                       <div>
-                        <div className="dropdown-item-title">Building</div>
-                        <div className="dropdown-item-desc">AI product development & MVP</div>
+                        <div className="dropdown-item-title">AI Building</div>
+                        <div className="dropdown-item-desc">Build systems & workflows</div>
+                      </div>
+                    </a>
+                    <a href="/services/maintenance" className="header-nav-dropdown-item">
+                      <span className="dropdown-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                      </span>
+                      <div>
+                        <div className="dropdown-item-title">Maintenance</div>
+                        <div className="dropdown-item-desc">Keep systems running</div>
+                      </div>
+                    </a>
+                    <a href="/services/additional-builds" className="header-nav-dropdown-item">
+                      <span className="dropdown-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                      </span>
+                      <div>
+                        <div className="dropdown-item-title">Additional Builds</div>
+                        <div className="dropdown-item-desc">Evolve with AI</div>
                       </div>
                     </a>
                   </div>
@@ -541,11 +587,10 @@ function Header() {
           <nav className="mobile-nav-inner">
             <a href="/" className="mobile-nav-link" onClick={() => setOpen(false)}>Home</a>
             <div className="mobile-nav-section-label">Services</div>
-            <a href="/services/ai-agents" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>AI Agents</a>
-            <a href="/services/automations" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Automations</a>
-            <a href="/services/ops-systems" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Ops Systems</a>
-            <a href="/services/integrations" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Integrations</a>
-            <a href="/services/building" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Building</a>
+            <a href="/services/ai-audits" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>AI Audits</a>
+            <a href="/services/ai-building" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>AI Building</a>
+            <a href="/services/maintenance" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Maintenance</a>
+            <a href="/services/additional-builds" className="mobile-nav-link mobile-nav-indent" onClick={() => setOpen(false)}>Additional Builds</a>
             <a href="/pricing" className="mobile-nav-link" onClick={() => setOpen(false)}>Pricing</a>
             <a href="/about" className="mobile-nav-link" onClick={() => setOpen(false)}>About</a>
             <a href="/blog" className="mobile-nav-link" onClick={() => setOpen(false)}>Blog</a>
@@ -557,6 +602,31 @@ function Header() {
         </div>
       )}
     </>
+  )
+}
+
+/* ── WHAT WE BUILD (Old Services) ────────────────────── */
+function WhatWeBuild() {
+  return (
+    <section className="section services-section" id="what-we-build">
+      <div className="container">
+        <div className="section-header">
+          <span className="kicker">What we build</span>
+          <h2 className="section-title">
+            AI Agents · Automations · Ops Systems · Integrations
+          </h2>
+          <p className="section-sub">
+            Production-ready systems built for real Australian businesses — not demos.
+          </p>
+        </div>
+
+        <div className="services-grid">
+          {oldServices.map((s) => (
+            <OldServiceCard key={s.id} service={s} />
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -588,24 +658,49 @@ function WhoWeAre() {
   )
 }
 
-/* ── WHAT WE BUILD (teaser) ─────────────────────────────── */
-function WhatWeBuild() {
+/* ── HOW WE WORK ────────────────────────────────────────── */
+function HowWeWork() {
   return (
-    <section className="section" style={{ paddingTop: '0' }}>
+    <section className="section value-props-section" id="how-we-work">
       <div className="container">
-        <span className="kicker">What we build</span>
-        <h2 className="section-title" style={{ marginTop: '1rem', fontSize: 'var(--text-3xl)', fontWeight: 700 }}>
-          AI Agents · Automations · Ops Systems · Integrations
-        </h2>
-        <p className="section-sub" style={{ marginTop: '1rem' }}>
-          We build practical AI systems that think, act and scale with your business.
-        </p>
-        <a href="#services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1rem', fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--color-accent)' }}>
-          See full breakdown
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </a>
+        <div className="section-header">
+          <span className="kicker">How we work</span>
+          <h2 className="section-title">
+            Simple process.<br />Real results.
+          </h2>
+          <p className="section-sub">
+            No black boxes. No surprises. You know what's happening at every step.
+          </p>
+        </div>
+
+        <div className="process-grid">
+          {process.map((p) => (
+            <div key={p.step} className="process-step">
+              <div className="process-num">{p.step}</div>
+              <div className="process-title">{p.title}</div>
+              <p className="process-desc">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="value-grid">
+          {valueProps.map((v) => (
+            <div key={v.num} className="value-prop">
+              <div className="value-num">{v.num}</div>
+              <div className="value-title">{v.title}</div>
+              <p className="value-desc">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+          <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary compact">
+            Book free 15-min call
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   )
@@ -618,7 +713,6 @@ export default function Home() {
       <style>{heroStyles}</style>
       <style>{metricStyles}</style>
       <style>{serviceStyles}</style>
-      <style>{caseStudyStyles}</style>
       <style>{valueStyles}</style>
       <style>{ctaStyles}</style>
       <style>{footerStyles}</style>
@@ -631,6 +725,7 @@ export default function Home() {
           <WhoWeAre />
           <WhatWeBuild />
           <Services />
+          <HowWeWork />
           <CaseStudy />
           <CTASection />
         </main>
