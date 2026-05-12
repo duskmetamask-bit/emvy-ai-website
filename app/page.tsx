@@ -503,7 +503,7 @@ function Header() {
             <nav className="header-nav" aria-label="Main navigation">
               <a href="/" className="header-nav-link">Home</a>
 
-              <div className="header-nav-dropdown" onMouseEnter={() => setWhatWeBuildOpen(true)} onMouseLeave={() => setWhatWeBuildOpen(false)}>
+              <div className="header-nav-dropdown" onMouseEnter={() => setWhatWeBuildOpen(true)}>
                 <button className="header-nav-link header-nav-dropdown-trigger" aria-expanded={whatWeBuildOpen}>
                   What We Build
                   <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ marginLeft: '4px', transition: 'transform 0.2s', transform: whatWeBuildOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
@@ -511,7 +511,7 @@ function Header() {
                   </svg>
                 </button>
                 {whatWeBuildOpen && (
-                  <div className="header-nav-dropdown-menu">
+                  <div className="header-nav-dropdown-menu" onMouseLeave={() => setTimeout(() => setWhatWeBuildOpen(false), 200)}>
                     <a href="/services/ai-agents" className="header-nav-dropdown-item">
                       <span className="dropdown-item-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M20.83 14.83a10 10 0 0 0-8.83-8.83"/></svg>
@@ -552,7 +552,7 @@ function Header() {
                 )}
               </div>
 
-              <div className="header-nav-dropdown" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
+              <div className="header-nav-dropdown" onMouseEnter={() => setServicesOpen(true)}>
                 <button className="header-nav-link header-nav-dropdown-trigger" aria-expanded={servicesOpen}>
                   Services
                   <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ marginLeft: '4px', transition: 'transform 0.2s', transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
@@ -560,7 +560,7 @@ function Header() {
                   </svg>
                 </button>
                 {servicesOpen && (
-                  <div className="header-nav-dropdown-menu">
+                  <div className="header-nav-dropdown-menu" onMouseLeave={() => setTimeout(() => setServicesOpen(false), 200)}>
                     <a href="/services/ai-audits" className="header-nav-dropdown-item">
                       <span className="dropdown-item-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -882,6 +882,7 @@ const headerStyles = `
   position: relative;
   display: inline-flex;
   align-items: center;
+  padding-bottom: 1.5rem; /* Extends interactive area so mouse can travel to menu */
 }
 .header-nav-dropdown-trigger {
   background: none;
@@ -897,7 +898,7 @@ const headerStyles = `
 .header-nav-dropdown-trigger:hover { color: var(--color-text-secondary); }
 .header-nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 1rem);
+  top: calc(100% + 0.25rem); /* Reduced gap — was 1rem, now 4px */
   left: 50%;
   transform: translateX(-50%);
   background: var(--color-surface);
