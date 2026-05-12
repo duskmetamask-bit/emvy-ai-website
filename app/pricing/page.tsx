@@ -101,7 +101,7 @@ export default function PricingPage() {
           width: 500px; height: 400px;
           top: -150px; left: 50%;
           transform: translateX(-50%);
-          background: radial-gradient(circle, rgba(124, 111, 255, 0.25) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(79, 142, 255, 0.25) 0%, rgba(168, 85, 247, 0.1) 50%, transparent 70%);
         }
 
         .section-kicker {
@@ -155,16 +155,16 @@ export default function PricingPage() {
           transform: translateY(-2px);
         }
         .pricing-card.featured {
-          border-color: var(--color-accent);
+          border-color: rgba(79, 142, 255, 0.5);
           background: var(--color-bg-elevated);
-          box-shadow: 0 0 60px rgba(124, 111, 255, 0.12);
+          box-shadow: 0 0 60px rgba(79, 142, 255, 0.15), 0 0 120px rgba(168, 85, 247, 0.08);
         }
         .pricing-card.featured::before {
           content: '';
           position: absolute;
           top: -1px; left: -1px; right: -1px;
           height: 3px;
-          background: linear-gradient(90deg, transparent 0%, var(--color-accent) 30%, rgba(124, 111, 255, 0.4) 70%, transparent 100%);
+          background: linear-gradient(90deg, transparent 0%, #4F8EFF 30%, #A855F7 70%, transparent 100%);
           border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
         }
 

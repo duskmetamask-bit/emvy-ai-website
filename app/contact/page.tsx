@@ -124,8 +124,8 @@ export default function ContactPage() {
         }
         .form-input::placeholder { color: var(--color-text-muted); }
         .form-input:focus {
-          border-color: var(--color-accent);
-          box-shadow: 0 0 0 3px rgba(124, 111, 255, 0.15);
+          border-color: rgba(79, 142, 255, 0.5);
+          box-shadow: 0 0 0 3px rgba(79, 142, 255, 0.15), 0 0 20px rgba(79, 142, 255, 0.1);
         }
 
         .form-label {
@@ -357,7 +357,7 @@ export default function ContactPage() {
                       type="submit"
                       disabled={status === 'loading'}
                       className="btn-primary"
-                      style={{ width: '100%', marginTop: '0.5rem' }}
+                      style={{ width: '100%', marginTop: '0.5rem', background: 'linear-gradient(135deg, #4F8EFF 0%, #A855F7 100%)', border: 'none' }}
                     >
                       {status === 'loading' ? 'Sending...' : 'Send Message →'}
                     </button>

@@ -189,16 +189,26 @@ export default function AuditQuestionnairePage() {
           margin: 0 auto;
         }
         .qf-progress-track {
-          height: 3px;
-          background: var(--color-border);
+          height: 4px;
+          background: rgba(255,255,255,0.06);
           border-radius: 99px;
           overflow: hidden;
+          position: relative;
+        }
+        .qf-progress-track::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(90deg, rgba(124,111,255,0.2), rgba(168,100,255,0.2));
+          border-radius: 99px;
         }
         .qf-progress-fill {
           height: 100%;
-          background: linear-gradient(90deg, var(--color-accent), #9b8fff);
+          background: linear-gradient(90deg, var(--color-accent) 0%, #8b6fff 50%, #a78bfa 100%);
           border-radius: 99px;
           transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+          position: relative;
+          box-shadow: 0 0 16px rgba(124,111,255,0.5);
         }
         .qf-progress-meta {
           display: flex;
@@ -220,20 +230,33 @@ export default function AuditQuestionnairePage() {
           align-items: center;
         }
         .qf-dot {
-          width: 6px;
-          height: 6px;
+          width: 8px;
+          height: 8px;
           border-radius: 50%;
-          background: var(--color-border);
+          background: rgba(255,255,255,0.12);
           transition: all 0.3s ease;
         }
-        .qf-dot.done    { background: var(--color-accent); }
-        .qf-dot.current { background: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-glow); }
+        .qf-dot.done    { background: var(--color-accent); box-shadow: 0 0 8px rgba(124,111,255,0.5); }
+        .qf-dot.current { background: linear-gradient(135deg, var(--color-accent), #a78bfa); box-shadow: 0 0 12px rgba(124,111,255,0.7), 0 0 4px rgba(124,111,255,0.4); transform: scale(1.3); }
 
         /* ── Form area ── */
         .qf-container {
           max-width: 640px;
           margin: 0 auto;
           padding: 3rem 2rem 4rem;
+          position: relative;
+        }
+        .qf-container::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 24px;
+          padding: 1px;
+          background: linear-gradient(135deg, rgba(124,111,255,0.4), rgba(168,100,255,0.1), rgba(124,111,255,0.05));
+          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
         }
         .qf-section-tag {
           font-family: var(--font-mono);
@@ -409,14 +432,14 @@ export default function AuditQuestionnairePage() {
           color: var(--color-text-secondary);
         }
         .qf-btn-primary {
-          background: var(--color-accent);
+          background: linear-gradient(135deg, var(--color-accent) 0%, #7c6fff 50%, #a78bfa 100%);
           color: #fff;
-          box-shadow: 0 4px 20px var(--color-accent-glow);
+          box-shadow: 0 4px 20px rgba(124,111,255,0.35), 0 0 0 1px rgba(124,111,255,0.2);
         }
         .qf-btn-primary:hover {
-          background: var(--color-accent-hover);
+          background: linear-gradient(135deg, #7c6fff 0%, #a78bfa 50%, #c4b5fd 100%);
           transform: translateY(-1px);
-          box-shadow: 0 6px 24px var(--color-accent-glow);
+          box-shadow: 0 8px 32px rgba(124,111,255,0.45), 0 0 0 1px rgba(124,111,255,0.3);
         }
         .qf-btn-primary:active { transform: translateY(0); }
         .qf-btn-primary:disabled {
@@ -454,6 +477,14 @@ export default function AuditQuestionnairePage() {
         @keyframes qfFadeIn {
           from { opacity: 0; transform: translateY(8px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Gradient text ── */
+        .qf-gradient-title {
+          background: linear-gradient(135deg, #fff 0%, #c4b5fd 40%, #a78bfa 70%, #8b6fff 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
 
         /* ── Success screen ── */
@@ -587,7 +618,7 @@ function Section1({ data, set }: { data: FormData; set: (f: keyof FormData) => (
   return (
     <>
       <div className="qf-section-tag">01 — Business Overview</div>
-      <h2 className="qf-title">Tell us about your business</h2>
+      <h2 className="qf-title qf-gradient-title">Tell us about your business</h2>
       <p className="qf-subtitle">We'll use this to frame the entire audit around your specific context and goals.</p>
 
       <div className="qf-grid-2">

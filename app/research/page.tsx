@@ -53,7 +53,7 @@ export default function ResearchPage() {
           display: inline-block;
           width: 20px;
           height: 1px;
-          background: var(--color-accent);
+          background: linear-gradient(135deg, #4F8EFF, #A855F7);
         }
 
         .form-input {
@@ -70,15 +70,16 @@ export default function ResearchPage() {
         }
         .form-input::placeholder { color: var(--color-text-muted); }
         .form-input:focus {
-          border-color: var(--color-accent);
-          box-shadow: 0 0 0 3px rgba(124, 111, 255, 0.15);
+          border-color: rgba(79, 142, 255, 0.5);
+          box-shadow: 0 0 0 3px rgba(79, 142, 255, 0.15), 0 0 20px rgba(79, 142, 255, 0.1);
         }
 
         .prep-card {
           border-radius: var(--radius-xl);
-          border: 1px solid var(--color-border);
+          border: 1px solid rgba(79, 142, 255, 0.2);
           background: var(--color-surface);
           padding: 1.75rem;
+          box-shadow: 0 0 20px rgba(79, 142, 255, 0.1), 0 4px 24px rgba(0, 0, 0, 0.15);
         }
 
         .check-item {
@@ -171,7 +172,9 @@ export default function ResearchPage() {
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             fontWeight: 900,
             letterSpacing: '-0.04em',
-            color: 'var(--color-text-primary)',
+            background: 'linear-gradient(135deg, #4F8EFF 0%, #A855F7 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
             marginBottom: '0.75rem',
           }}>
             Pre-Call Research
@@ -298,9 +301,10 @@ export default function ResearchPage() {
         {/* Qualifying checklist */}
         <div style={{
           borderRadius: 'var(--radius-xl)',
-          border: '1px solid var(--color-border)',
+          border: '1px solid rgba(79, 142, 255, 0.2)',
           background: 'var(--color-surface)',
           padding: '1.75rem',
+          boxShadow: '0 0 20px rgba(79, 142, 255, 0.1), 0 4px 24px rgba(0, 0, 0, 0.15)',
         }}>
           <h2 style={{
             fontSize: 'var(--text-base)',
@@ -338,9 +342,9 @@ export default function ResearchPage() {
             <button style={{
               padding: '0.625rem 1.25rem',
               borderRadius: 'var(--radius-md)',
-              background: 'rgba(34, 197, 94, 0.12)',
-              border: '1px solid rgba(34, 197, 94, 0.25)',
-              color: '#4ade80',
+              background: 'linear-gradient(135deg, #4F8EFF 0%, #A855F7 100%)',
+              border: '1px solid rgba(79, 142, 255, 0.3)',
+              color: '#ffffff',
               fontSize: 'var(--text-sm)',
               fontWeight: 600,
               cursor: 'pointer',
