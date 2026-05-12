@@ -48,7 +48,7 @@ export default function AboutPage() {
         .about-hero-mesh {
           position: absolute;
           inset: 0;
-          background: radial-gradient(ellipse 80% 50% at 50% -5%, rgba(124, 111, 255, 0.2) 0%, transparent 60%);
+          background: radial-gradient(ellipse 80% 50% at 50% -5%, rgba(79, 142, 255, 0.25) 0%, rgba(168, 85, 247, 0.1) 40%, transparent 70%);
           z-index: 0;
           pointer-events: none;
         }
@@ -74,13 +74,13 @@ export default function AboutPage() {
         .about-blob-1 {
           width: 400px; height: 400px;
           top: -100px; right: -80px;
-          background: radial-gradient(circle, rgba(124, 111, 255, 0.3) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(79, 142, 255, 0.35) 0%, rgba(168, 85, 247, 0.15) 50%, transparent 70%);
           animation: floatShape 10s ease-in-out infinite;
         }
         .about-blob-2 {
           width: 250px; height: 250px;
           bottom: -50px; left: -60px;
-          background: radial-gradient(circle, rgba(96, 80, 220, 0.25) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, rgba(79, 142, 255, 0.1) 50%, transparent 70%);
           animation: floatShape 12s ease-in-out infinite reverse;
         }
         @keyframes floatShape {

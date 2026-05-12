@@ -963,21 +963,21 @@ const heroStyles = `
 .hero-mesh-1 {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124, 111, 255, 0.18) 0%, transparent 60%);
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(79, 142, 255, 0.2) 0%, rgba(124, 111, 255, 0.1) 40%, transparent 70%);
   z-index: 0;
   pointer-events: none;
 }
 .hero-mesh-2 {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 50% 40% at 80% 60%, rgba(96, 80, 220, 0.12) 0%, transparent 60%);
+  background: radial-gradient(ellipse 50% 40% at 80% 60%, rgba(168, 85, 247, 0.15) 0%, rgba(79, 142, 255, 0.05) 50%, transparent 70%);
   z-index: 0;
   pointer-events: none;
 }
 .hero-mesh-3 {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 40% 30% at 20% 80%, rgba(124, 111, 255, 0.08) 0%, transparent 60%);
+  background: radial-gradient(ellipse 40% 30% at 20% 80%, rgba(79, 142, 255, 0.1) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 70%);
   z-index: 0;
   pointer-events: none;
 }
@@ -1010,7 +1010,7 @@ const heroStyles = `
   height: 300px;
   top: -80px;
   right: -60px;
-  background: radial-gradient(circle, rgba(124, 111, 255, 0.25) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(79, 142, 255, 0.3) 0%, rgba(124, 111, 255, 0.15) 40%, transparent 70%);
   animation-delay: 0s;
 }
 .hero-shape-2 {
@@ -1018,7 +1018,7 @@ const heroStyles = `
   height: 200px;
   bottom: 0px;
   left: -80px;
-  background: radial-gradient(circle, rgba(96, 80, 220, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, rgba(79, 142, 255, 0.1) 50%, transparent 70%);
   animation-delay: -3s;
 }
 .hero-shape-3 {
@@ -1026,7 +1026,7 @@ const heroStyles = `
   height: 150px;
   top: 40%;
   right: 15%;
-  background: radial-gradient(circle, rgba(124, 111, 255, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(79, 142, 255, 0.2) 0%, rgba(168, 85, 247, 0.1) 50%, transparent 70%);
   animation-delay: -5s;
 }
 @keyframes floatShape {
@@ -1061,8 +1061,8 @@ const heroStyles = `
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 8px var(--color-accent);
+  background: linear-gradient(135deg, #4F8EFF 0%, #A855F7 100%);
+  box-shadow: 0 0 8px rgba(79, 142, 255, 0.6), 0 0 16px rgba(168, 85, 247, 0.3);
   animation: pulse 2s infinite;
 }
 @keyframes pulse {
@@ -1079,7 +1079,7 @@ const heroStyles = `
   margin-bottom: 1.75rem;
 }
 .headline-accent {
-  background: linear-gradient(135deg, #8b85ff 0%, #6c63ff 50%, #a08fff 100%);
+  background: linear-gradient(135deg, #4F8EFF 0%, #7c6fff 50%, #A855F7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1171,7 +1171,7 @@ const metricStyles = `
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 900;
   letter-spacing: -0.05em;
-  background: linear-gradient(135deg, #ffffff 0%, var(--color-accent) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #4F8EFF 50%, #A855F7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1254,7 +1254,7 @@ const serviceStyles = `
   transform: translateY(-2px);
 }
 
-.service-icon { color: var(--color-accent); margin-bottom: 0.5rem; }
+.service-icon { color: var(--color-accent); margin-bottom: 0.5rem; filter: drop-shadow(0 0 8px rgba(79, 142, 255, 0.4)); }
 
 .service-tag {
   font-family: var(--font-mono);
@@ -1262,9 +1262,9 @@ const serviceStyles = `
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-accent);
-  background: var(--color-accent-subtle);
-  border: 1px solid rgba(124, 111, 255, 0.2);
+  color: var(--color-text-kicker);
+  background: linear-gradient(135deg, rgba(79, 142, 255, 0.12) 0%, rgba(168, 85, 247, 0.08) 100%);
+  border: 1px solid rgba(79, 142, 255, 0.3);
   border-radius: 999px;
   padding: 0.2rem 0.625rem;
   width: fit-content;

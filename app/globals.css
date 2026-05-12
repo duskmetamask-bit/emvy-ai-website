@@ -17,19 +17,26 @@
   /* Borders */
   --color-border:        rgba(255, 255, 255, 0.06);
   --color-border-hover:  rgba(255, 255, 255, 0.12);
-  --color-border-accent: rgba(124, 111, 255, 0.35);
+  --color-border-accent: rgba(79, 142, 255, 0.35);
 
-  /* Accent — electric indigo */
+  /* Accent — blue + purple gradient matching the logo */
+  --color-accent-blue:   #4F8EFF;
+  --color-accent-purple: #A855F7;
   --color-accent:        #7c6fff;
   --color-accent-hover:  #6a5eee;
-  --color-accent-glow:   rgba(124, 111, 255, 0.25);
-  --color-accent-subtle: rgba(124, 111, 255, 0.10);
+  --color-accent-glow:   rgba(79, 142, 255, 0.3);
+  --color-accent-subtle: rgba(79, 142, 255, 0.12);
+
+  /* Brand gradient — spans the full logo spectrum: electric blue → violet → purple */
+  --gradient-brand: linear-gradient(135deg, #4F8EFF 0%, #7c6fff 50%, #A855F7 100%);
+  --gradient-brand-subtle: linear-gradient(135deg, rgba(79, 142, 255, 0.15) 0%, rgba(124, 111, 255, 0.08) 50%, rgba(168, 85, 247, 0.15) 100%);
+  --gradient-brand-border: linear-gradient(135deg, rgba(79, 142, 255, 0.5) 0%, rgba(168, 85, 247, 0.5) 100%);
 
   /* Text */
   --color-text-primary:  #ffffff;
   --color-text-secondary:#a8a8b8;
   --color-text-muted:    #5c5c70;
-  --color-text-kicker:   #8b85ff;
+  --color-text-kicker:   #7eb8ff;
 
   /* Status */
   --color-success:       #34d399;
@@ -75,9 +82,9 @@
   --radius-2xl: 2rem;
 
   /* Shadows */
-  --shadow-accent: 0 0 40px rgba(124, 111, 255, 0.18);
+  --shadow-accent: 0 0 40px rgba(79, 142, 255, 0.18);
   --shadow-card:    0 1px 3px rgba(0,0,0,0.4), 0 4px 16px rgba(0,0,0,0.3);
-  --shadow-glow:    0 0 60px rgba(124, 111, 255, 0.12);
+  --shadow-glow:    0 0 60px rgba(79, 142, 255, 0.12);
 
   /* Transitions */
   --transition-fast:   all 0.15s ease;
@@ -161,12 +168,12 @@ img, svg {
   display: inline-block;
   width: 20px;
   height: 1px;
-  background: var(--color-accent);
+  background: var(--gradient-brand);
 }
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, var(--color-accent) 100%);
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -195,7 +202,7 @@ img, svg {
   gap: var(--space-2);
   padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-lg);
-  background: var(--color-accent);
+  background: var(--gradient-brand);
   color: #fff;
   font-size: var(--text-sm);
   font-weight: 600;
@@ -207,8 +214,8 @@ img, svg {
 }
 
 .btn-primary:hover {
-  background: var(--color-accent-hover);
-  box-shadow: var(--shadow-accent);
+  background: var(--gradient-brand);
+  box-shadow: 0 0 30px var(--color-accent-glow);
   transform: translateY(-1px);
 }
 
@@ -266,8 +273,8 @@ img, svg {
 }
 
 .card:hover {
-  border-color: var(--color-border-hover);
-  box-shadow: var(--shadow-glow);
+  border-color: var(--color-border-accent);
+  box-shadow: 0 0 40px var(--color-accent-glow);
 }
 
 /* Divider */
@@ -309,4 +316,27 @@ img, svg {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--color-text-muted);
+}
+
+/* ── ANIMATED GRADIENT BG ──────────────────────────────── */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-animated-bg {
+  background: linear-gradient(-45deg, #4F8EFF, #7c6fff, #A855F7, #6c63ff);
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* ── GLOW PULSE ───────────────────────────────────────── */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+.glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
 }

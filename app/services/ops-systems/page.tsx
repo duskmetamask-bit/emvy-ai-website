@@ -118,16 +118,18 @@ export default function OpsSystemsPage() {
         }
         .cover-card {
           border-radius: var(--radius-xl);
-          border: 1px solid var(--color-border);
+          border: 1px solid rgba(79, 142, 255, 0.3);
           background: var(--color-surface);
           padding: 2rem;
           transition: all 0.25s ease;
           text-align: left;
+          box-shadow: 0 0 20px rgba(79, 142, 255, 0.06);
         }
         .cover-card:hover {
-          border-color: var(--color-border-accent);
+          border-color: rgba(79, 142, 255, 0.5);
           background: var(--color-surface-hover);
           transform: translateY(-2px);
+          box-shadow: 0 0 30px rgba(79, 142, 255, 0.15);
         }
         .cover-icon {
           width: 40px;
@@ -161,23 +163,25 @@ export default function OpsSystemsPage() {
         }
         .platform-card {
           border-radius: var(--radius-xl);
-          border: 1px solid var(--color-border);
+          border: 1px solid rgba(79, 142, 255, 0.3);
           background: var(--color-surface);
           padding: 2.5rem;
           position: relative;
           overflow: hidden;
           transition: all 0.25s ease;
+          box-shadow: 0 0 20px rgba(79, 142, 255, 0.06);
         }
         .platform-card:hover {
-          border-color: var(--color-border-hover);
+          border-color: rgba(79, 142, 255, 0.5);
           transform: translateY(-2px);
+          box-shadow: 0 0 35px rgba(79, 142, 255, 0.15);
         }
         .platform-card::before {
           content: '';
           position: absolute;
           top: -1px; left: -1px; right: -1px;
           height: 3px;
-          background: linear-gradient(90deg, transparent 0%, var(--color-accent) 30%, rgba(124, 111, 255, 0.4) 70%, transparent 100%);
+          background: linear-gradient(90deg, #4F8EFF 0%, #A855F7 100%);
           border-radius: var(--radius-xl) var(--radius-xl) 0 0;
           opacity: 0;
           transition: opacity 0.25s ease;
@@ -203,14 +207,16 @@ export default function OpsSystemsPage() {
         }
         .process-card {
           border-radius: var(--radius-xl);
-          border: 1px solid var(--color-border);
+          border: 1px solid rgba(79, 142, 255, 0.3);
           background: var(--color-surface);
           padding: 2rem;
           transition: all 0.25s ease;
+          box-shadow: 0 0 15px rgba(79, 142, 255, 0.06);
         }
         .process-card:hover {
-          border-color: var(--color-border-hover);
+          border-color: rgba(79, 142, 255, 0.5);
           background: var(--color-surface-hover);
+          box-shadow: 0 0 30px rgba(79, 142, 255, 0.15);
         }
         .process-step {
           font-family: var(--font-mono);
@@ -239,9 +245,10 @@ export default function OpsSystemsPage() {
           text-align: center;
           padding: 5rem 2rem;
           border-radius: var(--radius-2xl);
-          border: 1px solid var(--color-border);
+          border: 1px solid rgba(79, 142, 255, 0.3);
           background: var(--color-surface);
           overflow: hidden;
+          box-shadow: 0 0 40px rgba(79, 142, 255, 0.1);
         }
         .cta-glow {
           position: absolute;
@@ -250,7 +257,7 @@ export default function OpsSystemsPage() {
           transform: translateX(-50%);
           width: 600px;
           height: 400px;
-          background: radial-gradient(ellipse at center, rgba(124, 111, 255, 0.15) 0%, transparent 70%);
+          background: radial-gradient(ellipse at center, rgba(79, 142, 255, 0.2) 0%, rgba(168, 85, 247, 0.1) 50%, transparent 70%);
           pointer-events: none;
         }
         .cta-title {
@@ -258,7 +265,10 @@ export default function OpsSystemsPage() {
           font-weight: 900;
           letter-spacing: -0.04em;
           line-height: 1.05;
-          color: var(--color-text-primary);
+          background: linear-gradient(135deg, #4F8EFF 0%, #A855F7 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           margin: 1.25rem 0 1rem;
         }
         .cta-sub {
@@ -268,7 +278,11 @@ export default function OpsSystemsPage() {
           max-width: 480px;
           margin: 0 auto 2.5rem;
         }
-        .cta-btn { margin: 0 auto; }
+        .cta-btn {
+          margin: 0 auto;
+          background: linear-gradient(135deg, #4F8EFF 0%, #A855F7 100%);
+          box-shadow: 0 4px 20px rgba(79, 142, 255, 0.35);
+        }
         .header {
           position: sticky;
           top: 0;

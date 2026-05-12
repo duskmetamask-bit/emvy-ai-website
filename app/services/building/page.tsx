@@ -181,13 +181,14 @@ function Hero() {
 
           <h1 className="hero-headline">
             Got an AI product idea?<br />
-            <span className="headline-accent">Let's build it.</span>
+            <span className="headline-accent" data-text="Let's build it.">Let's build it.</span>
           </h1>
 
           <p className="hero-sub">
             For entrepreneurs with a vision who need a technical partner. We turn your concept into a production-ready product — fast.
           </p>
 
+          <div className="hero-glow-orb" aria-hidden="true" />
           <div className="hero-actions">
             <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary">
               Book free 15-min call
@@ -429,6 +430,7 @@ export default function Building() {
   return (
     <>
       <style>{heroStyles}</style>
+      <style>{btnPrimaryStyles}</style>
       <style>{whatStyles}</style>
       <style>{processStyles}</style>
       <style>{valueStyles}</style>
@@ -655,10 +657,43 @@ const heroStyles = `
   margin-bottom: 1.75rem;
 }
 .headline-accent {
-  background: linear-gradient(135deg, #8b85ff 0%, #6c63ff 50%, #a08fff 100%);
+  background: linear-gradient(135deg, #4F8EFF 0%, #A855F7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  position: relative;
+}
+.headline-accent::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(135deg, #4F8EFF 0%, #A855F7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: blur(24px);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.hero-glow-orb {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79, 142, 255, 0.12) 0%, rgba(168, 85, 247, 0.06) 50%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: orbPulse 6s ease-in-out infinite;
+  filter: blur(40px);
+}
+@keyframes orbPulse {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -60%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -60%) scale(1.1); }
 }
 
 .hero-sub {
@@ -684,6 +719,46 @@ const heroStyles = `
   transition: color 0.2s ease;
 }
 .hero-view-pricing:hover { color: var(--color-text-secondary); }
+`
+
+const btnPrimaryStyles = `
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #4F8EFF 0%, #7c6fff 50%, #A855F7 100%);
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 24px rgba(79, 142, 255, 0.3), 0 4px 12px rgba(79, 142, 255, 0.2);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(79, 142, 255, 0.45), 0 8px 20px rgba(79, 142, 255, 0.3);
+}
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:active { transform: translateY(0px); }
+.btn-primary.compact {
+  padding: 0.5rem 1rem;
+  font-size: var(--text-xs);
+}
+.btn-primary.w-fit { width: fit-content; }
 `
 
 const whatStyles = `
@@ -712,7 +787,10 @@ const whatStyles = `
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1.05;
-  color: var(--color-text-primary);
+  background: linear-gradient(135deg, #4F8EFF 0%, #A855F7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-top: 0.875rem;
   margin-bottom: 1rem;
 }
@@ -733,21 +811,33 @@ const whatStyles = `
 
 .build-card {
   border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(79, 142, 255, 0.15);
   background: var(--color-surface);
   padding: 2rem;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   min-height: 100%;
   overflow: hidden;
+  position: relative;
+}
+.build-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(79, 142, 255, 0.3) 0%, rgba(168, 85, 247, 0.15) 50%, rgba(79, 142, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 .build-card:hover {
-  border-color: var(--color-border-accent);
-  box-shadow: 0 0 40px rgba(124, 111, 255, 0.08);
-  transform: translateY(-2px);
+  border-color: rgba(79, 142, 255, 0.4);
+  box-shadow: 0 0 50px rgba(79, 142, 255, 0.15), 0 0 100px rgba(79, 142, 255, 0.08), 0 20px 40px rgba(0,0,0,0.4);
+  transform: translateY(-4px);
 }
+.build-card:hover::before { opacity: 0.5; }
 .build-icon { color: var(--color-accent); margin-bottom: 0.5rem; }
 .build-tag {
   font-family: var(--font-mono);
@@ -933,7 +1023,10 @@ const ctaStyles = `
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1.05;
-  color: var(--color-text-primary);
+  background: linear-gradient(135deg, #4F8EFF 0%, #A855F7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 1.25rem 0 1rem;
 }
 .cta-sub {
