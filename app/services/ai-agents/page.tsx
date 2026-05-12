@@ -9,37 +9,81 @@ const CAL_URL = 'https://cal.com/jake-emvy/15-min-ai-chat'
 
 const agentTypes = [
   {
-    id: 'phone',
-    title: 'Phone & Voice Agents',
-    desc: 'AI agents that answer calls, handle enquiries, book appointments, and qualify leads — 24/7, always on time.',
-    tag: 'VAPI-powered',
+    id: 'research',
+    title: 'Research & Analysis Agents',
+    desc: 'Agents that monitor competitors, track industry news, compile reports, and surface insights — so you\'re always informed without lifting a finger.',
+    tag: 'Knowledge-driven',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
-        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        <line x1="11" y1="8" x2="11" y2="14"/>
+        <line x1="8" y1="11" x2="14" y2="11"/>
       </svg>
     ),
   },
   {
-    id: 'text',
-    title: 'Text & Chat Agents',
-    desc: 'Autonomous agents that handle email, web chat, and SMS — answering questions, processing requests, and routing conversations.',
-    tag: 'NLP-powered',
+    id: 'operations',
+    title: 'Operations Agents',
+    desc: 'Agents that manage supply chains, coordinate logistics, track deliverables, and keep projects on schedule — working while you sleep.',
+    tag: 'Always-on ops',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
-        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <path d="M3 9h18M9 21V9"/>
       </svg>
     ),
   },
   {
-    id: 'autonomous',
-    title: 'Specialized Autonomous Agents',
-    desc: 'Purpose-built agents that handle specific business functions — quoting, scheduling, follow-ups, data entry, and more.',
-    tag: 'Custom-built',
+    id: 'scheduling',
+    title: 'Scheduling & Coordination Agents',
+    desc: 'Agents that manage appointments, send reminders, reschedule conflicts, and coordinate across teams — without the back-and-forth.',
+    tag: 'Zero-friction scheduling',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
-        <circle cx="12" cy="12" r="3"/>
-        <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/>
-        <path d="M15.54 8.46a5 5 0 010 7.07M8.46 8.46a5 5 0 000 7.07"/>
+        <rect x="3" y="4" width="18" height="18" rx="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+        <polyline points="9 16 11 18 15 14"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'data',
+    title: 'Data Entry & Processing Agents',
+    desc: 'Agents that transcribe notes, update CRMs, extract key info from documents, and keep your systems in sync — no more manual data entry.',
+    tag: '99.9% accuracy',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <polyline points="10 9 9 9 8 9"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'communication',
+    title: 'Communication Agents',
+    desc: 'Agents that draft emails, respond to common enquiries, prepare proposals, and manage inboxes — with your brand voice and processes built in.',
+    tag: 'Consistent brand voice',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'monitoring',
+    title: 'Monitoring & Alerts Agents',
+    desc: 'Agents that watch your systems, flag anomalies, alert you to issues before they become problems, and log everything for compliance.',
+    tag: 'Proactive protection',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
       </svg>
     ),
   },
@@ -49,7 +93,8 @@ const platforms = [
   { name: 'VAPI', desc: 'Voice AI infrastructure for phone agents — natural, fast, and reliable.' },
   { name: 'Twilio', desc: 'Enterprise telephony platform enabling SMS, voice, and WhatsApp agents.' },
   { name: 'Custom LLM', desc: 'Tailored language models trained on your data and workflows.' },
-  { name: 'Your existing tools', desc: 'Agents integrated directly with your CRM, scheduling, and operational software.' },
+  { name: 'n8n & Make', desc: 'Workflow automation connecting your agents to 500+ tools without writing code.' },
+  { name: 'Your existing stack', desc: 'Agents integrated directly with your CRM, calendar, database, and operational software.' },
 ]
 
 const processSteps = [
